@@ -1,0 +1,565 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */; };
+		CC7A0D0B209E4D3200E1CE1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7A0D09209E4D3200E1CE1B /* Main.storyboard */; };
+		CC7A0D0D209E4D3200E1CE1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */; };
+		CC7A0D10209E4D3200E1CE1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7A0D0E209E4D3200E1CE1B /* LaunchScreen.storyboard */; };
+		CC7A0D1B209E4D3200E1CE1B /* LodealsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D1A209E4D3200E1CE1B /* LodealsTests.swift */; };
+		CC7A0D26209E4D3200E1CE1B /* LodealsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D25209E4D3200E1CE1B /* LodealsUITests.swift */; };
+		CC7A0D36209E52D800E1CE1B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D35209E52D800E1CE1B /* MainViewController.swift */; };
+		CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */; };
+		CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC7A0D17209E4D3200E1CE1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC7A0CFA209E4D3200E1CE1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC7A0D01209E4D3200E1CE1B;
+			remoteInfo = Lodeals;
+		};
+		CC7A0D22209E4D3200E1CE1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC7A0CFA209E4D3200E1CE1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC7A0D01209E4D3200E1CE1B;
+			remoteInfo = Lodeals;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CC7A0D02209E4D3200E1CE1B /* Lodeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lodeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CC7A0D0A209E4D3200E1CE1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC7A0D0F209E4D3200E1CE1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CC7A0D11209E4D3200E1CE1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC7A0D16209E4D3200E1CE1B /* LodealsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LodealsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC7A0D1A209E4D3200E1CE1B /* LodealsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LodealsTests.swift; sourceTree = "<group>"; };
+		CC7A0D1C209E4D3200E1CE1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC7A0D21209E4D3200E1CE1B /* LodealsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LodealsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC7A0D25209E4D3200E1CE1B /* LodealsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LodealsUITests.swift; sourceTree = "<group>"; };
+		CC7A0D27209E4D3200E1CE1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC7A0D35209E52D800E1CE1B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantClass.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC7A0CFF209E4D3200E1CE1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7A0D13209E4D3200E1CE1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7A0D1E209E4D3200E1CE1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC7A0CF9209E4D3200E1CE1B = {
+			isa = PBXGroup;
+			children = (
+				CC7A0D04209E4D3200E1CE1B /* Lodeals */,
+				CC7A0D19209E4D3200E1CE1B /* LodealsTests */,
+				CC7A0D24209E4D3200E1CE1B /* LodealsUITests */,
+				CC7A0D03209E4D3200E1CE1B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CC7A0D03209E4D3200E1CE1B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC7A0D02209E4D3200E1CE1B /* Lodeals.app */,
+				CC7A0D16209E4D3200E1CE1B /* LodealsTests.xctest */,
+				CC7A0D21209E4D3200E1CE1B /* LodealsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC7A0D04209E4D3200E1CE1B /* Lodeals */ = {
+			isa = PBXGroup;
+			children = (
+				CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */,
+				CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */,
+				CC7A0D35209E52D800E1CE1B /* MainViewController.swift */,
+				CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */,
+				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
+				CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */,
+				CC7A0D0E209E4D3200E1CE1B /* LaunchScreen.storyboard */,
+				CC7A0D11209E4D3200E1CE1B /* Info.plist */,
+			);
+			path = Lodeals;
+			sourceTree = "<group>";
+		};
+		CC7A0D19209E4D3200E1CE1B /* LodealsTests */ = {
+			isa = PBXGroup;
+			children = (
+				CC7A0D1A209E4D3200E1CE1B /* LodealsTests.swift */,
+				CC7A0D1C209E4D3200E1CE1B /* Info.plist */,
+			);
+			path = LodealsTests;
+			sourceTree = "<group>";
+		};
+		CC7A0D24209E4D3200E1CE1B /* LodealsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CC7A0D25209E4D3200E1CE1B /* LodealsUITests.swift */,
+				CC7A0D27209E4D3200E1CE1B /* Info.plist */,
+			);
+			path = LodealsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC7A0D01209E4D3200E1CE1B /* Lodeals */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC7A0D2A209E4D3200E1CE1B /* Build configuration list for PBXNativeTarget "Lodeals" */;
+			buildPhases = (
+				CC7A0CFE209E4D3200E1CE1B /* Sources */,
+				CC7A0CFF209E4D3200E1CE1B /* Frameworks */,
+				CC7A0D00209E4D3200E1CE1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Lodeals;
+			productName = Lodeals;
+			productReference = CC7A0D02209E4D3200E1CE1B /* Lodeals.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC7A0D15209E4D3200E1CE1B /* LodealsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC7A0D2D209E4D3200E1CE1B /* Build configuration list for PBXNativeTarget "LodealsTests" */;
+			buildPhases = (
+				CC7A0D12209E4D3200E1CE1B /* Sources */,
+				CC7A0D13209E4D3200E1CE1B /* Frameworks */,
+				CC7A0D14209E4D3200E1CE1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC7A0D18209E4D3200E1CE1B /* PBXTargetDependency */,
+			);
+			name = LodealsTests;
+			productName = LodealsTests;
+			productReference = CC7A0D16209E4D3200E1CE1B /* LodealsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CC7A0D20209E4D3200E1CE1B /* LodealsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC7A0D30209E4D3200E1CE1B /* Build configuration list for PBXNativeTarget "LodealsUITests" */;
+			buildPhases = (
+				CC7A0D1D209E4D3200E1CE1B /* Sources */,
+				CC7A0D1E209E4D3200E1CE1B /* Frameworks */,
+				CC7A0D1F209E4D3200E1CE1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC7A0D23209E4D3200E1CE1B /* PBXTargetDependency */,
+			);
+			name = LodealsUITests;
+			productName = LodealsUITests;
+			productReference = CC7A0D21209E4D3200E1CE1B /* LodealsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC7A0CFA209E4D3200E1CE1B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Rachel Chang";
+				TargetAttributes = {
+					CC7A0D01209E4D3200E1CE1B = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					CC7A0D15209E4D3200E1CE1B = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CC7A0D01209E4D3200E1CE1B;
+					};
+					CC7A0D20209E4D3200E1CE1B = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CC7A0D01209E4D3200E1CE1B;
+					};
+				};
+			};
+			buildConfigurationList = CC7A0CFD209E4D3200E1CE1B /* Build configuration list for PBXProject "Lodeals" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC7A0CF9209E4D3200E1CE1B;
+			productRefGroup = CC7A0D03209E4D3200E1CE1B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC7A0D01209E4D3200E1CE1B /* Lodeals */,
+				CC7A0D15209E4D3200E1CE1B /* LodealsTests */,
+				CC7A0D20209E4D3200E1CE1B /* LodealsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC7A0D00209E4D3200E1CE1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7A0D10209E4D3200E1CE1B /* LaunchScreen.storyboard in Resources */,
+				CC7A0D0D209E4D3200E1CE1B /* Assets.xcassets in Resources */,
+				CC7A0D0B209E4D3200E1CE1B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7A0D14209E4D3200E1CE1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7A0D1F209E4D3200E1CE1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC7A0CFE209E4D3200E1CE1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */,
+				CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */,
+				CC7A0D36209E52D800E1CE1B /* MainViewController.swift in Sources */,
+				CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7A0D12209E4D3200E1CE1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7A0D1B209E4D3200E1CE1B /* LodealsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7A0D1D209E4D3200E1CE1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7A0D26209E4D3200E1CE1B /* LodealsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC7A0D18209E4D3200E1CE1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC7A0D01209E4D3200E1CE1B /* Lodeals */;
+			targetProxy = CC7A0D17209E4D3200E1CE1B /* PBXContainerItemProxy */;
+		};
+		CC7A0D23209E4D3200E1CE1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC7A0D01209E4D3200E1CE1B /* Lodeals */;
+			targetProxy = CC7A0D22209E4D3200E1CE1B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CC7A0D09209E4D3200E1CE1B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC7A0D0A209E4D3200E1CE1B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CC7A0D0E209E4D3200E1CE1B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC7A0D0F209E4D3200E1CE1B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CC7A0D28209E4D3200E1CE1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CC7A0D29209E4D3200E1CE1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CC7A0D2B209E4D3200E1CE1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Lodeals/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csc436.Lodeals;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CC7A0D2C209E4D3200E1CE1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Lodeals/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csc436.Lodeals;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CC7A0D2E209E4D3200E1CE1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LodealsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csc436.LodealsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lodeals.app/Lodeals";
+			};
+			name = Debug;
+		};
+		CC7A0D2F209E4D3200E1CE1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LodealsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csc436.LodealsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lodeals.app/Lodeals";
+			};
+			name = Release;
+		};
+		CC7A0D31209E4D3200E1CE1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LodealsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csc436.LodealsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Lodeals;
+			};
+			name = Debug;
+		};
+		CC7A0D32209E4D3200E1CE1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LodealsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csc436.LodealsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Lodeals;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC7A0CFD209E4D3200E1CE1B /* Build configuration list for PBXProject "Lodeals" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC7A0D28209E4D3200E1CE1B /* Debug */,
+				CC7A0D29209E4D3200E1CE1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC7A0D2A209E4D3200E1CE1B /* Build configuration list for PBXNativeTarget "Lodeals" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC7A0D2B209E4D3200E1CE1B /* Debug */,
+				CC7A0D2C209E4D3200E1CE1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC7A0D2D209E4D3200E1CE1B /* Build configuration list for PBXNativeTarget "LodealsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC7A0D2E209E4D3200E1CE1B /* Debug */,
+				CC7A0D2F209E4D3200E1CE1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC7A0D30209E4D3200E1CE1B /* Build configuration list for PBXNativeTarget "LodealsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC7A0D31209E4D3200E1CE1B /* Debug */,
+				CC7A0D32209E4D3200E1CE1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC7A0CFA209E4D3200E1CE1B /* Project object */;
+}
