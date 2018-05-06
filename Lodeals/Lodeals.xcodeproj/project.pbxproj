@@ -16,6 +16,7 @@
 		CC7A0D36209E52D800E1CE1B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D35209E52D800E1CE1B /* MainViewController.swift */; };
 		CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */; };
 		CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */; };
+		CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		CC7A0D35209E52D800E1CE1B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantClass.swift; sourceTree = "<group>"; };
+		CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				CC7A0D35209E52D800E1CE1B /* MainViewController.swift */,
 				CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */,
 				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
+				CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */,
 				CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */,
 				CC7A0D0E209E4D3200E1CE1B /* LaunchScreen.storyboard */,
 				CC7A0D11209E4D3200E1CE1B /* Info.plist */,
@@ -269,6 +272,7 @@
 				CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */,
 				CC7A0D36209E52D800E1CE1B /* MainViewController.swift in Sources */,
 				CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */,
+				CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

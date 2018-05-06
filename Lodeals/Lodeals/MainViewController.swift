@@ -14,6 +14,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var restaurants = [Restaurant]()
     var dateFormatter = DateFormatter()
+    @IBOutlet weak var restaurantTV: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,14 +58,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell!
     }
 
-    /*
     // MARK: - NAVIGATION
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "showDetailsVC") {
+            let destVC = segue.destination as? DetailsViewController
+            let selectedIndexPath = restaurantTV.indexPathForSelectedRow
+            
+            destVC?.restaurant = restaurants[(selectedIndexPath?.row)!]
+        }
     }
-    */
 
 }
