@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleMaps
+//Podlist, Google Maps API implementation
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -14,6 +16,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var restaurants = [Restaurant]()
     var dateFormatter = DateFormatter()
+    var locationManager = CLLocationManager()
     @IBOutlet weak var restaurantTV: UITableView!
     
     override func viewDidLoad() {
@@ -24,11 +27,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let deal2 = Deal(shortDescription: "$9 sandwiches", description: "After 4:20 pm, get any sandwich for $9", lastUsed: DateComponents(year: 2018, month: 5, day: 5, hour: 15, minute: 45))
         let rest = Restaurant(name: "High Street", location: "12490 Palmtag Dr.", tags: ["oh wow", "nice nice", "coo coo", "sandwiches", "American", "deli", "quick foods"], price: 2, deals: [deal1, deal2])
         restaurants.append(rest)
+        
+//        self.locationManager.delegate = self
+//        self.locationManager.startUpdatingLocation()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    //MARK: -- GOOGLE MAPS
+    
     
     // MARK: -- TABLE VIEW
     

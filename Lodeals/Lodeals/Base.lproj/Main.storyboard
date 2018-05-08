@@ -26,6 +26,21 @@
             </objects>
             <point key="canvasLocation" x="-1633" y="107"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="788-ue-4Je">
+            <objects>
+                <viewController id="03M-dR-44F" customClass="MapViewController" customModule="Lodeals" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T3c-BB-4EI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="rFO-kb-kvD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lf6-Ac-R0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-649" y="-619"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -157,6 +172,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="03M-dR-44F" kind="show" identifier="showMapVC" id="hTe-OY-jCn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4A-XH-qo5" colorLabel="IBBuiltInLabel-Blue">
                                 <rect key="frame" x="150" y="105" width="115" height="76"/>

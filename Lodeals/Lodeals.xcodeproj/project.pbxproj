@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC6328B220A25D2A00AD5C60 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CC6328B120A25D2A00AD5C60 /* Podfile */; };
+		CC6328B620A2649B00AD5C60 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6328B520A2649B00AD5C60 /* MapViewController.swift */; };
 		CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */; };
 		CC7A0D0B209E4D3200E1CE1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7A0D09209E4D3200E1CE1B /* Main.storyboard */; };
 		CC7A0D0D209E4D3200E1CE1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */; };
@@ -17,6 +19,7 @@
 		CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */; };
 		CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */; };
 		CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */; };
+		D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C3589D21CE88522B756D7 /* libPods-Lodeals.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		420FB36ACEEDAF00FB65CC9C /* Pods-Lodeals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lodeals.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lodeals/Pods-Lodeals.release.xcconfig"; sourceTree = "<group>"; };
+		50C005F3A7D79D6DE070DAEF /* Pods-Lodeals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lodeals.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lodeals/Pods-Lodeals.debug.xcconfig"; sourceTree = "<group>"; };
+		996C3589D21CE88522B756D7 /* libPods-Lodeals.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lodeals.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC6328B120A25D2A00AD5C60 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		CC6328B520A2649B00AD5C60 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/MapViewController.swift; sourceTree = "<absolute>"; };
 		CC7A0D02209E4D3200E1CE1B /* Lodeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lodeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC7A0D0A209E4D3200E1CE1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +89,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47DB613E2F81A2CA01AED385 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				996C3589D21CE88522B756D7 /* libPods-Lodeals.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB5559D9B4F076AD4F2B7513 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50C005F3A7D79D6DE070DAEF /* Pods-Lodeals.debug.xcconfig */,
+				420FB36ACEEDAF00FB65CC9C /* Pods-Lodeals.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CC6328AE20A258A300AD5C60 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,10 +117,13 @@
 		CC7A0CF9209E4D3200E1CE1B = {
 			isa = PBXGroup;
 			children = (
+				CC6328B120A25D2A00AD5C60 /* Podfile */,
 				CC7A0D04209E4D3200E1CE1B /* Lodeals */,
 				CC7A0D19209E4D3200E1CE1B /* LodealsTests */,
 				CC7A0D24209E4D3200E1CE1B /* LodealsUITests */,
 				CC7A0D03209E4D3200E1CE1B /* Products */,
+				BB5559D9B4F076AD4F2B7513 /* Pods */,
+				47DB613E2F81A2CA01AED385 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +143,7 @@
 				CC6328AE20A258A300AD5C60 /* Classes */,
 				CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */,
 				CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */,
+				CC6328B520A2649B00AD5C60 /* MapViewController.swift */,
 				CC7A0D35209E52D800E1CE1B /* MainViewController.swift */,
 				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
 				CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */,
@@ -149,9 +179,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC7A0D2A209E4D3200E1CE1B /* Build configuration list for PBXNativeTarget "Lodeals" */;
 			buildPhases = (
+				DCF4AA373E4B183DCC290D29 /* [CP] Check Pods Manifest.lock */,
 				CC7A0CFE209E4D3200E1CE1B /* Sources */,
 				CC7A0CFF209E4D3200E1CE1B /* Frameworks */,
 				CC7A0D00209E4D3200E1CE1B /* Resources */,
+				D02F1E27F6F562FFE86F8A62 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,6 +283,7 @@
 			files = (
 				CC7A0D10209E4D3200E1CE1B /* LaunchScreen.storyboard in Resources */,
 				CC7A0D0D209E4D3200E1CE1B /* Assets.xcassets in Resources */,
+				CC6328B220A25D2A00AD5C60 /* Podfile in Resources */,
 				CC7A0D0B209E4D3200E1CE1B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,12 +304,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D02F1E27F6F562FFE86F8A62 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Lodeals/Pods-Lodeals-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lodeals/Pods-Lodeals-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCF4AA373E4B183DCC290D29 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lodeals-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CC7A0CFE209E4D3200E1CE1B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */,
+				CC6328B620A2649B00AD5C60 /* MapViewController.swift in Sources */,
 				CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */,
 				CC7A0D36209E52D800E1CE1B /* MainViewController.swift in Sources */,
 				CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */,
@@ -444,6 +519,7 @@
 		};
 		CC7A0D2B209E4D3200E1CE1B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50C005F3A7D79D6DE070DAEF /* Pods-Lodeals.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,6 +534,7 @@
 		};
 		CC7A0D2C209E4D3200E1CE1B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 420FB36ACEEDAF00FB65CC9C /* Pods-Lodeals.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
