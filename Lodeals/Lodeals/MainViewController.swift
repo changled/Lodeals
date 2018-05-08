@@ -22,7 +22,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let deal1 = Deal(shortDescription: "BOGO chips", description: "Buy one bag of chips get one free", lastUsed: DateComponents(year: 1994, month: 12, day: 29, hour: 12, minute: 3))
         let deal2 = Deal(shortDescription: "$9 sandwiches", description: "After 4:20 pm, get any sandwich for $9", lastUsed: DateComponents(year: 2018, month: 5, day: 5, hour: 15, minute: 45))
-        let rest = Restaurant(name: "High Street", location: "12490 Palmtag Dr.", tags: ["oh wow", "nice nice", "coo coo"], price: 2, deals: [deal1, deal2])
+        let rest = Restaurant(name: "High Street", location: "12490 Palmtag Dr.", tags: ["oh wow", "nice nice", "coo coo", "sandwiches", "American", "deli", "quick foods"], price: 2, deals: [deal1, deal2])
         restaurants.append(rest)
     }
     
@@ -30,8 +30,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.didReceiveMemoryWarning()
     }
     
-    
     // MARK: -- TABLE VIEW
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -49,11 +49,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell?.locationLabel?.text = rest.location
         cell?.imageLabel?.text = rest.image
         cell?.priceLabel?.text = rest.priceDict[rest.price]
-        cell?.tagsLabel?.text = rest.tags[0]
+        cell?.tagsLabel?.text = rest.tags.joined(separator: ", ")
         cell?.deal1Label?.text = rest.deals[0].shortDescription
-        cell?.deal1TimeLabel?.text = rest.deals[0].getLastUseStr()
+        cell?.deal1TimeLabel?.text = rest.deals[0].getLastUseStr(prescript: "...", postscript: " ago")
         cell?.deal2Label?.text = rest.deals[1].shortDescription
-        cell?.deal2TimeLabel?.text = rest.deals[1].getLastUseStr()
+        cell?.deal2TimeLabel?.text = rest.deals[1].getLastUseStr(prescript: "...", postscript: " ago")
         
         return cell!
     }

@@ -54,31 +54,31 @@ class Deal {
         lastUsed.minute = minute
     }
     
-    func getLastUseStr() -> String {
+    func getLastUseStr(prescript: String = "", postscript: String = "") -> String {
         let now = Date()
         let calendar = Calendar.current
         
         let diffYear = calendar.component(.year, from: now) - lastUsed.year!
         if(diffYear >= 1) {
-            return ("...\(diffYear) years ago")
+            return ("\(prescript)\(diffYear) years\(postscript)")
         }
         
         let diffMonth = calendar.component(.month, from: now) - lastUsed.month!
         if(diffMonth >= 1) {
-            return ("...\(diffMonth) months ago")
+            return ("\(prescript)\(diffMonth) months\(postscript)")
         }
         
         let diffDay = calendar.component(.day, from: now) - lastUsed.day!
         if(diffDay >= 1) {
-            return ("...\(diffDay) days ago")
+            return ("\(prescript)\(diffDay) days\(postscript)")
         }
         
         let diffHour = calendar.component(.hour, from: now) - lastUsed.hour!
         if(diffHour >= 1) {
-            return ("...\(diffHour) hours ago")
+            return ("\(prescript)\(diffHour) hours\(postscript)")
         }
         
         let diffMin = calendar.component(.minute, from: now) - lastUsed.minute!
-        return ("...\(diffMin) min ago")
+        return ("\(prescript)\(diffMin) min\(postscript)")
     }
 }

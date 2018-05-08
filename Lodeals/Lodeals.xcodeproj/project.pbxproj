@@ -80,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC6328AE20A258A300AD5C60 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		CC7A0CF9209E4D3200E1CE1B = {
 			isa = PBXGroup;
 			children = (
@@ -103,10 +111,10 @@
 		CC7A0D04209E4D3200E1CE1B /* Lodeals */ = {
 			isa = PBXGroup;
 			children = (
+				CC6328AE20A258A300AD5C60 /* Classes */,
 				CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */,
 				CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */,
 				CC7A0D35209E52D800E1CE1B /* MainViewController.swift */,
-				CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */,
 				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
 				CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */,
 				CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */,
