@@ -20,6 +20,8 @@
 		CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */; };
 		CCDEF25B20A2A3BA00C3DA65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */; };
 		CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */; };
+		CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */; };
+		CCDEF26320A2ACA600C3DA65 /* DealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */; };
 		D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C3589D21CE88522B756D7 /* libPods-Lodeals.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/MapViewController.swift; sourceTree = "<absolute>"; };
+		CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealClass.swift; sourceTree = "<group>"; };
+		CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +117,10 @@
 		CC6328AE20A258A300AD5C60 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */,
+				CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */,
 				CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */,
+				CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -145,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				CC6328AE20A258A300AD5C60 /* Classes */,
-				CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */,
 				CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */,
 				CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */,
 				CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */,
@@ -356,6 +362,8 @@
 			files = (
 				CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */,
 				CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */,
+				CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */,
+				CCDEF26320A2ACA600C3DA65 /* DealTableViewCell.swift in Sources */,
 				CC7A0D36209E52D800E1CE1B /* MasterViewController.swift in Sources */,
 				CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */,
 				CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */,

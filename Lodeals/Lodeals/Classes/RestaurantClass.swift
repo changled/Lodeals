@@ -8,7 +8,6 @@
 
 import Foundation
 import os.log
-// updated Restaurant class, added Deal class
 
 class Restaurant {
     var name : String
@@ -26,59 +25,5 @@ class Restaurant {
         self.tags = tags
         self.price = price
         self.deals = deals
-    }
-}
-
-class Deal {
-    var shortDescription : String
-    var description : String
-    var totalTimesUsed : Int
-    var userTimesUsed : Int
-//    var lastUse : Date
-    var lastUsed : DateComponents
-    
-    init(shortDescription: String = "", description: String = "", totalTimesUsed: Int = 0, userTimesUsed: Int = 0, lastUsed: DateComponents) {
-        self.shortDescription = shortDescription
-        self.description = description
-        self.totalTimesUsed = totalTimesUsed
-        self.userTimesUsed = userTimesUsed
-//        self.lastUse = lastUse
-        self.lastUsed = lastUsed
-    }
-    
-    func setLastUse(year: Int = 2001, month: Int = 1, day: Int = 1, hour: Int = 1, minute: Int = 1) {
-        lastUsed.year = year
-        lastUsed.month = month
-        lastUsed.day = day
-        lastUsed.hour = hour
-        lastUsed.minute = minute
-    }
-    
-    func getLastUseStr(prescript: String = "", postscript: String = "") -> String {
-        let now = Date()
-        let calendar = Calendar.current
-        
-        let diffYear = calendar.component(.year, from: now) - lastUsed.year!
-        if(diffYear >= 1) {
-            return ("\(prescript)\(diffYear) years\(postscript)")
-        }
-        
-        let diffMonth = calendar.component(.month, from: now) - lastUsed.month!
-        if(diffMonth >= 1) {
-            return ("\(prescript)\(diffMonth) months\(postscript)")
-        }
-        
-        let diffDay = calendar.component(.day, from: now) - lastUsed.day!
-        if(diffDay >= 1) {
-            return ("\(prescript)\(diffDay) days\(postscript)")
-        }
-        
-        let diffHour = calendar.component(.hour, from: now) - lastUsed.hour!
-        if(diffHour >= 1) {
-            return ("\(prescript)\(diffHour) hours\(postscript)")
-        }
-        
-        let diffMin = calendar.component(.minute, from: now) - lastUsed.minute!
-        return ("\(prescript)\(diffMin) min\(postscript)")
     }
 }
