@@ -34,6 +34,28 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: -- UNWIND
+    
+    @IBAction func unwindCancelFromConfirmAddDealVC(sender: UIStoryboardSegue) {
+    }
+    
+    @IBAction func unwindSaveFromConfirmAddDealVC(sender: UIStoryboardSegue) {
+        if sender.source is ConfirmAddDealViewController {
+            if let senderVC = sender.source as? ConfirmAddDealViewController {
+                let dealTitle = senderVC.dealTitle
+                let dealDescription = senderVC.dealDescription
+                
+                let newDeal = Deal(shortDescription: dealTitle!, description: dealDescription!, lastUsed: nil)
+                
+                newDeal.dealIsVerified = true
+                newDeal.updateLastUsedToNow()
+                
+                restaurant?.deals.append(newDeal)
+                dealTableView.reloadData()
+            }
+        }
+    }
+    
     // MARK: -- TABLE VIEW
     
     func numberOfSections(in tableView: UITableView) -> Int {

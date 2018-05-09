@@ -23,7 +23,6 @@ class Deal {
         self.totalTimesUsed = totalTimesUsed
         self.userTimesUsed = userTimesUsed
 //        self.verificationTime = nil
-//        self.lastUsed = lastUsed
         self.dealIsVerified = false
         
         if((lastUsed) != nil) {
@@ -42,7 +41,7 @@ class Deal {
         lastUsed.minute = minute
     }
     
-    func getCurrTime() -> DateComponents{
+    func updateLastUsedToNow(){
         let now = Date()
         let calender = Calendar.current
         
@@ -52,8 +51,6 @@ class Deal {
         lastUsed.hour = calender.component(.hour, from: now)
         lastUsed.minute = calender.component(.minute, from: now)
         lastUsed.second = calender.component(.second, from: now)
-        
-        return lastUsed
     }
     
     func getLastUseStr(prescript: String = "", postscript: String = "") -> String {

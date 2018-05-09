@@ -9,16 +9,22 @@
 import UIKit
 
 class ConfirmAddDealViewController: UIViewController {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    var dealTitle : String?
+    var dealDescription : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        titleLabel.text = dealTitle
+        descriptionLabel.text = dealDescription
+//        print(descriptionLabel.text)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

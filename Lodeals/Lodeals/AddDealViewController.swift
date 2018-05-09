@@ -13,22 +13,24 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
+    
     var didEditTitle = false
     var didEditDescription = false
-    
     var restaurant : Restaurant?
-    var newDeal = Deal(totalTimesUsed: 1, lastUsed: nil)
+    var dealTitle : String = ""
+    var dealDescription : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = ("New deal for \(restaurant?.name ?? "null"):")
-        // Do any additional setup after loading the view.
+        titleTextField.addTarget(self, action: #selector(didChangeTitle(_:)), for: .editingChanged)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: -- TEXT FIELD (DEAL TITLE)
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if(!didEditTitle) {
@@ -37,11 +39,11 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        newDeal.shortDescription = textField.text!
-        
-        print("title: \(newDeal.shortDescription)")
+    @objc func didChangeTitle(_ textField: UITextField) {
+        dealTitle = textField.text!
     }
+    
+    // MARK: -- TEXT VIEW (DEAL DESCRIPTION)
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if(!didEditDescription) {
@@ -50,10 +52,8 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         }
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        newDeal.description = textView.text
-        
-        print("description: \(newDeal.description)")
+    func textViewDidChange(_ textView: UITextView) {
+        dealDescription = textView.text
     }
     
     @IBAction func clearAction(_ sender: Any) {
@@ -65,10 +65,13 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "showConfirmAddDealVC") {
+            let destVC = segue.destination as? ConfirmAddDealViewController
+            
+            destVC?.dealTitle = dealTitle
+            destVC?.dealDescription = dealDescription
+        }
     }
 
 }
