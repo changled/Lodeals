@@ -35,6 +35,22 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: -- UNWIND
+    
+    @IBAction func unwindFromDetailsVC(sender: UIStoryboardSegue) {
+        print("unwind from DetailsVC")
+        if sender.source is DetailsViewController {
+            if let senderVC = sender.source as? DetailsViewController {
+                let editedRestaurant = senderVC.restaurant
+                let restaurantIndex: Int = senderVC.restaurantIndex!.section + senderVC.restaurantIndex!.row
+                
+                restaurants[restaurantIndex] = editedRestaurant!
+             }
+            
+            restaurantTV.reloadData()
+        }
+    }
+    
     // MARK: -- TABLE VIEW
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,6 +86,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let selectedIndexPath = restaurantTV.indexPathForSelectedRow
             
             destVC?.restaurant = restaurants[(selectedIndexPath?.row)!]
+            destVC?.restaurantIndex = selectedIndexPath
         }
     }
 
