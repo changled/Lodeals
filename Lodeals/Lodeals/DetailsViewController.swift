@@ -119,7 +119,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell?.shortDescriptionLabel?.sizeToFit()
         cell?.shortDescriptionLabel?.text = thisDeal?.description
         cell?.lastUsedLabel?.text = thisDeal?.getLastUseStr(prescript: "...")
-        cell?.verifyButton?.tag = indexPath.row
+        cell?.verifyButton?.tag = indexPath.section
         cell?.verifyButton?.addTarget(self, action: #selector(DetailsViewController.verifyAction(_:)), for: .touchUpInside)
         setButton(isVerified: (thisDeal?.dealIsVerified)!, butt: (cell?.verifyButton)!)
         
@@ -131,6 +131,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         restaurant?.deals[sender.tag].dealIsVerified = bool
         
         setButton(isVerified: bool, butt: sender)
+        dealTableView.reloadData()
     }
     
     //verified: blue background color, black text, "Verified" title
