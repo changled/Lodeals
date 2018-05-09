@@ -22,6 +22,7 @@
 		CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */; };
 		CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */; };
 		CCDEF26320A2ACA600C3DA65 /* DealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */; };
+		CCDEF26520A2C8AC00C3DA65 /* AddDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */; };
 		D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C3589D21CE88522B756D7 /* libPods-Lodeals.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/MapViewController.swift; sourceTree = "<absolute>"; };
 		CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealClass.swift; sourceTree = "<group>"; };
 		CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealTableViewCell.swift; sourceTree = "<group>"; };
+		CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */,
 				CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */,
 				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
+				CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */,
 				CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */,
 				CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */,
 				CC7A0D0E209E4D3200E1CE1B /* LaunchScreen.storyboard */,
@@ -363,6 +366,7 @@
 				CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */,
 				CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */,
 				CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */,
+				CCDEF26520A2C8AC00C3DA65 /* AddDealViewController.swift in Sources */,
 				CCDEF26320A2ACA600C3DA65 /* DealTableViewCell.swift in Sources */,
 				CC7A0D36209E52D800E1CE1B /* MasterViewController.swift in Sources */,
 				CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */,

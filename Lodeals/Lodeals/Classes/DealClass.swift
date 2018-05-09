@@ -17,14 +17,21 @@ class Deal {
 //    var verificationTime : DateComponents
     var dealIsVerified : Bool //temporarily used for only me (need to optimize for any user)
     
-    init(shortDescription: String = "", description: String = "", totalTimesUsed: Int = 0, userTimesUsed: Int = 0, lastUsed: DateComponents) {
+    init(shortDescription: String = "", description: String = "", totalTimesUsed: Int = 0, userTimesUsed: Int = 0, lastUsed: DateComponents?) {
         self.shortDescription = shortDescription
         self.description = description
         self.totalTimesUsed = totalTimesUsed
         self.userTimesUsed = userTimesUsed
 //        self.verificationTime = nil
-        self.lastUsed = lastUsed
+//        self.lastUsed = lastUsed
         self.dealIsVerified = false
+        
+        if((lastUsed) != nil) {
+            self.lastUsed = lastUsed!
+        }
+        else {
+            self.lastUsed = DateComponents(calendar: Calendar.current)
+        }
     }
     
     func setLastUse(year: Int = 2001, month: Int = 1, day: Int = 1, hour: Int = 1, minute: Int = 1) {
@@ -33,6 +40,20 @@ class Deal {
         lastUsed.day = day
         lastUsed.hour = hour
         lastUsed.minute = minute
+    }
+    
+    func getCurrTime() -> DateComponents{
+        let now = Date()
+        let calender = Calendar.current
+        
+        lastUsed.year = calender.component(.year, from: now)
+        lastUsed.month = calender.component(.month, from: now)
+        lastUsed.day = calender.component(.day, from: now)
+        lastUsed.hour = calender.component(.hour, from: now)
+        lastUsed.minute = calender.component(.minute, from: now)
+        lastUsed.second = calender.component(.second, from: now)
+        
+        return lastUsed
     }
     
     func getLastUseStr(prescript: String = "", postscript: String = "") -> String {
