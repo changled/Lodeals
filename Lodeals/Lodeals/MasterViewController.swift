@@ -8,9 +8,8 @@
 
 import UIKit
 import GoogleMaps
-//Podlist, Google Maps API implementation
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     // MARK: -- SET UP
     
@@ -35,9 +34,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    //MARK: -- GOOGLE MAPS
-    
     
     // MARK: -- TABLE VIEW
     

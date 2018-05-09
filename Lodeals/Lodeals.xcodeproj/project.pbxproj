@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		CC6328B220A25D2A00AD5C60 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CC6328B120A25D2A00AD5C60 /* Podfile */; };
-		CC6328B620A2649B00AD5C60 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6328B520A2649B00AD5C60 /* MapViewController.swift */; };
 		CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */; };
 		CC7A0D0B209E4D3200E1CE1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7A0D09209E4D3200E1CE1B /* Main.storyboard */; };
 		CC7A0D0D209E4D3200E1CE1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */; };
 		CC7A0D10209E4D3200E1CE1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7A0D0E209E4D3200E1CE1B /* LaunchScreen.storyboard */; };
 		CC7A0D1B209E4D3200E1CE1B /* LodealsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D1A209E4D3200E1CE1B /* LodealsTests.swift */; };
 		CC7A0D26209E4D3200E1CE1B /* LodealsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D25209E4D3200E1CE1B /* LodealsUITests.swift */; };
-		CC7A0D36209E52D800E1CE1B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D35209E52D800E1CE1B /* MainViewController.swift */; };
+		CC7A0D36209E52D800E1CE1B /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */; };
 		CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */; };
 		CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */; };
 		CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */; };
+		CCDEF25B20A2A3BA00C3DA65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */; };
+		CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */; };
 		D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C3589D21CE88522B756D7 /* libPods-Lodeals.a */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +45,6 @@
 		50C005F3A7D79D6DE070DAEF /* Pods-Lodeals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lodeals.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lodeals/Pods-Lodeals.debug.xcconfig"; sourceTree = "<group>"; };
 		996C3589D21CE88522B756D7 /* libPods-Lodeals.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lodeals.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC6328B120A25D2A00AD5C60 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		CC6328B520A2649B00AD5C60 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/MapViewController.swift; sourceTree = "<absolute>"; };
 		CC7A0D02209E4D3200E1CE1B /* Lodeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lodeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC7A0D0A209E4D3200E1CE1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,10 +57,12 @@
 		CC7A0D21209E4D3200E1CE1B /* LodealsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LodealsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7A0D25209E4D3200E1CE1B /* LodealsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LodealsUITests.swift; sourceTree = "<group>"; };
 		CC7A0D27209E4D3200E1CE1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC7A0D35209E52D800E1CE1B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantClass.swift; sourceTree = "<group>"; };
 		CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/MapViewController.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDEF25B20A2A3BA00C3DA65 /* CoreLocation.framework in Frameworks */,
 				D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +95,7 @@
 		47DB613E2F81A2CA01AED385 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */,
 				996C3589D21CE88522B756D7 /* libPods-Lodeals.a */,
 			);
 			name = Frameworks;
@@ -143,8 +147,8 @@
 				CC6328AE20A258A300AD5C60 /* Classes */,
 				CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */,
 				CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */,
-				CC6328B520A2649B00AD5C60 /* MapViewController.swift */,
-				CC7A0D35209E52D800E1CE1B /* MainViewController.swift */,
+				CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */,
+				CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */,
 				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
 				CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */,
 				CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */,
@@ -351,11 +355,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */,
-				CC6328B620A2649B00AD5C60 /* MapViewController.swift in Sources */,
 				CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */,
-				CC7A0D36209E52D800E1CE1B /* MainViewController.swift in Sources */,
+				CC7A0D36209E52D800E1CE1B /* MasterViewController.swift in Sources */,
 				CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */,
 				CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */,
+				CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
