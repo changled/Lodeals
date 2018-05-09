@@ -19,6 +19,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var restaurant : Restaurant?
     var restaurantIndex : IndexPath?
+    var dealIsExpanded : [Bool] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +29,17 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         addressLabel.text = restaurant?.location
         tagsLabel.text = restaurant?.tags.joined(separator: ", ")
         imageLabel.text = restaurant?.image
+        resetExpansionToFalse()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func resetExpansionToFalse() {
+        for _ in (restaurant?.deals)! {
+            dealIsExpanded.append(false)
+        }
     }
     
     // MARK: -- UNWIND
@@ -51,6 +59,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 newDeal.updateLastUsedToNow()
                 
                 restaurant?.deals.append(newDeal)
+                resetExpansionToFalse()
+                dealIsExpanded.append(true)
                 dealTableView.reloadData()
             }
         }
@@ -59,18 +69,55 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: -- TABLE VIEW
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return restaurant!.deals.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurant!.deals.count
+        if !dealIsExpanded[section] {
+            return 0
+        }
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let button = UIButton(type: .system)
+        
+        button.setTitle(restaurant?.deals[section].shortDescription, for: .normal)
+        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
+        
+        button.tag = section
+        
+        return button
+    }
+    
+    @objc func handleExpandClose(button: UIButton) {
+        let section = button.tag
+        
+        var indexPaths = [IndexPath]()
+        let indexPath = IndexPath(row: 0, section: section)
+        indexPaths.append(indexPath)
+        
+        let isExpanded = dealIsExpanded[section]
+        dealIsExpanded[section] = !isExpanded
+        
+        if isExpanded {
+            dealTableView.deleteRows(at: indexPaths, with: .fade)
+        }
+        else {
+            dealTableView.insertRows(at: indexPaths, with: .fade)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as? DealTableViewCell
-        let thisDeal = restaurant?.deals[indexPath.row]
+        let thisDeal = restaurant?.deals[indexPath.section]
         
-        cell?.shortDescriptionLabel?.text = thisDeal?.shortDescription
+        cell?.shortDescriptionLabel?.sizeToFit()
+        cell?.shortDescriptionLabel?.text = thisDeal?.description
         cell?.lastUsedLabel?.text = thisDeal?.getLastUseStr(prescript: "...")
         cell?.verifyButton?.tag = indexPath.row
         cell?.verifyButton?.addTarget(self, action: #selector(DetailsViewController.verifyAction(_:)), for: .touchUpInside)

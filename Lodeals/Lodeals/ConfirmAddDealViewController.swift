@@ -20,13 +20,12 @@ class ConfirmAddDealViewController: UIViewController {
         super.viewDidLoad()
         titleLabel.text = dealTitle
         descriptionLabel.text = dealDescription
-//        print(descriptionLabel.text)
+        descriptionLabel.sizeToFit()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
 
     /*
     // MARK: - Navigation
@@ -37,5 +36,4 @@ class ConfirmAddDealViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
