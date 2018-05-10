@@ -9,9 +9,10 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate{
+class MapViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var myView: UIView!
+    @IBOutlet weak var searchTextField: UITextField!
     let manager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -31,6 +32,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     func showCurrLocation() {
         let camera = GMSCameraPosition.camera(withLatitude: (self.manager.location?.coordinate.latitude)!, longitude: (self.manager.location?.coordinate.longitude)!, zoom: 18)
         let mapView = GMSMapView.map(withFrame: CGRect.init(x: 0, y: 0, width: self.myView.frame.size.width, height: self.myView.frame.size.height), camera: camera)
+        print("mapView: \(mapView.frame.size.height), \(mapView.frame.size.width)")
         let marker = GMSMarker()
         
         mapView.settings.myLocationButton = true
@@ -40,12 +42,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         //        marker.appearAnimation = kGMSMarkerAnimationPop
         marker.map = mapView
         self.myView.addSubview(mapView)
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.showCurrLocation()
         self.manager.stopUpdatingLocation()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("hello")
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("bye")
     }
     
     

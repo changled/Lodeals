@@ -24,6 +24,7 @@
 		CCDEF26320A2ACA600C3DA65 /* DealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */; };
 		CCDEF26520A2C8AC00C3DA65 /* AddDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */; };
 		CCDEF26720A2D5F300C3DA65 /* ConfirmAddDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */; };
+		CCDEF26920A38CF200C3DA65 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26820A38CF200C3DA65 /* Extensions.swift */; };
 		D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C3589D21CE88522B756D7 /* libPods-Lodeals.a */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealTableViewCell.swift; sourceTree = "<group>"; };
 		CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealViewController.swift; sourceTree = "<group>"; };
 		CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAddDealViewController.swift; sourceTree = "<group>"; };
+		CCDEF26820A38CF200C3DA65 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */,
 				CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */,
 				CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */,
+				CCDEF26820A38CF200C3DA65 /* Extensions.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				CC7A0D36209E52D800E1CE1B /* MasterViewController.swift in Sources */,
 				CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */,
 				CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */,
+				CCDEF26920A38CF200C3DA65 /* Extensions.swift in Sources */,
 				CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

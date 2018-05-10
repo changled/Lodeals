@@ -88,6 +88,11 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             destVC?.restaurant = restaurants[(selectedIndexPath?.row)!]
             destVC?.restaurantIndex = selectedIndexPath
         }
+        
+        
+        if(segue.identifier == "showMapVC") {
+            print("preparing for segue")
+        }
     }
 
 }

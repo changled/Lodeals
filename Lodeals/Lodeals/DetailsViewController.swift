@@ -27,9 +27,18 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         nameLabel.text = restaurant?.name
         priceLabel.text = restaurant?.priceDict[(restaurant?.price)!]
         addressLabel.text = restaurant?.location
-        tagsLabel.text = restaurant?.tags.joined(separator: ", ")
         imageLabel.text = restaurant?.image
         resetExpansionToFalse()
+        
+        tagsLabel.text = restaurant?.tags.joined(separator: ", ")
+        setLabelFrame(origin: CGPoint(x: 28, y: 163), label: tagsLabel, maxWidth: 357)
+    }
+    
+    // stretch to fit label text with width constraints
+    func setLabelFrame(origin: CGPoint, label: UILabel, maxWidth: CGFloat, font: UIFont = UIFont.systemFont(ofSize: 17.0)) {
+        let dynamicHeight = label.text?.height(withConstrainedWidth: CGFloat(maxWidth), font: font)
+        let labelSize = CGSize(width: maxWidth, height: dynamicHeight!)
+        tagsLabel.frame = CGRect(origin: origin, size: labelSize)
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,8 +89,10 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let button = UIButton(type: .system)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DetailsViewController.TapGestureRecognizer(gestureRecognizer:)))
+//        tableView.addGestureRecognizer(tapGesture)
         
+        let button = UIButton(type: .system)
         button.setTitle(restaurant?.deals[section].shortDescription, for: .normal)
         button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
         
@@ -89,7 +100,12 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return button
     }
-    
+//
+//    @objc func TapGestureRecognizer(gestureRecognizer: UIGestureRecognizer) {
+//        //do your stuff here
+//        print("tapped")
+//    }
+
     @objc func handleExpandClose(button: UIButton) {
         let section = button.tag
         
@@ -115,6 +131,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as? DealTableViewCell
         let thisDeal = restaurant?.deals[indexPath.section]
+        
+//        print(thisDeal?.description.height(withConstrainedWidth: CGFloat(179), font: UIFont.systemFont(ofSize: 17.0)) as Any) //calculates minimum height given the width and text
+        //width: 357
         
         cell?.shortDescriptionLabel?.sizeToFit()
         cell?.shortDescriptionLabel?.text = thisDeal?.description

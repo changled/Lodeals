@@ -73,5 +73,4 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             destVC?.dealDescription = dealDescription
         }
     }
-
 }
