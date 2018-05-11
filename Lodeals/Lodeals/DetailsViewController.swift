@@ -22,6 +22,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var dealIsExpanded : [Bool] = []
     var lastlastUsed : [DateComponents] = []
     
+    let gisView = UIImageView(frame: CGRect(x: 28, y: 210, width: 70, height: 70))
+    let maiView = UIImageView(frame: CGRect(x: 118, y: 210, width: 70, height: 70))
+    let crispyView = UIImageView(frame: CGRect(x: 208, y: 210, width: 70, height: 70))
+    let rachView = UIImageView(frame: CGRect(x: 298, y: 210, width: 70, height: 70))
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -32,11 +37,27 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         nameLabel.text = restaurant?.name
         priceLabel.text = restaurant?.priceDict[(restaurant?.price)!]
         addressLabel.text = restaurant?.location
-        imageLabel.text = restaurant?.image
+        imageLabel.text = restaurant?.images[0]
         resetExpansionToFalse()
         
         tagsLabel.text = restaurant?.tags.joined(separator: ", ")
         setLabelFrame(origin: CGPoint(x: 28, y: 163), label: tagsLabel, maxWidth: 357)
+        
+        if(restaurant?.name == "BAEBITION") {
+            imageLabel.isHidden = true
+            
+            gisView.image = UIImage(named: "gisScreenshot.png")
+            self.view.insertSubview(gisView, at: 0)
+            
+            maiView.image = UIImage(named: "maiScreenshot.png")
+            self.view.insertSubview(maiView, at: 0)
+            
+            crispyView.image = UIImage(named: "chrispyScreenshot.png")
+            self.view.insertSubview(crispyView, at: 0)
+            
+            rachView.image = UIImage(named: "rachScreenshot.png")
+            self.view.insertSubview(rachView, at: 1)
+        }
     }
     
     // stretch to fit label text with width constraints

@@ -12,18 +12,18 @@ import os.log
 class Restaurant {
     var name : String
     var location : String
-    var image : String
+    var images : [String]
     var tags : [String]
     var price : Int
     let priceDict : [Int: String] = [-1: "err", 0: "$", 1: "$$", 2: "$$$", 3: "$$$$", 4: "$$$$$"]
     var deals : [Deal]
     
-    init(name: String = "", location: String = "", image: String = "imageStr", tags: [String] = ["tag1", "tag2"], price: Int = -1, deals: [Deal]) {
+    init(name: String = "", location: String = "", images: [String] = ["imageStr"], tags: [String] = ["tag1", "tag2"], price: Int = -1, deals: [Deal]) {
         self.name = name
         self.location = location
-        self.image = image
         self.tags = tags
         self.price = price
         self.deals = deals
+        self.images = images
     }
 }
