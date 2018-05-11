@@ -17,13 +17,13 @@ class Deal {
 //    var verificationTime : DateComponents
     var dealIsVerified : Bool //temporarily used for only me (need to optimize for any user)
     
-    init(shortDescription: String = "", description: String = "", totalTimesUsed: Int = 0, userTimesUsed: Int = 0, lastUsed: DateComponents?) {
+    init(shortDescription: String = "", description: String = "", totalTimesUsed: Int = 0, userTimesUsed: Int = 0, lastUsed: DateComponents?, dealIsVerified: Bool = false) {
         self.shortDescription = shortDescription
         self.description = description
         self.totalTimesUsed = totalTimesUsed
         self.userTimesUsed = userTimesUsed
 //        self.verificationTime = nil
-        self.dealIsVerified = false
+        self.dealIsVerified = dealIsVerified
         
         if((lastUsed) != nil) {
             self.lastUsed = lastUsed!
