@@ -43,12 +43,21 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let rest3deal10 = Deal(shortDescription: "Jurors get 20% off", description: "Show us your juror badge and get 20% off.", lastUsed: DateComponents(year: 2018, month: 5, day: 6, hour: 20, minute: 26))
         let rest3 = Restaurant(name: "Aisuru Sushi", location: "1023 Monterey St, San Luis Obispo, CA 93401", tags: ["Sushi Bars", "Japanese", "Asian American Fusion"], price: 3, deals: [rest3deal1, rest3deal2, rest3deal3, rest3deal4, rest3deal5, rest3deal6, rest3deal7, rest3deal8, rest3deal9, rest3deal10])
         
+        let rest4deal1 = Deal(shortDescription: "Love", description: "<3", lastUsed: DateComponents(year: 2018, month: 5, day: 7, hour: 20, minute: 26), dealIsVerified: true)
+        let rest4deal2 = Deal(shortDescription: "Happiness", description: ":D", lastUsed: DateComponents(year: 2018, month: 5, day: 7, hour: 20, minute: 26), dealIsVerified: true)
+        let rest4deal3 = Deal(shortDescription: "Family", description: "Except I don't want children. I don't get it", lastUsed: DateComponents(year: 2018, month: 5, day: 7, hour: 20, minute: 26), dealIsVerified: true)
+//        let rest4deal4 = Deal(shortDescription: "Success", description: "A+", lastUsed: DateComponents(year: 2018, month: 5, day: 7, hour: 20, minute: 26))
+        let rest4 = Restaurant(name: "BAEBITION", location: "Thugs Cottage", image: "<3", tags: ["Sexy", "Cute", "Smart", "Successful", "Fucking amazing", "420"], price: 4, deals: [rest4deal1, rest4deal2, rest4deal3])
+        
+        let rest5deal1 = Deal(shortDescription: "Nahhh", description: "Nahh", lastUsed: DateComponents(year: 2016, month: 5, day: 7, hour: 20, minute: 26))
+        let rest5deal2 = Deal(shortDescription: "This place expensive as shit", description: "This place expensive as shit", lastUsed: DateComponents(year: 2016, month: 5, day: 7, hour: 20, minute: 26))
+        let rest5 = Restaurant(name: "Ciopinot", location: "1051 Nipomo St, Steve's Guitar Shoppe, San Luis Obispo, CA 93401", tags: ["Seafood", "Fancy Restaurant"], price: 3, deals: [rest5deal1, rest5deal2])
+        
         restaurants.append(rest1)
         restaurants.append(rest2)
         restaurants.append(rest3)
-        
-//        self.locationManager.delegate = self
-//        self.locationManager.startUpdatingLocation()
+        restaurants.append(rest5)
+        restaurants.append(rest4)
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,8 +101,11 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell?.tagsLabel?.text = rest.tags.joined(separator: ", ")
         cell?.deal1Label?.text = rest.deals[0].shortDescription
         cell?.deal1TimeLabel?.text = rest.deals[0].getLastUseStr(prescript: "...", postscript: " ago")
-        cell?.deal2Label?.text = rest.deals[1].shortDescription
-        cell?.deal2TimeLabel?.text = rest.deals[1].getLastUseStr(prescript: "...", postscript: " ago")
+        
+        if(rest.deals.count > 1) {
+            cell?.deal2Label?.text = rest.deals[1].shortDescription
+            cell?.deal2TimeLabel?.text = rest.deals[1].getLastUseStr(prescript: "...", postscript: " ago")
+        }
         
         return cell!
     }

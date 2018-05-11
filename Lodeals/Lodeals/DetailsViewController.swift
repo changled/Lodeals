@@ -20,15 +20,10 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var restaurant : Restaurant?
     var restaurantIndex : IndexPath?
     var dealIsExpanded : [Bool] = []
+    var lastlastUsed : [DateComponents] = []
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func resetExpansionToFalse() {
-        for _ in (restaurant?.deals)! {
-            dealIsExpanded.append(false)
-        }
     }
     
     override func viewDidLoad() {
@@ -152,8 +147,23 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let bool = !(restaurant?.deals[sender.tag].dealIsVerified)!
         restaurant?.deals[sender.tag].dealIsVerified = bool
         
+        //if just verified, set lastlastUsed in case if you unverify right away
+        if bool {
+            restaurant?.deals[sender.tag].lastlastUsed = (restaurant?.deals[sender.tag].lastUsed)!
+            restaurant?.deals[sender.tag].updateLastUsedToNow()
+        }
+        else {
+            restaurant?.deals[sender.tag].lastUsed = (restaurant?.deals[sender.tag].lastlastUsed)!
+        }
+        
         setButton(isVerified: bool, butt: sender)
         dealTableView.reloadData()
+    }
+    
+    func resetExpansionToFalse() {
+        for _ in (restaurant?.deals)! {
+            dealIsExpanded.append(false)
+        }
     }
     
     //verified: blue background color, black text, "Verified" title

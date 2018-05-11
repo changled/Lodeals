@@ -16,6 +16,7 @@ class Deal {
     var lastUsed : DateComponents
 //    var verificationTime : DateComponents
     var dealIsVerified : Bool //temporarily used for only me (need to optimize for any user)
+    var lastlastUsed : DateComponents
     
     init(shortDescription: String = "", description: String = "", totalTimesUsed: Int = 0, userTimesUsed: Int = 0, lastUsed: DateComponents?, dealIsVerified: Bool = false) {
         self.shortDescription = shortDescription
@@ -31,6 +32,8 @@ class Deal {
         else {
             self.lastUsed = DateComponents(calendar: Calendar.current)
         }
+        
+        self.lastlastUsed = self.lastUsed
     }
     
     func setLastUse(year: Int = 2001, month: Int = 1, day: Int = 1, hour: Int = 1, minute: Int = 1) {
