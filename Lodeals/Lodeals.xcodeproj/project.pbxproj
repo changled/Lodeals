@@ -162,13 +162,12 @@
 		CC7A0D04209E4D3200E1CE1B /* Lodeals */ = {
 			isa = PBXGroup;
 			children = (
+				CCDEF26E20A5247100C3DA65 /* SideDishes */,
 				CC6328AE20A258A300AD5C60 /* Classes */,
 				CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */,
 				CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */,
 				CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */,
 				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
-				CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */,
-				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
 				CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */,
 				CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */,
 				CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */,
@@ -195,6 +194,15 @@
 				CC7A0D27209E4D3200E1CE1B /* Info.plist */,
 			);
 			path = LodealsUITests;
+			sourceTree = "<group>";
+		};
+		CCDEF26E20A5247100C3DA65 /* SideDishes */ = {
+			isa = PBXGroup;
+			children = (
+				CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */,
+				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
+			);
+			path = SideDishes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

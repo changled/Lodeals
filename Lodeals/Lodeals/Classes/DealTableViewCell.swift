@@ -9,10 +9,7 @@
 import UIKit
 
 class DealTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var shortDescriptionLabel: UILabel!
-    @IBOutlet weak var lastUsedLabel: UILabel!
-    @IBOutlet weak var verifyButton: UIButton!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

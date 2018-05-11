@@ -21,6 +21,16 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var restaurantIndex : IndexPath?
     var dealIsExpanded : [Bool] = []
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func resetExpansionToFalse() {
+        for _ in (restaurant?.deals)! {
+            dealIsExpanded.append(false)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,16 +49,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let dynamicHeight = label.text?.height(withConstrainedWidth: CGFloat(maxWidth), font: font)
         let labelSize = CGSize(width: maxWidth, height: dynamicHeight!)
         tagsLabel.frame = CGRect(origin: origin, size: labelSize)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    func resetExpansionToFalse() {
-        for _ in (restaurant?.deals)! {
-            dealIsExpanded.append(false)
-        }
     }
     
     // MARK: -- UNWIND
@@ -75,7 +75,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    // MARK: -- TABLE VIEW
+    @IBAction func goBackToOneButtonTapped(_sender: Any) {
+        performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
+    }
+    
+    // MARK: -- TABLE VIEW HEADER
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return restaurant!.deals.count
@@ -88,33 +92,39 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 1
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DetailsViewController.TapGestureRecognizer(gestureRecognizer:)))
-//        tableView.addGestureRecognizer(tapGesture)
-        
-        let button = UIButton(type: .system)
-        button.setTitle(restaurant?.deals[section].shortDescription, for: .normal)
-        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
-        
-        button.tag = section
-        
-        return button
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 52 //set as the same as the UIView DealSectionHeaderView
     }
-//
-//    @objc func TapGestureRecognizer(gestureRecognizer: UIGestureRecognizer) {
-//        //do your stuff here
-//        print("tapped")
-//    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let dealHeaderView = DealSectionHeaderView()
+        let thisDeal = restaurant?.deals[section]
+        
+        dealHeaderView.dealTitleLabel.text = thisDeal?.shortDescription
+        dealHeaderView.lastUsedLabel.text = thisDeal?.getLastUseStr(prescript: "...")
+        dealHeaderView.verifyButton?.tag = section
+        dealHeaderView.verifyButton?.addTarget(self, action: #selector(DetailsViewController.verifyAction(_:)), for: .touchUpInside)
+        setButton(isVerified: (thisDeal?.dealIsVerified)!, butt: (dealHeaderView.verifyButton)!)
+        dealHeaderView.tag = section
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DetailsViewController.TapGestureRecognizer(gestureRecognizer:)))
+        dealHeaderView.addGestureRecognizer(tapGesture)
+        
+        return dealHeaderView
+    }
 
-    @objc func handleExpandClose(button: UIButton) {
-        let section = button.tag
+    @objc func TapGestureRecognizer(gestureRecognizer: UIGestureRecognizer) {
+        handleExpandClose(sender: gestureRecognizer)
+    }
+
+    @objc func handleExpandClose(sender: UIGestureRecognizer) {
+        let section = sender.view?.tag
         
         var indexPaths = [IndexPath]()
-        let indexPath = IndexPath(row: 0, section: section)
-        indexPaths.append(indexPath)
+        indexPaths = [IndexPath(row: 0, section: section!)]
         
-        let isExpanded = dealIsExpanded[section]
-        dealIsExpanded[section] = !isExpanded
+        let isExpanded = dealIsExpanded[section!]
+        dealIsExpanded[section!] = !isExpanded
         
         if isExpanded {
             dealTableView.deleteRows(at: indexPaths, with: .fade)
@@ -124,26 +134,19 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 36
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as? DealTableViewCell
         let thisDeal = restaurant?.deals[indexPath.section]
         
 //        print(thisDeal?.description.height(withConstrainedWidth: CGFloat(179), font: UIFont.systemFont(ofSize: 17.0)) as Any) //calculates minimum height given the width and text
-        //width: 357
         
-        cell?.shortDescriptionLabel?.sizeToFit()
-        cell?.shortDescriptionLabel?.text = thisDeal?.description
-        cell?.lastUsedLabel?.text = thisDeal?.getLastUseStr(prescript: "...")
-        cell?.verifyButton?.tag = indexPath.section
-        cell?.verifyButton?.addTarget(self, action: #selector(DetailsViewController.verifyAction(_:)), for: .touchUpInside)
-        setButton(isVerified: (thisDeal?.dealIsVerified)!, butt: (cell?.verifyButton)!)
+        cell?.descriptionLabel?.sizeToFit()
+        cell?.descriptionLabel?.text = thisDeal?.description
         
         return cell!
     }
+    
+    // MARK: -- VERIFY BUTTON
     
     @IBAction func verifyAction(_ sender: UIButton) {
         let bool = !(restaurant?.deals[sender.tag].dealIsVerified)!
@@ -163,11 +166,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         butt.setTitle(titleTxt, for: .normal)
         butt.setTitleColor(titleColor, for: .normal)
         butt.backgroundColor = bgColor
-    }
-    
-    // MARK: -- UNWIND
-    @IBAction func goBackToOneButtonTapped(_sender: Any) {
-        performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
     }
     
     // MARK: -- Navigation
