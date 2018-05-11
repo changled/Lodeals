@@ -12,15 +12,18 @@ class ConfirmAddDealViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var restaurantLabel: UILabel!
     
     var dealTitle : String?
     var dealDescription : String?
+    var restaurantName : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = dealTitle
         descriptionLabel.text = dealDescription
         descriptionLabel.sizeToFit()
+        restaurantLabel.text = restaurantName
     }
 
     override func didReceiveMemoryWarning() {

@@ -71,6 +71,7 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             
             destVC?.dealTitle = dealTitle
             destVC?.dealDescription = dealDescription
+            destVC?.restaurantName = restaurant?.name
         }
     }
 }
