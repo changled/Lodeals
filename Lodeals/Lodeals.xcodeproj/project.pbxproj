@@ -26,6 +26,7 @@
 		CCDEF26720A2D5F300C3DA65 /* ConfirmAddDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */; };
 		CCDEF26920A38CF200C3DA65 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26820A38CF200C3DA65 /* Extensions.swift */; };
 		CCDEF26B20A516CC00C3DA65 /* DealSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */; };
+		CCDEF26D20A519C500C3DA65 /* DealSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */; };
 		D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C3589D21CE88522B756D7 /* libPods-Lodeals.a */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAddDealViewController.swift; sourceTree = "<group>"; };
 		CCDEF26820A38CF200C3DA65 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DealSectionHeaderView.xib; sourceTree = "<group>"; };
+		CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealSectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */,
 				CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */,
 				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
+				CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */,
 				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
 				CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */,
 				CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */,
@@ -382,6 +385,7 @@
 				CC7A0D36209E52D800E1CE1B /* MasterViewController.swift in Sources */,
 				CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */,
 				CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */,
+				CCDEF26D20A519C500C3DA65 /* DealSectionHeaderView.swift in Sources */,
 				CCDEF26920A38CF200C3DA65 /* Extensions.swift in Sources */,
 				CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */,
 			);
