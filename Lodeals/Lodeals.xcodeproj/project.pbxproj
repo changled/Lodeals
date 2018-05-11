@@ -25,6 +25,7 @@
 		CCDEF26520A2C8AC00C3DA65 /* AddDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */; };
 		CCDEF26720A2D5F300C3DA65 /* ConfirmAddDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */; };
 		CCDEF26920A38CF200C3DA65 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26820A38CF200C3DA65 /* Extensions.swift */; };
+		CCDEF26B20A516CC00C3DA65 /* DealSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */; };
 		D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C3589D21CE88522B756D7 /* libPods-Lodeals.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealViewController.swift; sourceTree = "<group>"; };
 		CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAddDealViewController.swift; sourceTree = "<group>"; };
 		CCDEF26820A38CF200C3DA65 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DealSectionHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */,
 				CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */,
 				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
+				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
 				CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */,
 				CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */,
 				CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */,
@@ -303,6 +306,7 @@
 				CC7A0D10209E4D3200E1CE1B /* LaunchScreen.storyboard in Resources */,
 				CC7A0D0D209E4D3200E1CE1B /* Assets.xcassets in Resources */,
 				CC6328B220A25D2A00AD5C60 /* Podfile in Resources */,
+				CCDEF26B20A516CC00C3DA65 /* DealSectionHeaderView.xib in Resources */,
 				CC7A0D0B209E4D3200E1CE1B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
