@@ -1,6 +1,11 @@
 
 source 'https://github.com/CocoaPods/Specs.git'
 target 'Lodeals' do
-pod 'GoogleMaps'
-pod 'GooglePlaces'
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
+    pod 'Firebase'
+    pod 'Firebase/Core'
+    pod 'Firebase/Firestore'
+    pod 'Firebase/Database'
+    pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
 end
