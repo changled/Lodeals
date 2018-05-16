@@ -19,5 +19,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lodeals/Classes/RestaurantClass.swift"
+            timestampString = "548196079.268674"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "Restaurant"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lodeals.Restaurant.price.getter : Swift.Int"
+                  moduleName = "Lodeals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/Classes/RestaurantClass.swift"
+                  timestampString = "548195670.996267"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lodeals.Restaurant.price.setter : Swift.Int"
+                  moduleName = "Lodeals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/Classes/RestaurantClass.swift"
+                  timestampString = "548195671.004407"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "77">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

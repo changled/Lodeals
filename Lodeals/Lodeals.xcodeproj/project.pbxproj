@@ -145,7 +145,6 @@
 				CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */,
 				CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */,
 				CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */,
-				CCDEF26820A38CF200C3DA65 /* Extensions.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -219,6 +218,7 @@
 				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
 				CC602E8C20AC1DC800088B2A /* hardCode.swift */,
 				CC602E8E20AC276B00088B2A /* database.swift */,
+				CCDEF26820A38CF200C3DA65 /* Extensions.swift */,
 			);
 			path = SideDishes;
 			sourceTree = "<group>";
