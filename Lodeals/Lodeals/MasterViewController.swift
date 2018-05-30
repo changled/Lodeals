@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMaps
+import YelpAPI
+import BrightFutures
 
 class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -15,12 +17,24 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var restaurants = [Restaurant]()
     var locationManager = CLLocationManager()
+    var businessesFromYelp : [Business]!
     @IBOutlet weak var restaurantTV: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         restaurants = preAddRestaurants()
+        
+//        Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
+//
+//            self.businesses = businesses
+//            if let businesses = businesses {
+//                for business in businesses {
+//                    print(business.name!)
+//                    print(business.address!)
+//                }
+//            }
+//        })
     }
     
     override func didReceiveMemoryWarning() {
