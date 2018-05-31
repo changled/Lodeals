@@ -10,6 +10,7 @@ import UIKit
 
 class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: -- SET UP
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -21,11 +22,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var restaurantIndex : IndexPath?
     var dealIsExpanded : [Bool] = []
     var lastlastUsed : [DateComponents] = []
-    
-    let gisView = UIImageView(frame: CGRect(x: 28, y: 210, width: 70, height: 70))
-    let maiView = UIImageView(frame: CGRect(x: 118, y: 210, width: 70, height: 70))
-    let crispyView = UIImageView(frame: CGRect(x: 208, y: 210, width: 70, height: 70))
-    let rachView = UIImageView(frame: CGRect(x: 298, y: 210, width: 70, height: 70))
+    let imageXSpacingDict : [Int : CGFloat] = [0: 28, 1: 118, 2: 208, 3: 298]
+    var images : [UIImageView] = []
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,34 +40,83 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tagsLabel.text = restaurant?.tags.joined(separator: ", ")
         setLabelFrame(origin: CGPoint(x: 28, y: 163), label: tagsLabel, maxWidth: 357)
         
+        loadImagesWithConstraints()
+    }
+    
+    /*
+     * Simply use CGRect() initializer to set x, y, width, and height values:
+     *     x -- use the imageXSpacingDict dictionary with index % 4 to determine how far from left
+     *     y -- use tagsLabel's y value + its height + 8 for buffer
+     *     width -- 70
+     *     height -- 70
+     */
+    func loadImages() {
+        if let images = restaurant?.images {
+            imageLabel.isHidden = true
+            
+            for (imgIndex, image) in images.enumerated() {
+                let imageData = try? Data(contentsOf: URL(string: image)!)
+                let xValue = self.imageXSpacingDict[imgIndex % 4]
+                let yValue = tagsLabel.frame.origin.y + tagsLabel.frame.size.height + 8 // add y-value to end of tags
+                let newImage = UIImageView(frame: CGRect(x: Int(xValue!), y: Int(yValue), width: 70, height: 70))
+                
+                newImage.image = UIImage(data: imageData!)
+                self.view.insertSubview(newImage, at: 0)
+            }
+        }
+    }
+    
+    /*
+     * Use NSLayoutConstraints to set:
+     *     leading (x) constraint to the bottom of the tagsLabel + 8
+     *     top (y) constraint to the left of tagsLabel
+     *     width constraint to 70
+     *     height constraint to 70
+     * Then activate constraints
+     */
+    func loadImagesWithConstraints() {
         if let images = restaurant?.images {
             if images.count > 0 {
                 imageLabel.isHidden = true
-                DispatchQueue.global().async {
-                    let imageData = try? Data(contentsOf: URL(string: (self.restaurant?.images[0])!)!)
-                    DispatchQueue.main.async {
-                        self.gisView.image = UIImage(data: imageData!)
-                        self.view.insertSubview(self.gisView, at: 0)
-                    }
+                
+                for (imgIndex, image) in images.enumerated() {
+                    let imageData = try? Data(contentsOf: URL(string: image)!)
+                    let newImage = UIImageView()
+                    newImage.image = UIImage(data: imageData!)
+                    self.view.insertSubview(newImage, at: 0)
+
+                    newImage.translatesAutoresizingMaskIntoConstraints = false
+                    
+                    let xValue = self.imageXSpacingDict[imgIndex % 4]
+                    let horizontalConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1, constant: xValue!)
+                    let verticalConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.tagsLabel, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 8)
+                    let widthConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 70)
+                    let heightConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 70)
+
+                    NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
                 }
             }
         }
+    }
+    
+    // Used temporarily for testing/prototyping
+    func loadBaebitionImages() {
+        imageLabel.isHidden = true
         
-        if(restaurant?.name == "BAEBITION") {
-            imageLabel.isHidden = true
-            
-            gisView.image = UIImage(named: "gisScreenshot.png")
-            self.view.insertSubview(gisView, at: 0)
-            
-            maiView.image = UIImage(named: "maiScreenshot.png")
-            self.view.insertSubview(maiView, at: 0)
-            
-            crispyView.image = UIImage(named: "chrispyScreenshot.png")
-            self.view.insertSubview(crispyView, at: 0)
-            
-            rachView.image = UIImage(named: "rachScreenshot.png")
-            self.view.insertSubview(rachView, at: 1)
-        }
+        let gisView = UIImageView(frame: CGRect(x: 28, y: 210, width: 70, height: 70))
+        let maiView = UIImageView(frame: CGRect(x: 118, y: 210, width: 70, height: 70))
+        let crispyView = UIImageView(frame: CGRect(x: 208, y: 210, width: 70, height: 70))
+        let rachView = UIImageView(frame: CGRect(x: 298, y: 210, width: 70, height: 70))
+        
+        gisView.image = UIImage(named: "gisScreenshot.png")
+        maiView.image = UIImage(named: "maiScreenshot.png")
+        crispyView.image = UIImage(named: "chrispyScreenshot.png")
+        rachView.image = UIImage(named: "rachScreenshot.png")
+        
+        self.view.insertSubview(gisView, at: 0)
+        self.view.insertSubview(maiView, at: 0)
+        self.view.insertSubview(crispyView, at: 0)
+        self.view.insertSubview(rachView, at: 1)
     }
     
     // stretch to fit label text with width constraints

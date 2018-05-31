@@ -60,7 +60,7 @@ class Deal {
         let now = Date()
         let calendar = Calendar.current
         
-        let diffYear = calendar.component(.year, from: now) - lastUsed.year!
+        let diffYear = calendar.component(.year, from: now) - lastUsed.year! //Fatal Error: Unexpectedly found nil while unwrapping Optional value lastUsed
         if(diffYear >= 1) {
             return ("\(prescript)\(diffYear) years\(postscript)")
         }
