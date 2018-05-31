@@ -79,23 +79,21 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell?.tagsLabel?.text = rest.tags.joined(separator: ", ")
         
         // if no image URL is specified, use default text; otherwise, load image icon (first one)!
-        if rest.images[0] != "imageStr" {
+        if rest.images.count > 0 {
             cell?.imageLabel.isHidden = true
             cell?.iconImageView.isHidden = false
             
             DispatchQueue.global().async {
                 let imageData = try? Data(contentsOf: URL(string: rest.images[0])!)
-//                print("INSIDE TABLEVIEW CELL FOR ROW AT -- \(rest.images[0])")
                 DispatchQueue.main.async {
                     cell?.iconImageView.image = UIImage(data: imageData!)
                 }
             }
-            
         }
         else {
             cell?.iconImageView.isHidden = true
             cell?.imageLabel.isHidden = false
-            cell?.imageLabel?.text = rest.images[0]
+            cell?.imageLabel?.text = "no img"
         }
         
         // default to "currently no deals" if fewer than 2 deals

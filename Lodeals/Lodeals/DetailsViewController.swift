@@ -37,11 +37,23 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         nameLabel.text = restaurant?.name
         priceLabel.text = restaurant?.priceDict[(restaurant?.price)!]
         addressLabel.text = restaurant?.location
-        imageLabel.text = restaurant?.images[0]
         resetExpansionToFalse()
         
         tagsLabel.text = restaurant?.tags.joined(separator: ", ")
         setLabelFrame(origin: CGPoint(x: 28, y: 163), label: tagsLabel, maxWidth: 357)
+        
+        if let images = restaurant?.images {
+            if images.count > 0 {
+                imageLabel.isHidden = true
+                DispatchQueue.global().async {
+                    let imageData = try? Data(contentsOf: URL(string: (self.restaurant?.images[0])!)!)
+                    DispatchQueue.main.async {
+                        self.gisView.image = UIImage(data: imageData!)
+                        self.view.insertSubview(self.gisView, at: 0)
+                    }
+                }
+            }
+        }
         
         if(restaurant?.name == "BAEBITION") {
             imageLabel.isHidden = true

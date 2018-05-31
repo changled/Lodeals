@@ -22,7 +22,7 @@ class Restaurant {
     var priceStr : String
     var yelpURL : String
     
-    init(name: String = "", id: String = "", location: String = "", images: [String] = ["imageStr"], tags: [String] = ["tag1", "tag2"], price: Int = -1, deals: [Deal] = [], priceStr: String = "err", yelpURL: String = "https://google.com") {
+    init(name: String = "", id: String = "", location: String = "", images: [String] = [], tags: [String] = ["tag1", "tag2"], price: Int = -1, deals: [Deal] = [], priceStr: String = "err", yelpURL: String = "https://google.com") {
         self.name = name
         self.location = location
         self.tags = tags
