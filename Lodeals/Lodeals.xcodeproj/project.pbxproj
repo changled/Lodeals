@@ -25,6 +25,7 @@
 		CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */; };
 		CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */; };
 		CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */; };
+		CCD703FB20BF6019009FB321 /* yelpJSONParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD703FA20BF6019009FB321 /* yelpJSONParse.swift */; };
 		CCDEF25B20A2A3BA00C3DA65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */; };
 		CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */; };
 		CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */; };
@@ -90,6 +91,7 @@
 		CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantClass.swift; sourceTree = "<group>"; };
 		CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		CCD703FA20BF6019009FB321 /* yelpJSONParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = yelpJSONParse.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/SideDishes/yelpJSONParse.swift; sourceTree = "<absolute>"; };
 		CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/MapViewController.swift; sourceTree = "<absolute>"; };
 		CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealClass.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 		CCDEF26E20A5247100C3DA65 /* SideDishes */ = {
 			isa = PBXGroup;
 			children = (
+				CCD703FA20BF6019009FB321 /* yelpJSONParse.swift */,
 				CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */,
 				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
 				CC602E8C20AC1DC800088B2A /* hardCode.swift */,
@@ -533,6 +536,7 @@
 				CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */,
 				CCDEF26520A2C8AC00C3DA65 /* AddDealViewController.swift in Sources */,
 				CCDEF26320A2ACA600C3DA65 /* DealTableViewCell.swift in Sources */,
+				CCD703FB20BF6019009FB321 /* yelpJSONParse.swift in Sources */,
 				CC602E8F20AC276B00088B2A /* database.swift in Sources */,
 				CC7A0D36209E52D800E1CE1B /* MasterViewController.swift in Sources */,
 				CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */,

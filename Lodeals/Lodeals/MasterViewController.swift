@@ -19,22 +19,31 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var locationManager = CLLocationManager()
     var businessesFromYelp : [Business]!
     @IBOutlet weak var restaurantTV: UITableView!
+    let apiYelpURL = URL(string: "https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco")!
+//    var apiTxt: String?
+    var businessStruct: TxtYelpServiceBusiness?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\n\nINSIDE MASTER VIEW CONTROLLER!!!\n\n")
         
         restaurants = preAddRestaurants()
         
-//        Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
-//
-//            self.businesses = businesses
-//            if let businesses = businesses {
-//                for business in businesses {
-//                    print(business.name!)
-//                    print(business.address!)
-//                }
-//            }
-//        })
+        var request = URLRequest(url: apiYelpURL)
+        request.addValue("Bearer qQJmRKBK0HOd7E4mBxhhUXaeKEotiUOqkuN3G3mrPM4fvsUdM_RkJc86_5ah25aW6V_4Ke_53wsbG1b8VtFx2AZo_gV1r-5dDMriM-guhV_UC1iorPTNosXGvir-WnYx", forHTTPHeaderField: "Authorization")
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task: URLSessionDataTask = session.dataTask(with: request) { (receivedData, response, error) -> Void in
+            if let data = receivedData {
+                do {
+                    let decoder = JSONDecoder()
+                    self.businessStruct = try decoder.decode(TxtYelpServiceBusiness.self, from: data)
+                } catch {
+                    print("Exception on Decode: \(error)")
+                }
+            }
+        }
+        task.resume()
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,6 +98,11 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - NAVIGATION
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("     (in prepare for segue) BUSINESS STRUCT ---- ")
+        print("price : \(self.businessStruct?.price ?? "na price")")
+        print("id : \(self.businessStruct?.id ?? "no id")")
+        print("name : \(self.businessStruct?.name ?? "no name")")
+
         if(segue.identifier == "showDetailsVC") {
             let destVC = segue.destination as? DetailsViewController
             let selectedIndexPath = restaurantTV.indexPathForSelectedRow
