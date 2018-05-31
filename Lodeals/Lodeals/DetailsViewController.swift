@@ -76,25 +76,23 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
      */
     func loadImagesWithConstraints() {
         if let images = restaurant?.images {
-            if images.count > 0 {
-                imageLabel.isHidden = true
+            imageLabel.isHidden = true
+            
+            for (imgIndex, image) in images.enumerated() {
+                let imageData = try? Data(contentsOf: URL(string: image)!)
+                let newImage = UIImageView()
+                newImage.image = UIImage(data: imageData!)
+                self.view.insertSubview(newImage, at: 0)
+
+                newImage.translatesAutoresizingMaskIntoConstraints = false
                 
-                for (imgIndex, image) in images.enumerated() {
-                    let imageData = try? Data(contentsOf: URL(string: image)!)
-                    let newImage = UIImageView()
-                    newImage.image = UIImage(data: imageData!)
-                    self.view.insertSubview(newImage, at: 0)
+                let xValue = self.imageXSpacingDict[imgIndex % 4]
+                let horizontalConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1, constant: xValue!)
+                let verticalConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.tagsLabel, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 8)
+                let widthConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 70)
+                let heightConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 70)
 
-                    newImage.translatesAutoresizingMaskIntoConstraints = false
-                    
-                    let xValue = self.imageXSpacingDict[imgIndex % 4]
-                    let horizontalConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1, constant: xValue!)
-                    let verticalConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.tagsLabel, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 8)
-                    let widthConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 70)
-                    let heightConstraint = NSLayoutConstraint(item: newImage, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 70)
-
-                    NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
-                }
+                NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
             }
         }
     }
