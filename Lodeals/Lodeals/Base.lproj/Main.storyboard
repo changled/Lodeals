@@ -98,7 +98,7 @@
                                         <rect key="frame" x="0.0" y="28" width="382" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gje-Na-IGP" id="Fac-wu-Q8U">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="149.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;restaurant name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ei-Iw-NkY">
@@ -172,8 +172,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uwE-OM-k9U">
-                                                    <rect key="frame" x="48" y="11" width="81" height="73"/>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uwE-OM-k9U">
+                                                    <rect key="frame" x="15" y="11" width="81" height="73"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -191,6 +191,7 @@
                                             <outlet property="deal1TimeLabel" destination="e6j-TM-o1k" id="vYP-Ec-JNM"/>
                                             <outlet property="deal2Label" destination="BIP-ug-Kv4" id="Ckq-sC-fkp"/>
                                             <outlet property="deal2TimeLabel" destination="fhk-dq-Vkg" id="tHf-cE-e3Q"/>
+                                            <outlet property="iconImageView" destination="uwE-OM-k9U" id="pHk-CE-6uu"/>
                                             <outlet property="imageLabel" destination="qrQ-zK-BDS" id="suA-Qt-yvt"/>
                                             <outlet property="locationLabel" destination="rpC-la-G1P" id="bg1-gb-BMk"/>
                                             <outlet property="nameLabel" destination="7Ei-Iw-NkY" id="vsL-Pq-IMz"/>
@@ -372,7 +373,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E0Q-k2-jSU" id="xpR-42-bHa">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="31.666666666666668"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;deal&gt;" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="v5h-6e-wmC">

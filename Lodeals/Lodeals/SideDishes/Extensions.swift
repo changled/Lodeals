@@ -28,3 +28,18 @@ extension NSAttributedString {
         return ceil(boundingBox.height)
     }
 }
+
+//taken from StackOverflow (skywinder)
+extension UIImageView {
+    public func imageFromUrl(urlString: String) {
+        if let url = NSURL(string: urlString) {
+            let request = NSURLRequest(url: url as URL)
+            NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: OperationQueue.main) {
+                (response: URLResponse?, data: Data?, error: Error?) -> Void in
+                if let imageData = data {
+                    self.image = UIImage(data: imageData)
+                }
+            }
+        }
+    }
+}

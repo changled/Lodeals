@@ -45,8 +45,10 @@ class Restaurant {
         }
     }
     
-    // Due to the asynchronous nature of this, a callback is needed
-    // getRestaurantsFromSearch creates a request from the provided apiYelpURL and returns an array of Restaurant's, to be retrieved (and table view reloaded) when completed in MasterVC's viewDidLoad() function
+    /*
+     * Due to the asynchronous nature of this, a callback is needed
+     * getRestaurantsFromSearch creates a request from the provided apiYelpURL and returns an array of Restaurant's, to be retrieved (and table view reloaded) when completed in MasterVC's viewDidLoad() function
+     */
     class func getRestaurantsFromSearch (apiYelpURL: String, completionHandler: @escaping (_: [Restaurant]) -> ()) {
         var restaurants: [Restaurant] = []
         var request = URLRequest(url: URL(string: apiYelpURL)!)

@@ -77,19 +77,26 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell?.locationLabel?.text = rest.location
         cell?.priceLabel?.text = rest.priceDict[rest.price]
         cell?.tagsLabel?.text = rest.tags.joined(separator: ", ")
-        cell?.imageLabel?.text = rest.images[0]
         
-//        // if no image URL is specified, use default text; otherwise, load image icon (first one)!
-//        if rest.images[0] != "imageStr" {
-//            cell?.imageLabel.isHidden = true
-//            let imageData = try? Data(contentsOf: URL(string: rest.images[0])!)
-//            cell?.iconImageView.image = UIImage(data: imageData!)
-//        }
-//        else {
-//            cell?.iconImageView.isHidden = true
-//            cell?.imageLabel.isHidden = false
-//            cell?.imageLabel?.text = rest.images[0]
-//        }
+        // if no image URL is specified, use default text; otherwise, load image icon (first one)!
+        if rest.images[0] != "imageStr" {
+            cell?.imageLabel.isHidden = true
+            cell?.iconImageView.isHidden = false
+            
+            DispatchQueue.global().async {
+                let imageData = try? Data(contentsOf: URL(string: rest.images[0])!)
+//                print("INSIDE TABLEVIEW CELL FOR ROW AT -- \(rest.images[0])")
+                DispatchQueue.main.async {
+                    cell?.iconImageView.image = UIImage(data: imageData!)
+                }
+            }
+            
+        }
+        else {
+            cell?.iconImageView.isHidden = true
+            cell?.imageLabel.isHidden = false
+            cell?.imageLabel?.text = rest.images[0]
+        }
         
         // default to "currently no deals" if fewer than 2 deals
         if rest.deals.count > 0 {
