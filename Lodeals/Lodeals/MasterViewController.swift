@@ -4,7 +4,8 @@
 //
 //  Created by Rachel Chang on 5/5/18.
 //  Copyright © 2018 Rachel Chang. All rights reserved. prototype branch
-//
+//  My Yelp API Key: qQJmRKBK0HOd7E4mBxhhUXaeKEotiUOqkuN3G3mrPM4fvsUdM_RkJc86_5ah25aW6V_4Ke_53wsbG1b8VtFx2AZo_gV1r-5dDMriM-guhV_UC1iorPTNosXGvir-WnYx
+// SLO Address Coordinates: 35.300499, -120.677059
 
 import UIKit
 import GoogleMaps
@@ -19,31 +20,34 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var locationManager = CLLocationManager()
     var businessesFromYelp : [Business]!
     @IBOutlet weak var restaurantTV: UITableView!
-    let apiYelpURL = URL(string: "https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco")!
-//    var apiTxt: String?
+//    let apiYelpURL = URL(string: "https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco")!
     var businessStruct: TxtYelpServiceBusiness?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\n\nINSIDE MASTER VIEW CONTROLLER!!!\n\n")
         
         restaurants = preAddRestaurants()
+        print ("\n\nIN MASTER CONTROLLER!!")
+//        makeBusinessSearchCall(apiYelpURL: "https://api.yelp.com/v3/businesses/search?latitude=35.300499&longitude=-120.677059")
+        makeBusinessSearchCall(apiYelpURL: getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499))
+//        makeBusinessSearchCall(apiYelpURL: "https://api.yelp.com/v3/businesses/search?latitude=-120.677059&longitude=35.300499")
+        makeSingleBusinessCall(apiYelpURL: "https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco")
         
-        var request = URLRequest(url: apiYelpURL)
-        request.addValue("Bearer qQJmRKBK0HOd7E4mBxhhUXaeKEotiUOqkuN3G3mrPM4fvsUdM_RkJc86_5ah25aW6V_4Ke_53wsbG1b8VtFx2AZo_gV1r-5dDMriM-guhV_UC1iorPTNosXGvir-WnYx", forHTTPHeaderField: "Authorization")
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        
-        let task: URLSessionDataTask = session.dataTask(with: request) { (receivedData, response, error) -> Void in
-            if let data = receivedData {
-                do {
-                    let decoder = JSONDecoder()
-                    self.businessStruct = try decoder.decode(TxtYelpServiceBusiness.self, from: data)
-                } catch {
-                    print("Exception on Decode: \(error)")
-                }
-            }
-        }
-        task.resume()
+//        var request = URLRequest(url: apiYelpURL)
+//        request.addValue("Bearer qQJmRKBK0HOd7E4mBxhhUXaeKEotiUOqkuN3G3mrPM4fvsUdM_RkJc86_5ah25aW6V_4Ke_53wsbG1b8VtFx2AZo_gV1r-5dDMriM-guhV_UC1iorPTNosXGvir-WnYx", forHTTPHeaderField: "Authorization")
+//        let session = URLSession(configuration: URLSessionConfiguration.default)
+//
+//        let task: URLSessionDataTask = session.dataTask(with: request) { (receivedData, response, error) -> Void in
+//            if let data = receivedData {
+//                do {
+//                    let decoder = JSONDecoder()
+//                    self.businessStruct = try decoder.decode(TxtYelpServiceBusiness.self, from: data)
+//                } catch {
+//                    print("Exception on Decode: \(error)")
+//                }
+//            }
+//        }
+//        task.resume()
     }
     
     override func didReceiveMemoryWarning() {
