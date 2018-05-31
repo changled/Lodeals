@@ -172,6 +172,10 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uwE-OM-k9U">
+                                                    <rect key="frame" x="15" y="11" width="81" height="73"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <userDefinedRuntimeAttributes>
@@ -187,6 +191,7 @@
                                             <outlet property="deal1TimeLabel" destination="e6j-TM-o1k" id="vYP-Ec-JNM"/>
                                             <outlet property="deal2Label" destination="BIP-ug-Kv4" id="Ckq-sC-fkp"/>
                                             <outlet property="deal2TimeLabel" destination="fhk-dq-Vkg" id="tHf-cE-e3Q"/>
+                                            <outlet property="iconImageView" destination="uwE-OM-k9U" id="OFo-qo-ELN"/>
                                             <outlet property="imageLabel" destination="qrQ-zK-BDS" id="suA-Qt-yvt"/>
                                             <outlet property="locationLabel" destination="rpC-la-G1P" id="bg1-gb-BMk"/>
                                             <outlet property="nameLabel" destination="7Ei-Iw-NkY" id="vsL-Pq-IMz"/>
