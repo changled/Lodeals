@@ -1,5 +1,5 @@
 //
-//  yelpJSONParse.swift
+//  yelpJSONParse.swift -> yelpStructs
 //  
 //
 //  Created by Rachel Chang on 5/30/18.
@@ -30,9 +30,9 @@ struct YelpServiceBusinessSearchWithKeyword : Codable {
 }
 
 struct YelpServiceBusiness : Codable {
-    var rating: Float
     var price: String
     var id: String
+    var alias: String
     var categories: [YelpServiceCategory]
     var review_count: Int
     var name: String
@@ -40,10 +40,14 @@ struct YelpServiceBusiness : Codable {
     var coordinates: YelpServiceCoordinates
     var image_url: String?
     var location: YelpServiceLocation
-    
+    var phone: String?
+    var photos: [String]?
+    var rating: Float
+
     func printBusiness() {
         print("\(name) --")
         print("\t id: \(String(describing: id))")
+        print("\t alias: \(String(describing: alias))")
         print("\t rating: \(String(describing: rating))")
         print("\t price: \(String(describing: price))")
         print("\t categories: \(String(describing: categories))")

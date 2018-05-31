@@ -34,13 +34,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         nameLabel.text = restaurant?.name
         priceLabel.text = restaurant?.priceDict[(restaurant?.price)!]
-        addressLabel.text = restaurant?.location
+        addressLabel.text = restaurant?.locationStr
         resetExpansionToFalse()
         
         tagsLabel.text = restaurant?.tags.joined(separator: ", ")
         setLabelFrame(origin: CGPoint(x: 28, y: 163), label: tagsLabel, maxWidth: 357)
         
-        loadImagesWithConstraints()
+        print("LOADING IMAGES!!!")
+        loadImages()
+//        loadImagesWithConstraints()
     }
     
     /*
@@ -55,6 +57,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             imageLabel.isHidden = true
             
             for (imgIndex, image) in images.enumerated() {
+                if imgIndex >= 4 {
+                    break
+                }
+                print("for image: \(image)")
+                
                 let imageData = try? Data(contentsOf: URL(string: image)!)
                 let xValue = self.imageXSpacingDict[imgIndex % 4]
                 let yValue = tagsLabel.frame.origin.y + tagsLabel.frame.size.height + 8 // add y-value to end of tags
@@ -78,7 +85,13 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let images = restaurant?.images {
             imageLabel.isHidden = true
             
+            //temporarily set; do an expansion view upon tap later
             for (imgIndex, image) in images.enumerated() {
+                if imgIndex >= 4 {
+                    break
+                }
+                print("for image: \(image)")
+                
                 let imageData = try? Data(contentsOf: URL(string: image)!)
                 let newImage = UIImageView()
                 newImage.image = UIImage(data: imageData!)

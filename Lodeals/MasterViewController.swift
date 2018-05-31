@@ -74,7 +74,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let rest = restaurants[indexPath.row]
         
         cell?.nameLabel?.text = rest.name
-        cell?.locationLabel?.text = rest.location
+        cell?.locationLabel?.text = rest.locationStr
         cell?.priceLabel?.text = rest.priceDict[rest.price]
         cell?.tagsLabel?.text = rest.tags.joined(separator: ", ")
         
@@ -121,11 +121,13 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - NAVIGATION
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        print("\nINSIDE PREPARE FOR SEGUE")
+        print("\nINSIDE PREPARE FOR SEGUE")
         
         if(segue.identifier == "showDetailsVC") {
             let destVC = segue.destination as? DetailsViewController
             let selectedIndexPath = restaurantTV.indexPathForSelectedRow
+            restaurants[(selectedIndexPath?.row)!].getBusinessDetails()
+            restaurants[(selectedIndexPath?.row)!].printRestaurantDetails()
             
             destVC?.restaurant = restaurants[(selectedIndexPath?.row)!]
             destVC?.restaurantIndex = selectedIndexPath
