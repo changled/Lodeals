@@ -14,15 +14,15 @@ class Restaurant {
     var id : String
     var location : String
     var images : [String]
-//    var image_icon : URL?
     var tags : [String]
     var price : Int
     let priceDict : [Int: String] = [-1: "err", 0: "$", 1: "$$", 2: "$$$", 3: "$$$$", 4: "$$$$$"]
     let priceDictStrToInt : [String: Int] = ["err": -1, "$": 0, "$$": 1, "$$$": 2, "$$$$": 3, "$$$$$": 4]
     var deals : [Deal]
     var priceStr : String
+    var yelpURL : String
     
-    init(name: String = "", id: String = "", location: String = "", images: [String] = ["imageStr"], tags: [String] = ["tag1", "tag2"], price: Int = -1, deals: [Deal] = [], priceStr: String = "err") {
+    init(name: String = "", id: String = "", location: String = "", images: [String] = ["imageStr"], tags: [String] = ["tag1", "tag2"], price: Int = -1, deals: [Deal] = [], priceStr: String = "err", yelpURL: String = "https://google.com") {
         self.name = name
         self.location = location
         self.tags = tags
@@ -31,9 +31,12 @@ class Restaurant {
         self.price = price
         self.priceStr = priceStr
         self.id = id
+        self.yelpURL = yelpURL
         
-        // If only one of price or priceStr is specified, set the other
-        // First set to default as edge case
+        /*
+         * If only one of price or priceStr is specified, set the other
+         * First set to default as edge case
+         */
         if priceStr == "err" && price != -1 {
             self.priceStr = self.priceDict[price]!
         }
@@ -71,9 +74,10 @@ class Restaurant {
     func printRestaurant() {
         print("\(name) --")
         print("\t id: \(String(describing: id))")
+        print("\t yelp url: \(String(describing: yelpURL))")
         print("\t location: \(String(describing: location))")
-        print("\t price: \(String(describing: price))")
-        print("\t priceStr: \(String(describing: priceStr))")
+        print("\t price: \(String(describing: priceStr)) -- \(String(describing: price))")
+        print("\t images: \(String(describing: images))")
         print("\t tags: \(String(describing: tags))")
         print("\t deals count: \(String(describing: deals.count))")
     }

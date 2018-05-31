@@ -26,6 +26,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //        restaurants = preAddRestaurants()
         let apiYelpURL = getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499)
         
+        // Get instantiations of Restaurant class from API call determined by apiYelpURL and asynchronously update TV
         Restaurant.getRestaurantsFromSearch(apiYelpURL: apiYelpURL) {
             completedRestaurants in
             for restaurant in completedRestaurants {
@@ -74,10 +75,23 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell?.nameLabel?.text = rest.name
         cell?.locationLabel?.text = rest.location
-        cell?.imageLabel?.text = rest.images[0]
         cell?.priceLabel?.text = rest.priceDict[rest.price]
         cell?.tagsLabel?.text = rest.tags.joined(separator: ", ")
+        cell?.imageLabel?.text = rest.images[0]
         
+//        // if no image URL is specified, use default text; otherwise, load image icon (first one)!
+//        if rest.images[0] != "imageStr" {
+//            cell?.imageLabel.isHidden = true
+//            let imageData = try? Data(contentsOf: URL(string: rest.images[0])!)
+//            cell?.iconImageView.image = UIImage(data: imageData!)
+//        }
+//        else {
+//            cell?.iconImageView.isHidden = true
+//            cell?.imageLabel.isHidden = false
+//            cell?.imageLabel?.text = rest.images[0]
+//        }
+        
+        // default to "currently no deals" if fewer than 2 deals
         if rest.deals.count > 0 {
             cell?.deal1Label?.text = rest.deals[0].shortDescription
             cell?.deal1TimeLabel?.text = rest.deals[0].getLastUseStr(prescript: "...", postscript: " ago")

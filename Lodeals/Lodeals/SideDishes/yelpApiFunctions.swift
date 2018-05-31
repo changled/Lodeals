@@ -8,17 +8,17 @@
 
 import Foundation
 
-func getRestaurantsFromStruct(businesses: YelpServiceBusinessSearchWithKeyword, maxCount: Int = 10) -> [Restaurant] {
+func getRestaurantsFromStruct(businesses: YelpServiceBusinessSearchWithKeyword, maxCount: Int = 23) -> [Restaurant] {
     var restaurants = [Restaurant]()
     var count = 0
-    print("\nIN GETRESTAURANTSFROMSTRUCT")
     
     for business in businesses.businesses! {
         let name = business.name
-//        print(name)
         let location = "\(business.location.address1), \(business.location.city), \(business.location.state), \(business.location.zip_code)"
         let priceStr = business.price
         let id = business.id
+        let imageIcon = business.image_url
+        let yelpURL = business.url
         
         var tags: [String] = []
         
@@ -26,10 +26,14 @@ func getRestaurantsFromStruct(businesses: YelpServiceBusinessSearchWithKeyword, 
             tags.append(category.title)
         }
         
-        let restaurant = Restaurant(name: name, id: id, location: location, tags: tags, priceStr: priceStr)
-//        restaurant.printRestaurant()
-        restaurants.append(restaurant)
+        let restaurant = Restaurant(name: name, id: id, location: location, tags: tags, priceStr: priceStr, yelpURL: yelpURL)
         
+        // update images if present
+        if imageIcon != nil {
+            restaurant.images = [imageIcon!]
+        }
+        
+        restaurants.append(restaurant)
         count += 1
         
         if count >= maxCount {
@@ -39,6 +43,5 @@ func getRestaurantsFromStruct(businesses: YelpServiceBusinessSearchWithKeyword, 
     }
     
     print("\nINSIDE GET RESTAURANTS FROM STRUCT: \(restaurants.count)")
-    
     return restaurants
 }

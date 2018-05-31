@@ -49,6 +49,7 @@ struct YelpServiceBusiness : Codable {
         print("\t categories: \(String(describing: categories))")
         print("\t review count: \(String(describing: review_count))")
         print("\t url: \(String(describing: url))")
+        print("\t image_url: \(String(describing: image_url))")
         print("\t coordinates: (\(String(describing: coordinates.longitude)), \(String(describing: coordinates.latitude))")
     }
 }
