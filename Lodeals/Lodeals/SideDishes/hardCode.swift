@@ -36,7 +36,7 @@ func preAddRestaurants() -> [Restaurant] {
     let rest4deal2 = Deal(shortDescription: "Happiness", description: ":D", lastUsed: DateComponents(year: 2018, month: 5, day: 7, hour: 20, minute: 26), dealIsVerified: true)
     let rest4deal3 = Deal(shortDescription: "Family", description: "Except I don't want children. I don't get it", lastUsed: DateComponents(year: 2018, month: 5, day: 7, hour: 20, minute: 26), dealIsVerified: true)
     let rest4deal4 = Deal(shortDescription: "Success", description: "A+", lastUsed: DateComponents(year: 2018, month: 5, day: 7, hour: 20, minute: 26))
-    let rest4 = Restaurant(name: "BAEBITION", location: "Thugs Cottage", images: ["<3"], tags: ["Sexy", "Cute", "Smart", "Successful", "Fucking amazing", "420"], price: 4, deals: [rest4deal1, rest4deal2, rest4deal3, rest4deal4])
+    let rest4 = Restaurant(name: "BAEBITION", location: "Thugs Cottage", images: ["<3"], tags: ["Sexy", "Cute", "Smart", "Successful", "Amazing", "Kind"], price: 4, deals: [rest4deal1, rest4deal2, rest4deal3, rest4deal4])
     
     let rest5deal1 = Deal(shortDescription: "Nahhh", description: "Nahh", lastUsed: DateComponents(year: 2016, month: 5, day: 7, hour: 20, minute: 26))
     let rest5deal2 = Deal(shortDescription: "This place expensive as shit", description: "This place expensive as shit", lastUsed: DateComponents(year: 2016, month: 5, day: 7, hour: 20, minute: 26))

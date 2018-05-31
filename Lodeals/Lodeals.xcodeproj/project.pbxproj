@@ -27,6 +27,7 @@
 		CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */; };
 		CCD703FB20BF6019009FB321 /* yelpJSONParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD703FA20BF6019009FB321 /* yelpJSONParse.swift */; };
 		CCD703FF20BF7FCE009FB321 /* yelpCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD703FE20BF7FCD009FB321 /* yelpCalls.swift */; };
+		CCD7040120BF976F009FB321 /* yelpApiFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7040020BF976F009FB321 /* yelpApiFunctions.swift */; };
 		CCDEF25B20A2A3BA00C3DA65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */; };
 		CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */; };
 		CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */; };
@@ -94,6 +95,7 @@
 		CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		CCD703FA20BF6019009FB321 /* yelpJSONParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = yelpJSONParse.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/SideDishes/yelpJSONParse.swift; sourceTree = "<absolute>"; };
 		CCD703FE20BF7FCD009FB321 /* yelpCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = yelpCalls.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/SideDishes/yelpCalls.swift; sourceTree = "<absolute>"; };
+		CCD7040020BF976F009FB321 /* yelpApiFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yelpApiFunctions.swift; sourceTree = "<group>"; };
 		CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/MapViewController.swift; sourceTree = "<absolute>"; };
 		CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealClass.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */,
 				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
 				CCD703FE20BF7FCD009FB321 /* yelpCalls.swift */,
+				CCD7040020BF976F009FB321 /* yelpApiFunctions.swift */,
 				CC602E8C20AC1DC800088B2A /* hardCode.swift */,
 				CC602E9520BCE70000088B2A /* YelpClient.swift */,
 				CC602E9420AE7C1400088B2A /* LodealsBridginHeader.h */,
@@ -534,6 +537,7 @@
 				CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */,
 				CCDEF26720A2D5F300C3DA65 /* ConfirmAddDealViewController.swift in Sources */,
 				CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */,
+				CCD7040120BF976F009FB321 /* yelpApiFunctions.swift in Sources */,
 				CC602E9120AE668900088B2A /* Business.swift in Sources */,
 				CC602E9620BCE70000088B2A /* YelpClient.swift in Sources */,
 				CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */,

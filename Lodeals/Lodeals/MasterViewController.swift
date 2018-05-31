@@ -17,10 +17,10 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: -- SET UP
     
     var restaurants = [Restaurant]()
+    var twentyRestaurants = [Restaurant]()
     var locationManager = CLLocationManager()
     var businessesFromYelp : [Business]!
     @IBOutlet weak var restaurantTV: UITableView!
-//    let apiYelpURL = URL(string: "https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco")!
     var businessStruct: TxtYelpServiceBusiness?
     
     override func viewDidLoad() {
@@ -28,26 +28,15 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         restaurants = preAddRestaurants()
         print ("\n\nIN MASTER CONTROLLER!!")
-//        makeBusinessSearchCall(apiYelpURL: "https://api.yelp.com/v3/businesses/search?latitude=35.300499&longitude=-120.677059")
-        makeBusinessSearchCall(apiYelpURL: getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499))
-//        makeBusinessSearchCall(apiYelpURL: "https://api.yelp.com/v3/businesses/search?latitude=-120.677059&longitude=35.300499")
-        makeSingleBusinessCall(apiYelpURL: "https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco")
-        
-//        var request = URLRequest(url: apiYelpURL)
-//        request.addValue("Bearer qQJmRKBK0HOd7E4mBxhhUXaeKEotiUOqkuN3G3mrPM4fvsUdM_RkJc86_5ah25aW6V_4Ke_53wsbG1b8VtFx2AZo_gV1r-5dDMriM-guhV_UC1iorPTNosXGvir-WnYx", forHTTPHeaderField: "Authorization")
-//        let session = URLSession(configuration: URLSessionConfiguration.default)
-//
-//        let task: URLSessionDataTask = session.dataTask(with: request) { (receivedData, response, error) -> Void in
-//            if let data = receivedData {
-//                do {
-//                    let decoder = JSONDecoder()
-//                    self.businessStruct = try decoder.decode(TxtYelpServiceBusiness.self, from: data)
-//                } catch {
-//                    print("Exception on Decode: \(error)")
-//                }
-//            }
-//        }
-//        task.resume()
+        let apiYelpURL = getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499)
+        OHORestaurant.getRestaurants(apiYelpURL: apiYelpURL) {
+            resttt in
+            for restau in resttt {
+                print("hello!")
+                restau.printRestaurant()
+            }
+        }
+        twentyRestaurants = makeBusinessSearchCall(apiYelpURL: apiYelpURL)!
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,10 +91,16 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - NAVIGATION
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("     (in prepare for segue) BUSINESS STRUCT ---- ")
-        print("price : \(self.businessStruct?.price ?? "na price")")
-        print("id : \(self.businessStruct?.id ?? "no id")")
-        print("name : \(self.businessStruct?.name ?? "no name")")
+        print("\n\n     (in prepare for segue) BUSINESS STRUCT ---- ")
+        print(twentyRestaurants.count)
+//        for restau in twentyRestaurants {
+//            print("hello!")
+//            restau.printRestaurant()
+//        }
+        
+//        print("price : \(self.businessStruct?.price ?? "na price")")
+//        print("id : \(self.businessStruct?.id ?? "no id")")
+//        print("name : \(self.businessStruct?.name ?? "no name")")
 
         if(segue.identifier == "showDetailsVC") {
             let destVC = segue.destination as? DetailsViewController
