@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F448F6AD10670C2BD8149FF /* Pods_Lodeals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96114435A24C32498F3E497D /* Pods_Lodeals.framework */; };
+		CAD60D7D75DB50307FAC0C2E /* Pods_LodealsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1990D4932350DAC97E60B63 /* Pods_LodealsUITests.framework */; };
+		CC602E8B20AC1B5400088B2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC602E8A20AC1B5300088B2A /* GoogleService-Info.plist */; };
+		CC602E8D20AC1DC800088B2A /* hardCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC602E8C20AC1DC800088B2A /* hardCode.swift */; };
+		CC602E8F20AC276B00088B2A /* database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC602E8E20AC276B00088B2A /* database.swift */; };
+		CC602E9120AE668900088B2A /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC602E9020AE668800088B2A /* Business.swift */; };
+		CC602E9620BCE70000088B2A /* tempYelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC602E9520BCE70000088B2A /* tempYelpClient.swift */; };
 		CC6328B220A25D2A00AD5C60 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CC6328B120A25D2A00AD5C60 /* Podfile */; };
 		CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */; };
 		CC7A0D0B209E4D3200E1CE1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7A0D09209E4D3200E1CE1B /* Main.storyboard */; };
@@ -18,6 +25,9 @@
 		CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */; };
 		CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */; };
 		CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */; };
+		CCD703FB20BF6019009FB321 /* yelpJSONParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD703FA20BF6019009FB321 /* yelpJSONParse.swift */; };
+		CCD703FF20BF7FCE009FB321 /* yelpCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD703FE20BF7FCD009FB321 /* yelpCalls.swift */; };
+		CCD7040120BF976F009FB321 /* yelpApiFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7040020BF976F009FB321 /* yelpApiFunctions.swift */; };
 		CCDEF25B20A2A3BA00C3DA65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */; };
 		CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */; };
 		CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */; };
@@ -31,7 +41,7 @@
 		CCDEF27420A55D6B00C3DA65 /* chrispyScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDEF27020A55D6900C3DA65 /* chrispyScreenshot.png */; };
 		CCDEF27520A55D6B00C3DA65 /* rachScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDEF27120A55D6A00C3DA65 /* rachScreenshot.png */; };
 		CCDEF27620A55D6B00C3DA65 /* gisScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDEF27220A55D6A00C3DA65 /* gisScreenshot.png */; };
-		D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C3589D21CE88522B756D7 /* libPods-Lodeals.a */; };
+		E6FEF40F6FAE76C88DA0EEF7 /* Pods_LodealsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EFF61EAF2DFE0F1CDFE3B9C /* Pods_LodealsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,10 +62,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3EBB6AD5163C0F28D3A14B7A /* Pods-LodealsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LodealsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LodealsUITests/Pods-LodealsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3EFF61EAF2DFE0F1CDFE3B9C /* Pods_LodealsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LodealsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		420FB36ACEEDAF00FB65CC9C /* Pods-Lodeals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lodeals.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lodeals/Pods-Lodeals.release.xcconfig"; sourceTree = "<group>"; };
 		50C005F3A7D79D6DE070DAEF /* Pods-Lodeals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lodeals.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lodeals/Pods-Lodeals.debug.xcconfig"; sourceTree = "<group>"; };
-		996C3589D21CE88522B756D7 /* libPods-Lodeals.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lodeals.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC6328B120A25D2A00AD5C60 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		64F8D30B8EE5A6031F3FDE4B /* Pods-LodealsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LodealsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LodealsTests/Pods-LodealsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		96114435A24C32498F3E497D /* Pods_Lodeals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lodeals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1990D4932350DAC97E60B63 /* Pods_LodealsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LodealsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACFBBF71DF680FA1A8A4910C /* Pods-LodealsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LodealsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LodealsUITests/Pods-LodealsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CC602E8A20AC1B5300088B2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CC602E8C20AC1DC800088B2A /* hardCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hardCode.swift; sourceTree = "<group>"; };
+		CC602E8E20AC276B00088B2A /* database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = database.swift; sourceTree = "<group>"; };
+		CC602E9020AE668800088B2A /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		CC602E9420AE7C1400088B2A /* LodealsBridginHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LodealsBridginHeader.h; sourceTree = "<group>"; };
+		CC602E9520BCE70000088B2A /* tempYelpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempYelpClient.swift; sourceTree = "<group>"; };
+		CC6328B120A25D2A00AD5C60 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CC7A0D02209E4D3200E1CE1B /* Lodeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lodeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC7A0D0A209E4D3200E1CE1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,8 +93,11 @@
 		CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantClass.swift; sourceTree = "<group>"; };
 		CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		CCD703FA20BF6019009FB321 /* yelpJSONParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = yelpJSONParse.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/YelpAPI/yelpJSONParse.swift; sourceTree = "<absolute>"; };
+		CCD703FE20BF7FCD009FB321 /* yelpCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = yelpCalls.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/YelpAPI/yelpCalls.swift; sourceTree = "<absolute>"; };
+		CCD7040020BF976F009FB321 /* yelpApiFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yelpApiFunctions.swift; sourceTree = "<group>"; };
 		CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/MapViewController.swift; sourceTree = "<absolute>"; };
+		CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/MapViewController.swift; sourceTree = "<absolute>"; };
 		CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealClass.swift; sourceTree = "<group>"; };
 		CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealTableViewCell.swift; sourceTree = "<group>"; };
 		CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +109,7 @@
 		CCDEF27020A55D6900C3DA65 /* chrispyScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrispyScreenshot.png; sourceTree = "<group>"; };
 		CCDEF27120A55D6A00C3DA65 /* rachScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rachScreenshot.png; sourceTree = "<group>"; };
 		CCDEF27220A55D6A00C3DA65 /* gisScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gisScreenshot.png; sourceTree = "<group>"; };
+		F97AA1B41D52038C88FC0DAA /* Pods-LodealsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LodealsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LodealsTests/Pods-LodealsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCDEF25B20A2A3BA00C3DA65 /* CoreLocation.framework in Frameworks */,
-				D6741C8BEC688D971CF34D72 /* libPods-Lodeals.a in Frameworks */,
+				0F448F6AD10670C2BD8149FF /* Pods_Lodeals.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6FEF40F6FAE76C88DA0EEF7 /* Pods_LodealsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD60D7D75DB50307FAC0C2E /* Pods_LodealsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */,
-				996C3589D21CE88522B756D7 /* libPods-Lodeals.a */,
+				96114435A24C32498F3E497D /* Pods_Lodeals.framework */,
+				3EFF61EAF2DFE0F1CDFE3B9C /* Pods_LodealsTests.framework */,
+				A1990D4932350DAC97E60B63 /* Pods_LodealsUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,6 +157,10 @@
 			children = (
 				50C005F3A7D79D6DE070DAEF /* Pods-Lodeals.debug.xcconfig */,
 				420FB36ACEEDAF00FB65CC9C /* Pods-Lodeals.release.xcconfig */,
+				64F8D30B8EE5A6031F3FDE4B /* Pods-LodealsTests.debug.xcconfig */,
+				F97AA1B41D52038C88FC0DAA /* Pods-LodealsTests.release.xcconfig */,
+				3EBB6AD5163C0F28D3A14B7A /* Pods-LodealsUITests.debug.xcconfig */,
+				ACFBBF71DF680FA1A8A4910C /* Pods-LodealsUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -135,11 +168,11 @@
 		CC6328AE20A258A300AD5C60 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */,
 				CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */,
 				CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */,
-				CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */,
 				CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */,
-				CCDEF26820A38CF200C3DA65 /* Extensions.swift */,
+				CC602E9020AE668800088B2A /* Business.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -170,19 +203,17 @@
 		CC7A0D04209E4D3200E1CE1B /* Lodeals */ = {
 			isa = PBXGroup;
 			children = (
-				CCDEF27720A55D8500C3DA65 /* BaebitionImages */,
 				CCDEF26E20A5247100C3DA65 /* SideDishes */,
+				CCDEF27720A55D8500C3DA65 /* BaebitionImages */,
+				CCD7040220C09489009FB321 /* YelpAPI */,
 				CC6328AE20A258A300AD5C60 /* Classes */,
-				CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */,
-				CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */,
-				CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */,
-				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
-				CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */,
-				CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */,
-				CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */,
+				CCD7040320C09847009FB321 /* Views */,
 				CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */,
+				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
+				CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */,
 				CC7A0D0E209E4D3200E1CE1B /* LaunchScreen.storyboard */,
 				CC7A0D11209E4D3200E1CE1B /* Info.plist */,
+				CC602E8A20AC1B5300088B2A /* GoogleService-Info.plist */,
 			);
 			path = Lodeals;
 			sourceTree = "<group>";
@@ -205,11 +236,39 @@
 			path = LodealsUITests;
 			sourceTree = "<group>";
 		};
+		CCD7040220C09489009FB321 /* YelpAPI */ = {
+			isa = PBXGroup;
+			children = (
+				CCD703FA20BF6019009FB321 /* yelpJSONParse.swift */,
+				CCD703FE20BF7FCD009FB321 /* yelpCalls.swift */,
+				CCD7040020BF976F009FB321 /* yelpApiFunctions.swift */,
+				CC602E9520BCE70000088B2A /* tempYelpClient.swift */,
+			);
+			path = YelpAPI;
+			sourceTree = "<group>";
+		};
+		CCD7040320C09847009FB321 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */,
+				CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */,
+				CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */,
+				CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */,
+				CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */,
+			);
+			name = Views;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		CCDEF26E20A5247100C3DA65 /* SideDishes */ = {
 			isa = PBXGroup;
 			children = (
 				CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */,
 				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
+				CC602E8C20AC1DC800088B2A /* hardCode.swift */,
+				CC602E9420AE7C1400088B2A /* LodealsBridginHeader.h */,
+				CC602E8E20AC276B00088B2A /* database.swift */,
+				CCDEF26820A38CF200C3DA65 /* Extensions.swift */,
 			);
 			path = SideDishes;
 			sourceTree = "<group>";
@@ -237,6 +296,7 @@
 				CC7A0CFF209E4D3200E1CE1B /* Frameworks */,
 				CC7A0D00209E4D3200E1CE1B /* Resources */,
 				D02F1E27F6F562FFE86F8A62 /* [CP] Copy Pods Resources */,
+				EA35EF08B25C28C178004EB2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,6 +311,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC7A0D2D209E4D3200E1CE1B /* Build configuration list for PBXNativeTarget "LodealsTests" */;
 			buildPhases = (
+				5518BD58EA78EACB94D839A2 /* [CP] Check Pods Manifest.lock */,
 				CC7A0D12209E4D3200E1CE1B /* Sources */,
 				CC7A0D13209E4D3200E1CE1B /* Frameworks */,
 				CC7A0D14209E4D3200E1CE1B /* Resources */,
@@ -269,6 +330,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC7A0D30209E4D3200E1CE1B /* Build configuration list for PBXNativeTarget "LodealsUITests" */;
 			buildPhases = (
+				ACBF3CC2F05C84D2BA977A95 /* [CP] Check Pods Manifest.lock */,
 				CC7A0D1D209E4D3200E1CE1B /* Sources */,
 				CC7A0D1E209E4D3200E1CE1B /* Frameworks */,
 				CC7A0D1F209E4D3200E1CE1B /* Resources */,
@@ -341,6 +403,7 @@
 				CC6328B220A25D2A00AD5C60 /* Podfile in Resources */,
 				CCDEF27320A55D6B00C3DA65 /* maiScreenshot.png in Resources */,
 				CCDEF26B20A516CC00C3DA65 /* DealSectionHeaderView.xib in Resources */,
+				CC602E8B20AC1B5400088B2A /* GoogleService-Info.plist in Resources */,
 				CCDEF27620A55D6B00C3DA65 /* gisScreenshot.png in Resources */,
 				CC7A0D0B209E4D3200E1CE1B /* Main.storyboard in Resources */,
 			);
@@ -363,6 +426,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5518BD58EA78EACB94D839A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LodealsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACBF3CC2F05C84D2BA977A95 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LodealsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D02F1E27F6F562FFE86F8A62 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -401,6 +500,44 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EA35EF08B25C28C178004EB2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Lodeals/Pods-Lodeals-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GeoFire/GeoFire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoFire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lodeals/Pods-Lodeals-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -411,12 +548,19 @@
 				CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */,
 				CCDEF26720A2D5F300C3DA65 /* ConfirmAddDealViewController.swift in Sources */,
 				CC7A0D06209E4D3200E1CE1B /* AppDelegate.swift in Sources */,
+				CCD7040120BF976F009FB321 /* yelpApiFunctions.swift in Sources */,
+				CC602E9120AE668900088B2A /* Business.swift in Sources */,
+				CC602E9620BCE70000088B2A /* tempYelpClient.swift in Sources */,
 				CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */,
 				CCDEF26520A2C8AC00C3DA65 /* AddDealViewController.swift in Sources */,
+				CCD703FF20BF7FCE009FB321 /* yelpCalls.swift in Sources */,
 				CCDEF26320A2ACA600C3DA65 /* DealTableViewCell.swift in Sources */,
+				CCD703FB20BF6019009FB321 /* yelpJSONParse.swift in Sources */,
+				CC602E8F20AC276B00088B2A /* database.swift in Sources */,
 				CC7A0D36209E52D800E1CE1B /* MasterViewController.swift in Sources */,
 				CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */,
 				CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */,
+				CC602E8D20AC1DC800088B2A /* hardCode.swift in Sources */,
 				CCDEF26D20A519C500C3DA65 /* DealSectionHeaderView.swift in Sources */,
 				CCDEF26920A38CF200C3DA65 /* Extensions.swift in Sources */,
 				CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */,
@@ -591,6 +735,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = csc436.Lodeals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Lodeals/SideDishes/LodealsBridginHeader.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -606,6 +751,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = csc436.Lodeals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Lodeals/SideDishes/LodealsBridginHeader.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -613,6 +759,7 @@
 		};
 		CC7A0D2E209E4D3200E1CE1B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64F8D30B8EE5A6031F3FDE4B /* Pods-LodealsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -629,6 +776,7 @@
 		};
 		CC7A0D2F209E4D3200E1CE1B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F97AA1B41D52038C88FC0DAA /* Pods-LodealsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -645,6 +793,7 @@
 		};
 		CC7A0D31209E4D3200E1CE1B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EBB6AD5163C0F28D3A14B7A /* Pods-LodealsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -660,6 +809,7 @@
 		};
 		CC7A0D32209E4D3200E1CE1B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACFBBF71DF680FA1A8A4910C /* Pods-LodealsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

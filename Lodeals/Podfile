@@ -1,6 +1,26 @@
-
+inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
+
 target 'Lodeals' do
-pod 'GoogleMaps'
-pod 'GooglePlaces'
+    use_frameworks!
+    
+    # Pods for Google
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
+    
+    # Pods for Firebase
+    pod 'Firebase'
+    pod 'Firebase/Core'
+    pod 'Firebase/Firestore'
+    pod 'Firebase/Database'
+    pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
+    
+    target 'LodealsTests' do
+        inherit! :search_paths
+    end
+    
+    target 'LodealsUITests' do
+        inherit! :search_paths
+    end
+    
 end
