@@ -39,18 +39,26 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tagsLabel.text = restaurant?.tags.joined(separator: ", ")
         setLabelFrame(origin: CGPoint(x: 28, y: 163), label: tagsLabel, maxWidth: 357)
         
-        Restaurant.getBusinessDetails(restaurant: restaurant!) {
-            completedRestaurant in
-            
-            completedRestaurant.printRestaurantDetails()
-            
-            DispatchQueue.main.sync {
-                self.resetExpansionToFalse()
-                print("LOADING IMAGES!!!")
-                self.loadImages()
+        
+        if restaurant?.alias != "" {
+            Restaurant.getBusinessDetails(restaurant: restaurant!) {
+                completedRestaurant in
+                
+                completedRestaurant.printRestaurantDetails()
+                
+                DispatchQueue.main.sync {
+                    self.resetExpansionToFalse()
+                    print("LOADING IMAGES!!!")
+                    self.loadImages()
+                }
             }
         }
+        else {
+            resetExpansionToFalse()
+        }
     }
+    
+    // MARK: -- IMAGE HANDLING
     
     /*
      * Simply use CGRect() initializer to set x, y, width, and height values:
@@ -96,6 +104,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             //temporarily set; do an expansion view upon tap later
             for (imgIndex, image) in images.enumerated() {
                 if imgIndex >= 4 {
+                    print("\nBREAKING OUT OF IMAGE LOADING B/C LIMIT REACHED\n")
                     break
                 }
                 print("for image: \(image)")
@@ -176,13 +185,21 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: -- TABLE VIEW HEADER
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        print("\n\nDEALS COUNT: \(restaurant!.deals.count)")
         return restaurant!.deals.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("\n\nDEAL IS EXPANDED COUNT: \(dealIsExpanded) versus section number \(section)")
+        
+        if dealIsExpanded.count <= 0 {
+            return 0
+        }
+        
         if !dealIsExpanded[section] {
             return 0
         }
+        
         return 1
     }
     
@@ -205,6 +222,14 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         dealHeaderView.addGestureRecognizer(tapGesture)
         
         return dealHeaderView
+    }
+    
+    func resetExpansionToFalse() {
+        print("\n\nRESET EXPANSION TO FALSE(): \(String(describing: restaurant?.deals))")
+        
+        for _ in (restaurant?.deals)! {
+            dealIsExpanded.append(false)
+        }
     }
 
     @objc func TapGestureRecognizer(gestureRecognizer: UIGestureRecognizer) {
@@ -259,14 +284,10 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         dealTableView.reloadData()
     }
     
-    func resetExpansionToFalse() {
-        for _ in (restaurant?.deals)! {
-            dealIsExpanded.append(false)
-        }
-    }
-    
-    //verified: blue background color, black text, "Verified" title
-    //unverified: white background color, blue text, "Verify" title
+    /*
+     * Verified: blue background color, black text, "Verified" title
+     * Unverified: white background color, blue text, "Verify" title
+     */
     func setButton(isVerified: Bool, butt: UIButton) {
         let bgColor = isVerified ? self.view.tintColor : .white
         let titleTxt = isVerified ? "Verified" : "Verify"

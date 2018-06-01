@@ -23,12 +23,13 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        restaurants = preAddRestaurants()
+        restaurants = preAddRestaurants()
         let apiYelpURL = getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499)
         
         // Get instantiations of Restaurant class from API call determined by apiYelpURL and asynchronously update TV
         Restaurant.getRestaurantsFromSearch(apiYelpURL: apiYelpURL) {
             completedRestaurants in
+            
             for restaurant in completedRestaurants {
                 restaurant.printRestaurant()
                 self.restaurants.append(restaurant)

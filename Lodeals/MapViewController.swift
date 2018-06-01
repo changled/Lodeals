@@ -57,7 +57,6 @@ class MapViewController: UIViewController, UITextFieldDelegate, CLLocationManage
         print("bye")
     }
     
-    
     /*
      // MARK: - Navigation
      
