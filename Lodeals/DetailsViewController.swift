@@ -35,14 +35,21 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         nameLabel.text = restaurant?.name
         priceLabel.text = restaurant?.priceDict[(restaurant?.price)!]
         addressLabel.text = restaurant?.locationStr
-        resetExpansionToFalse()
         
         tagsLabel.text = restaurant?.tags.joined(separator: ", ")
         setLabelFrame(origin: CGPoint(x: 28, y: 163), label: tagsLabel, maxWidth: 357)
         
-        print("LOADING IMAGES!!!")
-        loadImages()
-//        loadImagesWithConstraints()
+        Restaurant.getBusinessDetails(restaurant: restaurant!) {
+            completedRestaurant in
+            
+            completedRestaurant.printRestaurantDetails()
+            
+            DispatchQueue.main.sync {
+                self.resetExpansionToFalse()
+                print("LOADING IMAGES!!!")
+                self.loadImages()
+            }
+        }
     }
     
     /*

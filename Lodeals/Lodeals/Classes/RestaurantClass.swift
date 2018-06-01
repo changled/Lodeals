@@ -47,6 +47,7 @@ class Restaurant {
     }
     
     /*
+     * Get data asynchronously with DispatchQueue so it'll load much faster
      * Due to the asynchronous nature of this, a callback is needed
      * Creates a request from the provided apiYelpURL and returns an array of Restaurant's, to be retrieved (and table view reloaded) when completed in MasterVC's viewDidLoad() function
      */
@@ -77,10 +78,12 @@ class Restaurant {
      * Update details of a specific restaurant given the apiYelpURL through a single business search using a unique identifier:
      * apiYelpURL format: https: //api.yelp.com/v3/businesses/north-india-restaurant-san-francisco"
      * Note: This function is temporary and should be updated
+     * Note: If class func, can't refer to self b/c it'll be self's TYPE
      */
-    func getBusinessDetails() {
+    //class func getRestaurantsFromSearch (apiYelpURL: String, completionHandler: @escaping (_: [Restaurant]) -> ()) {
+    class func getBusinessDetails(restaurant: Restaurant, completionHandler: @escaping (_: Restaurant) -> ()) {
         var businessStruct: YelpServiceBusiness?
-        let apiYelpURL = getBusinessDetailsCall(restaurant: self)
+        let apiYelpURL = getBusinessDetailsCall(restaurant: restaurant)
         
         var request = URLRequest(url: URL(string: apiYelpURL)!)
         request.addValue("Bearer qQJmRKBK0HOd7E4mBxhhUXaeKEotiUOqkuN3G3mrPM4fvsUdM_RkJc86_5ah25aW6V_4Ke_53wsbG1b8VtFx2AZo_gV1r-5dDMriM-guhV_UC1iorPTNosXGvir-WnYx", forHTTPHeaderField: "Authorization")
@@ -92,9 +95,11 @@ class Restaurant {
                     let decoder = JSONDecoder()
                     businessStruct = try decoder.decode(YelpServiceBusiness.self, from: data)
                     
-                    self.updateRestaurantFromDetailSearch(businessStruct: businessStruct!)
+                    restaurant.updateRestaurantFromDetailSearch(businessStruct: businessStruct!)
                     print("\n\nBUSINESS STRUCT IMAGES: \(String(describing: businessStruct?.photos))\n\n")
-                    self.printRestaurantDetails()
+//                    restaurant.printRestaurantDetails()
+                    
+                    completionHandler(restaurant)
                 } catch {
                     print("Exception on Decode (getBusinessDetails): \(error)")
                 }

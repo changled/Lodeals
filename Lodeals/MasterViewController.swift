@@ -126,15 +126,26 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if(segue.identifier == "showDetailsVC") {
             let destVC = segue.destination as? DetailsViewController
             let selectedIndexPath = restaurantTV.indexPathForSelectedRow
-            restaurants[(selectedIndexPath?.row)!].getBusinessDetails()
-            restaurants[(selectedIndexPath?.row)!].printRestaurantDetails()
+//            restaurants[(selectedIndexPath?.row)!].printRestaurantDetails()
             
+            
+//            Restaurant.getBusinessDetails(restaurant: restaurants[(selectedIndexPath?.row)!]) {
+//                restaurant in
+//                let destVC = segue.destination as? DetailsViewController
+//                self.restaurants[(selectedIndexPath?.row)!].printRestaurantDetails()
+//
+//                DispatchQueue.main.sync {
+//                    destVC?.restaurant = self.restaurants[(selectedIndexPath?.row)!]
+//                    destVC?.restaurantIndex = selectedIndexPath
+//                 }
+//             }
+ 
             destVC?.restaurant = restaurants[(selectedIndexPath?.row)!]
             destVC?.restaurantIndex = selectedIndexPath
         }
         
         if(segue.identifier == "showMapVC") {
-            print("preparing for segue")
+            print("preparing for map segue: currently doing nothing to prepare")
         }
     }
 
