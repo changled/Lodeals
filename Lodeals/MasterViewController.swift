@@ -122,8 +122,6 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - NAVIGATION
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("\nINSIDE PREPARE FOR SEGUE")
-        
         if(segue.identifier == "showDetailsVC") {
             let destVC = segue.destination as? DetailsViewController
             let selectedIndexPath = restaurantTV.indexPathForSelectedRow

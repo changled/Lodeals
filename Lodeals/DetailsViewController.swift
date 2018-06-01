@@ -185,18 +185,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: -- TABLE VIEW HEADER
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("\n\nDEALS COUNT: \(restaurant!.deals.count)")
+        print("\n\nDEALS COUNT FOR \(restaurant!.name): \(restaurant!.deals.count)")
         return restaurant!.deals.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\n\nDEAL IS EXPANDED COUNT: \(dealIsExpanded) versus section number \(section)")
+        print("DEAL IS EXPANDED COUNT: \(dealIsExpanded) versus section number \(section)")
         
-        if dealIsExpanded.count <= 0 {
-            return 0
-        }
-        
-        if !dealIsExpanded[section] {
+        // check if dealsIsExpanded array is empty before trying to access inside it to fix fatal error
+        if dealIsExpanded.count <= 0 || !dealIsExpanded[section] {
             return 0
         }
         
