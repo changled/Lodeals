@@ -80,7 +80,6 @@ class Restaurant {
      * Note: This function is temporary and should be updated
      * Note: If class func, can't refer to self b/c it'll be self's TYPE
      */
-    //class func getRestaurantsFromSearch (apiYelpURL: String, completionHandler: @escaping (_: [Restaurant]) -> ()) {
     class func getBusinessDetails(restaurant: Restaurant, completionHandler: @escaping (_: Restaurant) -> ()) {
         var businessStruct: YelpServiceBusiness?
         let apiYelpURL = getBusinessDetailsCall(restaurant: restaurant)
@@ -135,10 +134,6 @@ class Restaurant {
                 
                 print("\nclass images(\(index), \(photo)): \(images)\n")
             }
-            
-    //        for photo in businessStruct.photos! {
-    //            images.append(photo)
-    //        }
         }
     }
     
