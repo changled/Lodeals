@@ -58,6 +58,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             for (imgIndex, image) in images.enumerated() {
                 if imgIndex >= 4 {
+                    print("   BREAKING b/c index is: \(imgIndex)")
                     break
                 }
                 print("for image: \(image)")

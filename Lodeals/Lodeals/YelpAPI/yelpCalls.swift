@@ -65,14 +65,6 @@ func makeSingleBusinessCall(apiYelpURL: String, restaurant: Restaurant) -> Resta
                 
                 restaurant.updateRestaurantFromDetailSearch(businessStruct: businessStruct!)
                 restaurant.printRestaurantDetails()
-                
-//                print("     (in single business call func) BUSINESS STRUCT ---- ")
-//                print("price : \(businessStruct?.price ?? "no price")")
-//                print("id : \(businessStruct?.id ?? "no id")")
-//                print("name : \(businessStruct?.name ?? "no name")")
-//                print("url : \(businessStruct?.url ?? "no url")")
-//                print("review count : \(businessStruct?.review_count ?? -1)")
-//                print("rating : \(businessStruct?.rating ?? -1)")
             } catch {
                 print("Exception on Decode: \(error)")
             }

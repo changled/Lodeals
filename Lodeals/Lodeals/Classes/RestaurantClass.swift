@@ -37,10 +37,7 @@ class Restaurant {
         self.id = id
         self.alias = alias
         
-        /*
-         * If only one of price or priceStr is specified, set the other
-         * First set to default as edge case
-         */
+        // Edge case: If only one of price or priceStr is specified, set the other to default
         if priceStr == "err" && price != -1 {
             self.priceStr = self.priceDict[price]!
         }
@@ -68,14 +65,14 @@ class Restaurant {
                     restaurants = getRestaurantsFromStruct(businesses: yelpServiceBusinessSearchWithKeyword)
                     completionHandler(restaurants)
                 } catch {
-                    print("\nException on Decode: \(error)\n")
+                    print("\nException on Decode (getRestaurantsFromSearch): \(error)\n")
                 }
             }
         }
         
         task.resume()
     }
-    
+
     /*
      * Update details of a specific restaurant given the apiYelpURL through a single business search using a unique identifier:
      * apiYelpURL format: https: //api.yelp.com/v3/businesses/north-india-restaurant-san-francisco"
@@ -96,9 +93,10 @@ class Restaurant {
                     businessStruct = try decoder.decode(YelpServiceBusiness.self, from: data)
                     
                     self.updateRestaurantFromDetailSearch(businessStruct: businessStruct!)
+                    print("\n\nBUSINESS STRUCT IMAGES: \(String(describing: businessStruct?.photos))\n\n")
                     self.printRestaurantDetails()
                 } catch {
-                    print("Exception on Decode: \(error)")
+                    print("Exception on Decode (getBusinessDetails): \(error)")
                 }
             }
         }
@@ -118,8 +116,24 @@ class Restaurant {
         yelpReviewCount = businessStruct.review_count
         yelpURL = businessStruct.url
         
-        for photo in businessStruct.photos! {
-            images.append(photo)
+//        var repeatPhotoFlag = false
+        // skip first photo since we already have it
+        
+        if images.count < (businessStruct.photos?.count)! {
+            for (index, photo) in (businessStruct.photos?.enumerated())! {
+                if !images.contains(photo) {
+                    images.append(photo)
+                }
+                else {
+                    print("repeat!: \(photo)")
+                }
+                
+                print("\nclass images(\(index), \(photo)): \(images)\n")
+            }
+            
+    //        for photo in businessStruct.photos! {
+    //            images.append(photo)
+    //        }
         }
     }
     
