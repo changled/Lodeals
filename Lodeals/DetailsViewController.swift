@@ -161,6 +161,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // If the restaurant does not exist in the database, create a new one
     @IBAction func unwindSaveFromConfirmAddDealVC(sender: UIStoryboardSegue) {
+        print("\n(unwindSaveFromConfirmAddDealVC) RETURN FROM ADDING NEW DEAL...")
         if sender.source is ConfirmAddDealViewController {
             if let senderVC = sender.source as? ConfirmAddDealViewController {
                 let dealTitle = senderVC.dealTitle
@@ -171,24 +172,20 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 newDeal.dealIsVerified = true
                 newDeal.updateLastUsedToNow()
                 
+                resetExpansionToFalse()
                 restaurant?.deals.append(newDeal)
                 
                 // use closure to determine what to do
                 dbRestaurantExists(restaurant: restaurant!) {
                     restExists in
                     
-                    if restExists {
-                        print("\nREST EXISTS: JUST ADD NEW DEAL")
-                    }
-                    else {
-                        print("\nREST DOESN'T YET EXIST: ADD NEW RESTAURANT")
+                    if !restExists {
                         dbInitAddRestaurant(restaurant: self.restaurant!)
                     }
                     
                     dbAddDeal(restaurant: self.restaurant!, deal: newDeal)
                 }
-                
-                resetExpansionToFalse()
+
                 dealIsExpanded.append(true)
                 dealTableView.reloadData()
             }

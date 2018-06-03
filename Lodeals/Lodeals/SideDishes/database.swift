@@ -23,7 +23,7 @@ var dealCollectionRef = db.collection("deals")
  */
 func dbInitAddRestaurant(restaurant: Restaurant) {
     
-    print("\nINSIDE DB INITIAL ADD RESTAURANT")
+    print("\n(dbInitAddRestaurant) ADDING NEW RESTAURANT \(restaurant.name)...")
     restCollectionRef = db.collection("restaurants")
     
     let restData: [String : Any] = [
@@ -34,9 +34,9 @@ func dbInitAddRestaurant(restaurant: Restaurant) {
     restCollectionRef.document(restaurant.id).setData(restData) {
         err in
         if let err = err {
-            print("Error writing restaurant \(restaurant.name) into database: \(err)")
+            print("   error writing restaurant \(restaurant.name) into database: \(err)")
         } else {
-            print("Restaurant \(restaurant.name) successfully written into database")
+            print("   restaurant \(restaurant.name) successfully written into database")
         }
     }
 }
@@ -47,6 +47,7 @@ func dbInitAddRestaurant(restaurant: Restaurant) {
  * Decided to keep "deals" field in "restaurant" document as an array of Strings because even though it'll be more expensive to get "restaurant" data and then "set" it, it's more often we'll retrieve deals data (less expensive) than than to set it
  */
 func dbAddDeal(restaurant: Restaurant, deal: Deal) {
+    print("\n(dbAddDeal) ADDING NEW DEAL \(deal.shortDescription) to \(restaurant.name)...")
     let dealData: [String : Any] = [
         "restaurant": ["name": restaurant.name, "id": restaurant.id],
         "title": deal.shortDescription,
@@ -57,9 +58,9 @@ func dbAddDeal(restaurant: Restaurant, deal: Deal) {
     let dealDocumentRef = dealCollectionRef.addDocument(data: dealData) {
         err in
         if let err = err {
-            print("Error writing deal \(deal.shortDescription) into database: \(err)")
+            print("   error writing deal \(deal.shortDescription) into database: \(err)")
         } else {
-            print("Deal \(deal.shortDescription) for restaurant \(restaurant.name) successfully written into database")
+            print("   deal \(deal.shortDescription) for restaurant \(restaurant.name) successfully written into database")
         }
     }
     
@@ -78,10 +79,10 @@ func dbAddDeal(restaurant: Restaurant, deal: Deal) {
         "deals": restDealsArr
     ]) { err in
         if let err = err {
-            print("Error adding to restaurant \(restaurant.name) new deal \(deal.shortDescription) with id \(dealDocumentRef.documentID): \(err)")
+            print("   error adding to restaurant \(restaurant.name) new deal \(deal.shortDescription) with id \(dealDocumentRef.documentID): \(err)")
         }
         else {
-            print("Deal \(deal.shortDescription) with id \(dealDocumentRef.documentID) successfully added to restaurant \(restaurant.name)")
+            print("   deal \(deal.shortDescription) with id \(dealDocumentRef.documentID) successfully added to restaurant \(restaurant.name)")
         }
     }
 }
@@ -90,17 +91,18 @@ func dbAddDeal(restaurant: Restaurant, deal: Deal) {
  * Given a Restaurant, check if it exists in Firestore and returns the appropriate boolean
  */
 func dbRestaurantExists(restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
+    print("\n(dbRestaurantExists) CHECKING WHETHER RESTAURANT EXISTS IN DATABASE...")
     let restDocumentRef = restCollectionRef.document(restaurant.id)
     
     restDocumentRef.getDocument { (document, err) in
         if let document = document {
         
             if document.exists {
-                print("document exists!: \(document.data()["name"] as! String)")
+                print("   document exists: \(document.data()["name"] as! String)")
                 completion(true)
             }
             else {
-                print("could not find document :(")
+                print("   could not find document")
                 completion(false)
             }
         }
