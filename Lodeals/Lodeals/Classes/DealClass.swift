@@ -9,6 +9,8 @@
 import Foundation
 
 class Deal {
+    var id : String
+    var restaurantID : String
     var shortDescription : String
     var description : String
     var totalTimesUsed : Int
@@ -18,7 +20,9 @@ class Deal {
     var dealIsVerified : Bool //temporarily used for only me (need to optimize for any user)
     var lastlastUsed : DateComponents
     
-    init(shortDescription: String = "", description: String = "", totalTimesUsed: Int = 0, userTimesUsed: Int = 0, lastUsed: DateComponents?, dealIsVerified: Bool = false) {
+    init(id: String = "", restaurantID: String = "", shortDescription: String = "", description: String = "", totalTimesUsed: Int = 0, userTimesUsed: Int = 0, lastUsed: DateComponents?, dealIsVerified: Bool = false) {
+        self.id = id
+        self.restaurantID = restaurantID
         self.shortDescription = shortDescription
         self.description = description
         self.totalTimesUsed = totalTimesUsed
@@ -34,6 +38,12 @@ class Deal {
         }
         
         self.lastlastUsed = self.lastUsed
+    }
+    
+    func printDeal() {
+        print("PRINTING DEAL \(shortDescription)")
+        print("\tfor restaurant with id: \(restaurantID)")
+        print("\tdescription: \(description)")
     }
     
     func setLastUse(year: Int = 2001, month: Int = 1, day: Int = 1, hour: Int = 1, minute: Int = 1) {

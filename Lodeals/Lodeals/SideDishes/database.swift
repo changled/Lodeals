@@ -14,6 +14,7 @@ let db = Firestore.firestore()
 // add a new document with a generated ID
 var ref : DocumentReference? = nil
 var restCollectionRef = db.collection("restaurants")
+var dealCollectionRef = db.collection("deals")
 
 /*
  * First time adding a restaurant to the Firestore
@@ -36,6 +37,51 @@ func dbInitAddRestaurant(restaurant: Restaurant) {
             print("Error writing restaurant \(restaurant.name) into database: \(err)")
         } else {
             print("Restaurant \(restaurant.name) successfully written into database")
+        }
+    }
+}
+
+/*
+ * Create a new document with autoID to Firestore
+ * Write the autoID to the given restaurant's deals array
+ * Decided to keep "deals" field in "restaurant" document as an array of Strings because even though it'll be more expensive to get "restaurant" data and then "set" it, it's more often we'll retrieve deals data (less expensive) than than to set it
+ */
+func dbAddDeal(restaurant: Restaurant, deal: Deal) {
+    let dealData: [String : Any] = [
+        "restaurant": ["name": restaurant.name, "id": restaurant.id],
+        "title": deal.shortDescription,
+        "description": deal.description,
+        "verifications": 1 //just use as a count for now; one because whoever created it automatically verifies it by default
+    ]
+    
+    let dealDocumentRef = dealCollectionRef.addDocument(data: dealData) {
+        err in
+        if let err = err {
+            print("Error writing deal \(deal.shortDescription) into database: \(err)")
+        } else {
+            print("Deal \(deal.shortDescription) for restaurant \(restaurant.name) successfully written into database")
+        }
+    }
+    
+    let restDocumentRef = restCollectionRef.document(restaurant.id)
+    var restDealsArr : [String] = []
+    
+    restDocumentRef.getDocument { (document, err) in
+        if let document = document, document.exists {
+            restDealsArr = document.data()["deals"] as! [String]
+        }
+    }
+
+    restDealsArr.append(dealDocumentRef.documentID)
+    
+    restDocumentRef.updateData([
+        "deals": restDealsArr
+    ]) { err in
+        if let err = err {
+            print("Error adding to restaurant \(restaurant.name)'s new deal \(deal.shortDescription) with id \(dealDocumentRef.documentID): \(err)")
+        }
+        else {
+            print("Deal \(deal.shortDescription) with id \(dealDocumentRef.documentID) successfully added to restaurant \(restaurant.name)")
         }
     }
 }

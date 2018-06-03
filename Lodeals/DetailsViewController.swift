@@ -170,6 +170,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 newDeal.updateLastUsedToNow()
                 
                 restaurant?.deals.append(newDeal)
+                dbAddDeal(restaurant: restaurant!, deal: newDeal)
+                
                 resetExpansionToFalse()
                 dealIsExpanded.append(true)
                 dealTableView.reloadData()
