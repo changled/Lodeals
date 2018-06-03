@@ -78,10 +78,31 @@ func dbAddDeal(restaurant: Restaurant, deal: Deal) {
         "deals": restDealsArr
     ]) { err in
         if let err = err {
-            print("Error adding to restaurant \(restaurant.name)'s new deal \(deal.shortDescription) with id \(dealDocumentRef.documentID): \(err)")
+            print("Error adding to restaurant \(restaurant.name) new deal \(deal.shortDescription) with id \(dealDocumentRef.documentID): \(err)")
         }
         else {
             print("Deal \(deal.shortDescription) with id \(dealDocumentRef.documentID) successfully added to restaurant \(restaurant.name)")
+        }
+    }
+}
+
+/*
+ * Given a Restaurant, check if it exists in Firestore and returns the appropriate boolean
+ */
+func dbRestaurantExists(restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
+    let restDocumentRef = restCollectionRef.document(restaurant.id)
+    
+    restDocumentRef.getDocument { (document, err) in
+        if let document = document {
+        
+            if document.exists {
+                print("document exists!: \(document.data()["name"] as! String)")
+                completion(true)
+            }
+            else {
+                print("could not find document :(")
+                completion(false)
+            }
         }
     }
 }

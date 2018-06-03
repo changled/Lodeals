@@ -41,12 +41,13 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         imageLabel.isHidden = true
         resetExpansionToFalse()
+        print("\n\tINSIDE DETAILSVC")
         
+        // just temporarily check alias against "" to be able to handle hard-coded restaurants
         if restaurant?.alias != "" {
             Restaurant.getBusinessDetails(restaurant: restaurant!) {
                 completedRestaurant in
-                
-                completedRestaurant.printRestaurantDetails()
+                self.restaurant?.printRestaurantDetails()
                 self.loadImages()
             }
         }
@@ -158,6 +159,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func unwindCancelFromConfirmAddDealVC(sender: UIStoryboardSegue) {
     }
     
+    // If the restaurant does not exist in the database, create a new one
     @IBAction func unwindSaveFromConfirmAddDealVC(sender: UIStoryboardSegue) {
         if sender.source is ConfirmAddDealViewController {
             if let senderVC = sender.source as? ConfirmAddDealViewController {
@@ -170,7 +172,21 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 newDeal.updateLastUsedToNow()
                 
                 restaurant?.deals.append(newDeal)
-                dbAddDeal(restaurant: restaurant!, deal: newDeal)
+                
+                // use closure to determine what to do
+                dbRestaurantExists(restaurant: restaurant!) {
+                    restExists in
+                    
+                    if restExists {
+                        print("\nREST EXISTS: JUST ADD NEW DEAL")
+                    }
+                    else {
+                        print("\nREST DOESN'T YET EXIST: ADD NEW RESTAURANT")
+                        dbInitAddRestaurant(restaurant: self.restaurant!)
+                    }
+                    
+                    dbAddDeal(restaurant: self.restaurant!, deal: newDeal)
+                }
                 
                 resetExpansionToFalse()
                 dealIsExpanded.append(true)

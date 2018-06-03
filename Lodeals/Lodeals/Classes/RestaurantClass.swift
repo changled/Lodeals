@@ -81,6 +81,7 @@ class Restaurant {
      * Note: If class func, can't refer to self b/c it'll be self's TYPE
      */
     class func getBusinessDetails(restaurant: Restaurant, completionHandler: @escaping (_: Restaurant) -> ()) {
+        print("     inside getBusinessDetails for \(restaurant.name)")
         var businessStruct: YelpServiceBusiness?
         let apiYelpURL = getBusinessDetailsCall(restaurant: restaurant)
         
@@ -95,7 +96,7 @@ class Restaurant {
                     businessStruct = try decoder.decode(YelpServiceBusiness.self, from: data)
                     
                     restaurant.updateRestaurantFromDetailSearch(businessStruct: businessStruct!)
-                    print("\n\nBUSINESS STRUCT IMAGES: \(String(describing: businessStruct?.photos))\n\n")
+//                    print("\n\nBUSINESS STRUCT IMAGES: \(String(describing: businessStruct?.photos))\n\n")
 //                    restaurant.printRestaurantDetails()
                     
                     completionHandler(restaurant)
@@ -120,20 +121,14 @@ class Restaurant {
         yelpReviewCount = businessStruct.review_count
         yelpURL = businessStruct.url
         
-//        var repeatPhotoFlag = false
         // skip first photo since we already have it
         print("images from API(\(String(describing: businessStruct.photos?.count))): \(String(describing: businessStruct.photos))")
         
         if images.count <= (businessStruct.photos?.count)! {
-            for (index, photo) in (businessStruct.photos?.enumerated())! {
+            for photo in businessStruct.photos! {
                 if !images.contains(photo) {
                     images.append(photo)
                 }
-                else {
-                    print("repeat!: \(photo)")
-                }
-                
-                print("\nclass images(\(index), \(photo)): \(images)\n")
             }
         }
     }
@@ -146,7 +141,6 @@ class Restaurant {
         print("\t price: \(String(describing: priceStr)) -- \(String(describing: price))")
         print("\t tags: \(String(describing: tags))")
         print("\t deals count: \(String(describing: deals.count))")
-        print("\t tags: \(String(describing: tags))")
         print("\t images: \(String(describing: images))")
     }
     
@@ -157,7 +151,6 @@ class Restaurant {
         print("\t yelp rating: \(String(describing: yelpRating))")
         print("\t yelp review count: \(String(describing: yelpReviewCount))")
         print("\t phone number: \(String(describing: phoneNumber))")
-        print("\t deals count: \(String(describing: deals.count))")
     }
 }
 

@@ -126,8 +126,6 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if(segue.identifier == "showDetailsVC") {
             let destVC = segue.destination as? DetailsViewController
             let selectedIndexPath = restaurantTV.indexPathForSelectedRow
-            
-            dbInitAddRestaurant(restaurant: restaurants[(selectedIndexPath?.row)!])
  
             destVC?.restaurant = restaurants[(selectedIndexPath?.row)!]
             destVC?.restaurantIndex = selectedIndexPath
