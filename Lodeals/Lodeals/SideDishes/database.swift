@@ -13,6 +13,32 @@ let db = Firestore.firestore()
 
 // add a new document with a generated ID
 var ref : DocumentReference? = nil
+var restCollectionRef = db.collection("restaurants")
+
+/*
+ * First time adding a restaurant to the Firestore
+ * Creates a new document with its appropriate id
+ * Note: Does not add any deals
+ */
+func dbInitAddRestaurant(restaurant: Restaurant) {
+    
+    print("\nINSIDE DB INITIAL ADD RESTAURANT")
+    restCollectionRef = db.collection("restaurants")
+    
+    let restData: [String : Any] = [
+        "name": restaurant.name,
+        "deals": []
+    ]
+    
+    restCollectionRef.document(restaurant.id).setData(restData) {
+        err in
+        if let err = err {
+            print("Error writing restaurant \(restaurant.name) into database: \(err)")
+        } else {
+            print("Restaurant \(restaurant.name) successfully written into database")
+        }
+    }
+}
 
 func addFirstDocument() {
     ref = db.collection("restaurants").addDocument(data: [

@@ -122,8 +122,9 @@ class Restaurant {
         
 //        var repeatPhotoFlag = false
         // skip first photo since we already have it
+        print("images from API(\(String(describing: businessStruct.photos?.count))): \(String(describing: businessStruct.photos))")
         
-        if images.count < (businessStruct.photos?.count)! {
+        if images.count <= (businessStruct.photos?.count)! {
             for (index, photo) in (businessStruct.photos?.enumerated())! {
                 if !images.contains(photo) {
                     images.append(photo)

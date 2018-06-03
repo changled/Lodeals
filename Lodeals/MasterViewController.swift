@@ -86,6 +86,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             DispatchQueue.global().async {
                 let imageData = try? Data(contentsOf: URL(string: rest.images[0])!)
+                
                 DispatchQueue.main.async {
                     cell?.iconImageView.image = UIImage(data: imageData!)
                 }
@@ -125,6 +126,8 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if(segue.identifier == "showDetailsVC") {
             let destVC = segue.destination as? DetailsViewController
             let selectedIndexPath = restaurantTV.indexPathForSelectedRow
+            
+            dbInitAddRestaurant(restaurant: restaurants[(selectedIndexPath?.row)!])
  
             destVC?.restaurant = restaurants[(selectedIndexPath?.row)!]
             destVC?.restaurantIndex = selectedIndexPath

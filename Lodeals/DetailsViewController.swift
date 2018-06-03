@@ -39,22 +39,16 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tagsLabel.text = restaurant?.tags.joined(separator: ", ")
         setLabelFrame(origin: CGPoint(x: 28, y: 163), label: tagsLabel, maxWidth: 357)
         
+        imageLabel.isHidden = true
+        resetExpansionToFalse()
         
         if restaurant?.alias != "" {
             Restaurant.getBusinessDetails(restaurant: restaurant!) {
                 completedRestaurant in
                 
                 completedRestaurant.printRestaurantDetails()
-                
-                DispatchQueue.main.sync {
-                    self.resetExpansionToFalse()
-                    print("LOADING IMAGES!!!")
-                    self.loadImages()
-                }
+                self.loadImages()
             }
-        }
-        else {
-            resetExpansionToFalse()
         }
     }
     
@@ -69,23 +63,28 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
      */
     func loadImages() {
         if let images = restaurant?.images {
-            imageLabel.isHidden = true
-            
             for (imgIndex, image) in images.enumerated() {
                 if imgIndex >= 4 {
                     print("   BREAKING b/c index is: \(imgIndex)")
                     break
                 }
-                print("for image: \(image)")
-                
-                let imageData = try? Data(contentsOf: URL(string: image)!)
-                let xValue = self.imageXSpacingDict[imgIndex % 4]
-                let yValue = tagsLabel.frame.origin.y + tagsLabel.frame.size.height + 8 // add y-value to end of tags
-                let newImage = UIImageView(frame: CGRect(x: Int(xValue!), y: Int(yValue), width: 70, height: 70))
-                
-                newImage.image = UIImage(data: imageData!)
-                self.view.insertSubview(newImage, at: 0)
+
+                DispatchQueue.global().async {
+                    let imageData = try? Data(contentsOf: URL(string: image)!)
+
+                    DispatchQueue.main.async {
+                        let xValue = self.imageXSpacingDict[imgIndex % 4]
+                        let yValue = self.tagsLabel.frame.origin.y + self.tagsLabel.frame.size.height + 8 // add y-value to end of tags
+                        let newImage = UIImageView(frame: CGRect(x: Int(xValue!), y: Int(yValue), width: 70, height: 70))
+                        
+                        newImage.image = UIImage(data: imageData!)
+                        self.view.insertSubview(newImage, at: 0)
+                    }
+                }
             }
+        }
+        else {
+            self.imageLabel.isHidden = false
         }
     }
     
@@ -182,7 +181,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
     }
     
-    // MARK: -- TABLE VIEW HEADER
+    // MARK: -- TABLE VIEW
     
     func numberOfSections(in tableView: UITableView) -> Int {
         print("\n\nDEALS COUNT FOR \(restaurant!.name): \(restaurant!.deals.count)")
@@ -222,8 +221,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func resetExpansionToFalse() {
-        print("\n\nRESET EXPANSION TO FALSE(): \(String(describing: restaurant?.deals))")
-        
         for _ in (restaurant?.deals)! {
             dealIsExpanded.append(false)
         }
