@@ -23,6 +23,13 @@ class RestaurantTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        iconImageView.image = nil
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,5 +37,4 @@ class RestaurantTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
