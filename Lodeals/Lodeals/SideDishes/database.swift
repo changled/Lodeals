@@ -52,7 +52,8 @@ func dbAddDeal(restaurant: Restaurant, deal: Deal) {
         "restaurant": ["name": restaurant.name, "id": restaurant.id],
         "title": deal.shortDescription,
         "description": deal.description,
-        "verifications": 1 //just use as a count for now; one because whoever created it automatically verifies it by default
+        "verifications": 1, //just use as a count for now; one because whoever created it automatically verifies it by default
+        "initialization": ["year": deal.lastUsed.year, "month": deal.lastUsed.month, "day": deal.lastUsed.day, "minute": deal.lastUsed.minute, "second": deal.lastUsed.second]
     ]
     
     let dealDocumentRef = dealCollectionRef.addDocument(data: dealData) {
@@ -111,7 +112,7 @@ func dbRestaurantExists(restaurant: Restaurant, completion: @escaping (Bool) -> 
     }
 }
 
-func dbUpdateRestaurantWithDeals(restaurant: Restaurant) {
+func dbUpdateRestaurantWithDeals(restaurant: Restaurant, completion: @escaping ([String]?) -> Void) {
     print("\n(dbUpdateRestaurantWithDeals) GET DEALS IF RESTAURANT (\(restaurant.name) EXISTS IN DATABASE...")
     let restDocumentRef = restCollectionRef.document(restaurant.id)
     
@@ -136,19 +137,10 @@ func dbUpdateRestaurantWithDeals(restaurant: Restaurant) {
                     print("   \(deals.count) deals for \(restaurant.name) found in the database with ids \(deals)")
                 }
                 
-                for deal in deals {
-                    dbGetDealWithID(id: deal, restID: restaurant.id) {
-                        newDeal in
-                        
-                        if let newDeal = newDeal {
-                            newDeal.printDeal()
-                        }
-                    }
-                }
+                completion(deals)
             }
             else {
                 print("   could not find \(restaurant.name) in database")
-//                completion(false)
             }
         }
     }
@@ -182,7 +174,7 @@ func dbGetDealWithID(id: String, restID: String, completion: @escaping (Deal?) -
         }
     }
 }
-
+// ----------------------------------------------------------------------------------------------------------------
 
 
 

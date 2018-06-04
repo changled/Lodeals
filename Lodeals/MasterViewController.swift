@@ -23,7 +23,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        restaurants = preAddRestaurants()
+//        restaurants = preAddRestaurants()
         let apiYelpURL = getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499)
         
         // Get instantiations of Restaurant class from API call determined by apiYelpURL and asynchronously update TV
@@ -31,8 +31,27 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             completedRestaurants in
             
             for restaurant in completedRestaurants {
+                
+                //for each deal, add to array
+                dbUpdateRestaurantWithDeals(restaurant: restaurant) {
+                    deals in
+                    
+                    if let deals = deals {
+                        for deal in deals {
+                            dbGetDealWithID(id: deal, restID: restaurant.id) {
+                                newDeal in
+                                
+                                if let newDeal = newDeal {
+                                    restaurant.deals.append(newDeal)
+                                    print("   adding new deal \(newDeal.shortDescription) to restaurant \(restaurant.name) now with \(restaurant.deals.count) deals:")
+//                                    newDeal.printDeal()
+                                }
+                            }
+                        }
+                    }
+                }
+                
                 restaurant.printRestaurant()
-                dbUpdateRestaurantWithDeals(restaurant: restaurant)
                 self.restaurants.append(restaurant)
                 
                 DispatchQueue.main.async {

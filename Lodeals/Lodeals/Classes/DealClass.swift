@@ -27,14 +27,22 @@ class Deal {
         self.description = description
         self.totalTimesUsed = totalTimesUsed
         self.userTimesUsed = userTimesUsed
-//        self.verificationTime = nil
         self.dealIsVerified = dealIsVerified
         
-        if((lastUsed) != nil) {
+        if(lastUsed != nil) {
             self.lastUsed = lastUsed!
         }
         else {
+            let now = Date()
+            let calender = Calendar.current
+            
             self.lastUsed = DateComponents(calendar: Calendar.current)
+            self.lastUsed.year = calender.component(.year, from: now)
+            self.lastUsed.month = calender.component(.month, from: now)
+            self.lastUsed.day = calender.component(.day, from: now)
+            self.lastUsed.hour = calender.component(.hour, from: now)
+            self.lastUsed.minute = calender.component(.minute, from: now)
+            self.lastUsed.second = calender.component(.second, from: now)
         }
         
         self.lastlastUsed = self.lastUsed
@@ -71,8 +79,17 @@ class Deal {
     func getLastUseStr(prescript: String = "", postscript: String = "") -> String {
         let now = Date()
         let calendar = Calendar.current
+        var diffYear = 2017
         
-        let diffYear = calendar.component(.year, from: now) - lastUsed.year! //Fatal Error: Unexpectedly found nil while unwrapping Optional value lastUsed
+        if let lastUsedYear = lastUsed.year {
+            diffYear = calendar.component(.year, from: now) - lastUsedYear
+            print("diffYear correctly set!!!!!!!!!! WHOHOHOLHOLH")
+        }
+        else {
+            print("error in if let!!!!!!!!!! WHOHOHOLHOLH")
+        }
+//        let diffYear = calendar.component(.year, from: now) - lastUsed.year! //Fatal Error: Unexpectedly found nil while unwrapping Optional value lastUsed
+        
         if(diffYear >= 1) {
             return ("\(prescript)\(diffYear) years\(postscript)")
         }
