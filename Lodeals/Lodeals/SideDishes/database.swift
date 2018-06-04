@@ -84,7 +84,7 @@ func dbAddDeal(restaurant: Restaurant, deal: Deal) {
             }
         }
         else {
-            print("   error: restuarant \(restaurant.name) does not exist in database (dbAddDeal)")
+            print("   error b/c restuarant \(restaurant.name) does not exist in database (dbAddDeal): \(String(describing: err))")
         }
     }
 }
@@ -112,7 +112,7 @@ func dbRestaurantExists(restaurant: Restaurant, completion: @escaping (Bool) -> 
 }
 
 func dbUpdateRestaurantWithDeals(restaurant: Restaurant) {
-    print("\n(dbUpdateRestaurantWithDeals) GET DEALS IF RESTAURANT EXISTS IN DATABASE...")
+    print("\n(dbUpdateRestaurantWithDeals) GET DEALS IF RESTAURANT (\(restaurant.name) EXISTS IN DATABASE...")
     let restDocumentRef = restCollectionRef.document(restaurant.id)
     
     restDocumentRef.getDocument { (document, err) in
@@ -126,16 +126,24 @@ func dbUpdateRestaurantWithDeals(restaurant: Restaurant) {
                     print("   error: no deals for \(restaurant.name) in the database")
                 }
                 else if deals.count < 2 {
-                    print("   one deal for \(restaurant.name) found in the database with id \(deals[0])")
-                    
-//                    newDeal1 = Deal(id: deals[0])
-//                    (id: String = "", restaurantID: String = "", shortDescription: String = "", description: String = "", totalTimesUsed: Int = 0, userTimesUsed: Int = 0, lastUsed: DateComponents?, dealIsVerified: Bool = false)
+                    print("   1 deal for \(restaurant.name) found in the database with id \(deals[0])")
+                    //add deal
                 }
                 else if deals.count < 3 {
-                    print("   two deals for \(restaurant.name) found in the database with ids \(deals[0]) and \(deals[1])")
+                    print("   2 deals for \(restaurant.name) found in the database with ids \(deals[0]) and \(deals[1])")
                 }
                 else {
-                    print("   more than two deals found in the database with ids \(deals)")
+                    print("   \(deals.count) deals for \(restaurant.name) found in the database with ids \(deals)")
+                }
+                
+                for deal in deals {
+                    dbGetDealWithID(id: deal, restID: restaurant.id) {
+                        newDeal in
+                        
+                        if let newDeal = newDeal {
+                            newDeal.printDeal()
+                        }
+                    }
                 }
             }
             else {
@@ -146,9 +154,34 @@ func dbUpdateRestaurantWithDeals(restaurant: Restaurant) {
     }
 }
 
-//func dbGetDealWithID() {
-//
-//}
+/*
+ * This function checks Firestore for a document with the provided id in the deals collection
+ *
+ */
+func dbGetDealWithID(id: String, restID: String, completion: @escaping (Deal?) -> Void) {
+    print("\n(dbGetDealWithID) GET DEAL WITH ID \(id)")
+    
+    let dealDocumentRef = dealCollectionRef.document(id)
+    
+    dealDocumentRef.getDocument {
+        (document, err) in
+        
+        if let document = document, document.exists {
+            let dealDict = document.data()
+            print("   deal \(String(describing: dealDict["title"])) with id \(id) found in database (dbGetDealWithID)")
+            let title = dealDict["title"] as! String
+            let description = dealDict["description"] as! String
+            let totalTimesUsed = dealDict["verifications"] as! Int
+            
+            let newDeal = Deal(id: id, restaurantID: restID, shortDescription: title, description: description, totalTimesUsed: totalTimesUsed, lastUsed: nil)
+            
+            completion(newDeal)
+        }
+        else {
+            print("   error finding deal with id \(id) in database (dbGetDealWithID): \(String(describing: err))")
+        }
+    }
+}
 
 
 

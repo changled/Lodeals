@@ -41,9 +41,11 @@ class Deal {
     }
     
     func printDeal() {
-        print("PRINTING DEAL \(shortDescription)")
+        print("PRINTING DEAL \(shortDescription) with id \(id)")
         print("\tfor restaurant with id: \(restaurantID)")
-        print("\tdescription: \(description)")
+        print("\ttitle: \(description)")
+        print("\tdescription: \(shortDescription)")
+        print("\ttotal times used: \(totalTimesUsed)")
     }
     
     func setLastUse(year: Int = 2001, month: Int = 1, day: Int = 1, hour: Int = 1, minute: Int = 1) {
