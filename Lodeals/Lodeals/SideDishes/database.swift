@@ -23,7 +23,7 @@ var dealCollectionRef = db.collection("deals")
  */
 func dbInitAddRestaurant(restaurant: Restaurant) {
     
-    print("\n(dbInitAddRestaurant) ADDING NEW RESTAURANT \(restaurant.name)...")
+//    print("\n(dbInitAddRestaurant) ADDING NEW RESTAURANT \(restaurant.name)...")
     restCollectionRef = db.collection("restaurants")
     
     let restData: [String : Any] = [
@@ -47,7 +47,7 @@ func dbInitAddRestaurant(restaurant: Restaurant) {
  * Decided to keep "deals" field in "restaurant" document as an array of Strings because even though it'll be more expensive to get "restaurant" data and then "set" it, it's more often we'll retrieve deals data (less expensive) than than to set it
  */
 func dbAddDeal(restaurant: Restaurant, deal: Deal) {
-    print("\n(dbAddDeal) ADDING NEW DEAL \(deal.shortDescription) to \(restaurant.name)...")
+//    print("\n(dbAddDeal) ADDING NEW DEAL \(deal.shortDescription) to \(restaurant.name)...")
     let dealData: [String : Any] = [
         "restaurant": ["name": restaurant.name, "id": restaurant.id],
         "title": deal.shortDescription,
@@ -151,7 +151,7 @@ func dbUpdateRestaurantWithDeals(restaurant: Restaurant, completion: @escaping (
  *
  */
 func dbGetDealWithID(id: String, restID: String, completion: @escaping (Deal?) -> Void) {
-    print("\n(dbGetDealWithID) GET DEAL WITH ID \(id)")
+//    print("\n(dbGetDealWithID) GET DEAL WITH ID \(id)")
     
     let dealDocumentRef = dealCollectionRef.document(id)
     
@@ -160,7 +160,7 @@ func dbGetDealWithID(id: String, restID: String, completion: @escaping (Deal?) -
         
         if let document = document, document.exists {
             let dealDict = document.data()
-            print("   deal \(String(describing: dealDict["title"])) with id \(id) found in database (dbGetDealWithID)")
+//            print("   deal \(String(describing: dealDict["title"])) with id \(id) found in database (dbGetDealWithID)")
             let title = dealDict["title"] as! String
             let description = dealDict["description"] as! String
             let totalTimesUsed = dealDict["verifications"] as! Int
