@@ -200,6 +200,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
 //    Open yelp photos link externally
     @IBAction func viewMorePhotosOnYelp(_ sender: Any) {
+        viewMorePhotosOnYelpButton.setTitle("opening Yelp images...", for: .normal)
+        
         if let yelpURL = URL(string: "https://www.yelp.com/biz_photos/\(String(describing: restaurant?.id))")
         {
             if UIApplication.shared.canOpenURL(yelpURL)
