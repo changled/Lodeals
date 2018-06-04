@@ -124,22 +124,22 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if rest.deals.count > 0 { // at least one deal
             cell?.deal1Label?.text = rest.deals[0].shortDescription
             cell?.deal1TimeLabel?.text = rest.deals[0].getLastUseStr(prescript: "...", postscript: " ago")
+            
+            if(rest.deals.count > 1) { //at least 2 deals
+                cell?.deal2Label?.text = rest.deals[1].shortDescription
+                cell?.deal2TimeLabel?.text = rest.deals[1].getLastUseStr(prescript: "...", postscript: " ago")
+            }
+            else { //only one deal
+                cell?.deal2Label?.text = "only one deal -- add one!"
+                cell?.deal2TimeLabel?.text = ""
+                
+            }
         }
         else { // no deals
             cell?.deal1Label?.text = "currently no deals"
             cell?.deal2Label?.text = "currently no deals"
             cell?.deal1TimeLabel?.text = ""
             cell?.deal2TimeLabel?.text = ""
-        }
-        
-        if(rest.deals.count > 1) { //at least 2 deals
-            cell?.deal2Label?.text = rest.deals[1].shortDescription
-            cell?.deal2TimeLabel?.text = rest.deals[1].getLastUseStr(prescript: "...", postscript: " ago")
-        }
-        else { //only one deal
-            cell?.deal2Label?.text = "only one deal -- add one!"
-            cell?.deal2TimeLabel?.text = ""
-            
         }
         
         return cell!
