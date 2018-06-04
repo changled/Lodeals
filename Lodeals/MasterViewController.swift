@@ -30,7 +30,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         Restaurant.getRestaurantsFromSearch(apiYelpURL: apiYelpURL) {
             completedRestaurants in
             
-            for restaurant in completedRestaurants {
+            for (restIndex, restaurant) in completedRestaurants.enumerated() {
                 
                 //for each deal, add to array
                 dbUpdateRestaurantWithDeals(restaurant: restaurant) {
@@ -45,6 +45,10 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                     restaurant.deals.append(newDeal)
                                     print("   adding new deal \(newDeal.shortDescription) to restaurant \(restaurant.name) now with \(restaurant.deals.count) deals:")
 //                                    newDeal.printDeal()
+                                    
+                                    DispatchQueue.main.async {
+                                        self.restaurantTV.reloadRows(at: [IndexPath(row: restIndex, section: 0)], with: .automatic)
+                                    }
                                 }
                             }
                         }
@@ -64,6 +68,8 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+//    func reloadSingleDeal(cellIndex: Int, dealText: String)
     
     // MARK: -- UNWIND
     
