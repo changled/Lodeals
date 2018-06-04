@@ -17,6 +17,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tagsLabel: UILabel!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var dealTableView: UITableView!
+    @IBOutlet weak var viewMorePhotosOnYelpButton: UIButton!
     
     var restaurant : Restaurant?
     var restaurantIndex : IndexPath?
@@ -193,6 +194,27 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func goBackToOneButtonTapped(_sender: Any) {
         performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
+    }
+    
+    // MARK: -- OTHER UI ELEMENTS
+    
+//    Open yelp photos link externally
+    @IBAction func viewMorePhotosOnYelp(_ sender: Any) {
+        if let yelpURL = URL(string: "https://www.yelp.com/biz_photos/\(String(describing: restaurant?.id))")
+        {
+            if UIApplication.shared.canOpenURL(yelpURL)
+            {
+                UIApplication.shared.open(yelpURL, options: [:], completionHandler: nil)
+            }
+            else {
+            // redirect to Safari because the user doesn't have the Yelp app
+//                UIApplication.shared.open(URL(string: "https://www.yelp.com/biz_photos/\(String(describing: self.restaurant?.id))")!)
+                print("   error in viewMorePhotosOnYelp action button: cannot open link")
+            }
+        }
+        else {
+            print("   error in viewMorePhotosOnYelp action button: cannot unwrap URL")
+        }
     }
     
     // MARK: -- TABLE VIEW

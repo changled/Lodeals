@@ -94,7 +94,7 @@ func dbAddDeal(restaurant: Restaurant, deal: Deal) {
  * Given a Restaurant, check if it exists in Firestore and returns the appropriate boolean
  */
 func dbRestaurantExists(restaurant: Restaurant, completion: @escaping (Bool) -> Void) {
-    print("\n(dbRestaurantExists) CHECKING WHETHER RESTAURANT EXISTS IN DATABASE...")
+//    print("\n(dbRestaurantExists) CHECKING WHETHER RESTAURANT EXISTS IN DATABASE...")
     let restDocumentRef = restCollectionRef.document(restaurant.id)
     
     restDocumentRef.getDocument { (document, err) in
@@ -113,34 +113,39 @@ func dbRestaurantExists(restaurant: Restaurant, completion: @escaping (Bool) -> 
 }
 
 func dbUpdateRestaurantWithDeals(restaurant: Restaurant, completion: @escaping ([String]?) -> Void) {
-    print("\n(dbUpdateRestaurantWithDeals) GET DEALS IF RESTAURANT (\(restaurant.name) EXISTS IN DATABASE...")
+//    print("\n(dbUpdateRestaurantWithDeals) GET DEALS IF RESTAURANT (\(restaurant.name) EXISTS IN DATABASE...")
     let restDocumentRef = restCollectionRef.document(restaurant.id)
     
-    restDocumentRef.getDocument { (document, err) in
+    restDocumentRef.getDocument {
+        (document, err) in
         if let document = document {
             
             if document.exists {
                 print("   \(restaurant.name) exists in database: \(document.data()["name"] as! String)")
                 let deals = document.data()["deals"] as! [String]
                 
-                if deals.count < 1 {
-                    print("   error: no deals for \(restaurant.name) in the database")
-                }
-                else if deals.count < 2 {
-                    print("   1 deal for \(restaurant.name) found in the database with id \(deals[0])")
-                    //add deal
-                }
-                else if deals.count < 3 {
-                    print("   2 deals for \(restaurant.name) found in the database with ids \(deals[0]) and \(deals[1])")
-                }
-                else {
-                    print("   \(deals.count) deals for \(restaurant.name) found in the database with ids \(deals)")
-                }
+//                if deals.count < 1 {
+//                    print("   error: no deals for \(restaurant.name) in the database")
+//                }
+//                else if deals.count < 2 {
+//                    print("   1 deal for \(restaurant.name) found in the database with id \(deals[0])")
+//                    //add deal
+//                }
+//                else if deals.count < 3 {
+//                    print("   2 deals for \(restaurant.name) found in the database with ids \(deals[0]) and \(deals[1])")
+//                }
+//                else {
+//                    print("   \(deals.count) deals for \(restaurant.name) found in the database with ids \(deals)")
+//                }
                 
                 completion(deals)
             }
-            else {
-                print("   could not find \(restaurant.name) in database")
+//            else {
+//                print("   could not find \(restaurant.name) in database")
+//            }
+        
+            if let err = err {
+                print("   error in dbUpdateRestaurantWithDeals for restaurant \(restaurant.name): \(err)")
             }
         }
     }
