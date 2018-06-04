@@ -65,24 +65,26 @@ func dbAddDeal(restaurant: Restaurant, deal: Deal) {
     }
     
     let restDocumentRef = restCollectionRef.document(restaurant.id)
-    var restDealsArr : [String] = []
     
     restDocumentRef.getDocument { (document, err) in
         if let document = document, document.exists {
-            restDealsArr = document.data()["deals"] as! [String]
-        }
-    }
-
-    restDealsArr.append(dealDocumentRef.documentID)
-    
-    restDocumentRef.updateData([
-        "deals": restDealsArr
-    ]) { err in
-        if let err = err {
-            print("   error adding to restaurant \(restaurant.name) new deal \(deal.shortDescription) with id \(dealDocumentRef.documentID): \(err)")
+            var restDealsArr = document.data()["deals"] as! [String]
+            restDealsArr.append(dealDocumentRef.documentID)
+            
+            // fixed bug: this has to be inside the closure so the deals won't get overwritten
+            restDocumentRef.updateData([
+                "deals": restDealsArr
+            ]) { err in
+                if let err = err {
+                    print("   error adding to restaurant \(restaurant.name) new deal \(deal.shortDescription) with id \(dealDocumentRef.documentID): dbAddDeal -- \(err)")
+                }
+                else {
+                    print("   deal \(deal.shortDescription) with id \(dealDocumentRef.documentID) successfully added to restaurant \(restaurant.name) (dbAddDeal): now \(restDealsArr)")
+                }
+            }
         }
         else {
-            print("   deal \(deal.shortDescription) with id \(dealDocumentRef.documentID) successfully added to restaurant \(restaurant.name)")
+            print("   error: restuarant \(restaurant.name) does not exist in database (dbAddDeal)")
         }
     }
 }
@@ -108,6 +110,48 @@ func dbRestaurantExists(restaurant: Restaurant, completion: @escaping (Bool) -> 
         }
     }
 }
+
+func dbUpdateRestaurantWithDeals(restaurant: Restaurant) {
+    print("\n(dbUpdateRestaurantWithDeals) GET DEALS IF RESTAURANT EXISTS IN DATABASE...")
+    let restDocumentRef = restCollectionRef.document(restaurant.id)
+    
+    restDocumentRef.getDocument { (document, err) in
+        if let document = document {
+            
+            if document.exists {
+                print("   \(restaurant.name) exists in database: \(document.data()["name"] as! String)")
+                let deals = document.data()["deals"] as! [String]
+                
+                if deals.count < 1 {
+                    print("   error: no deals for \(restaurant.name) in the database")
+                }
+                else if deals.count < 2 {
+                    print("   one deal for \(restaurant.name) found in the database with id \(deals[0])")
+                    
+//                    newDeal1 = Deal(id: deals[0])
+//                    (id: String = "", restaurantID: String = "", shortDescription: String = "", description: String = "", totalTimesUsed: Int = 0, userTimesUsed: Int = 0, lastUsed: DateComponents?, dealIsVerified: Bool = false)
+                }
+                else if deals.count < 3 {
+                    print("   two deals for \(restaurant.name) found in the database with ids \(deals[0]) and \(deals[1])")
+                }
+                else {
+                    print("   more than two deals found in the database with ids \(deals)")
+                }
+            }
+            else {
+                print("   could not find \(restaurant.name) in database")
+//                completion(false)
+            }
+        }
+    }
+}
+
+//func dbGetDealWithID() {
+//
+//}
+
+
+
 
 func addFirstDocument() {
     ref = db.collection("restaurants").addDocument(data: [

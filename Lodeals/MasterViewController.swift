@@ -32,6 +32,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             for restaurant in completedRestaurants {
                 restaurant.printRestaurant()
+                dbUpdateRestaurantWithDeals(restaurant: restaurant)
                 self.restaurants.append(restaurant)
                 
                 DispatchQueue.main.async {
