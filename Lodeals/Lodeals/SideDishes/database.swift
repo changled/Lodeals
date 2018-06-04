@@ -53,7 +53,7 @@ func dbAddDeal(restaurant: Restaurant, deal: Deal) {
         "title": deal.shortDescription,
         "description": deal.description,
         "verifications": 1, //just use as a count for now; one because whoever created it automatically verifies it by default
-        "initialization": ["year": deal.lastUsed.year, "month": deal.lastUsed.month, "day": deal.lastUsed.day, "minute": deal.lastUsed.minute, "second": deal.lastUsed.second]
+        "initialization": ["year": deal.lastUsed.year, "month": deal.lastUsed.month, "day": deal.lastUsed.day, "hour": deal.lastUsed.hour, "minute": deal.lastUsed.minute, "second": deal.lastUsed.second]
     ]
     
     let dealDocumentRef = dealCollectionRef.addDocument(data: dealData) {
@@ -164,8 +164,10 @@ func dbGetDealWithID(id: String, restID: String, completion: @escaping (Deal?) -
             let title = dealDict["title"] as! String
             let description = dealDict["description"] as! String
             let totalTimesUsed = dealDict["verifications"] as! Int
+            let initTime = dealDict["initialization"] as! [String : Int]
             
             let newDeal = Deal(id: id, restaurantID: restID, shortDescription: title, description: description, totalTimesUsed: totalTimesUsed, lastUsed: nil)
+            newDeal.setLastUse(year: initTime["year"]!, month: initTime["month"]!, day: initTime["day"]!, hour: initTime["hour"]!, minute: initTime["minute"]!)
             
             completion(newDeal)
         }

@@ -41,7 +41,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         imageLabel.isHidden = true
         resetExpansionToFalse()
-        print("\n\tINSIDE DETAILSVC")
         
         // just temporarily check alias against "" to be able to handle hard-coded restaurants
         if restaurant?.alias != "" {
@@ -199,12 +198,12 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: -- TABLE VIEW
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("\n\nDEALS COUNT FOR \(restaurant!.name): \(restaurant!.deals.count)")
+//        print("\n\nDEALS COUNT FOR \(restaurant!.name): \(restaurant!.deals.count)")
         return restaurant!.deals.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("DEAL IS EXPANDED COUNT: \(dealIsExpanded) versus section number \(section)")
+//        print("DEAL IS EXPANDED COUNT: \(dealIsExpanded) versus section number \(section)")
         
         // check if dealsIsExpanded array is empty before trying to access inside it to fix fatal error
         if dealIsExpanded.count <= 0 || !dealIsExpanded[section] {

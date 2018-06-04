@@ -74,9 +74,11 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let restaurantIndex: Int = senderVC.restaurantIndex!.section + senderVC.restaurantIndex!.row
                 
                 restaurants[restaurantIndex] = editedRestaurant!
+                restaurantTV.reloadRows(at: [IndexPath(row: senderVC.restaurantIndex!.row, section: 0)], with: .automatic)
              }
             
-            restaurantTV.reloadData()
+//            restaurantTV.reloadData()
+            
         }
     }
     
@@ -118,23 +120,26 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell?.imageLabel?.text = "no img"
         }
         
-        // default to "currently no deals" if fewer than 2 deals
-        if rest.deals.count > 0 {
+        // default to "currently no deals" if no deals fewer than 2 deals
+        if rest.deals.count > 0 { // at least one deal
             cell?.deal1Label?.text = rest.deals[0].shortDescription
             cell?.deal1TimeLabel?.text = rest.deals[0].getLastUseStr(prescript: "...", postscript: " ago")
         }
-        else {
+        else { // no deals
             cell?.deal1Label?.text = "currently no deals"
+            cell?.deal2Label?.text = "currently no deals"
             cell?.deal1TimeLabel?.text = ""
+            cell?.deal2TimeLabel?.text = ""
         }
         
-        if(rest.deals.count > 1) {
+        if(rest.deals.count > 1) { //at least 2 deals
             cell?.deal2Label?.text = rest.deals[1].shortDescription
             cell?.deal2TimeLabel?.text = rest.deals[1].getLastUseStr(prescript: "...", postscript: " ago")
         }
-        else {
-            cell?.deal2Label?.text = "currently no deals"
+        else { //only one deal
+            cell?.deal2Label?.text = "only one deal -- add one!"
             cell?.deal2TimeLabel?.text = ""
+            
         }
         
         return cell!

@@ -83,12 +83,11 @@ class Deal {
         
         if let lastUsedYear = lastUsed.year {
             diffYear = calendar.component(.year, from: now) - lastUsedYear
-            print("diffYear correctly set!!!!!!!!!! WHOHOHOLHOLH")
         }
         else {
-            print("error in if let!!!!!!!!!! WHOHOHOLHOLH")
+            //Fatal Error: Unexpectedly found nil while unwrapping Optional value lastUsed
+            print("error in if let of getLastUseStr!!!!!!!!!! ONOHOHOLHOLH")
         }
-//        let diffYear = calendar.component(.year, from: now) - lastUsed.year! //Fatal Error: Unexpectedly found nil while unwrapping Optional value lastUsed
         
         if(diffYear >= 1) {
             return ("\(prescript)\(diffYear) years\(postscript)")
