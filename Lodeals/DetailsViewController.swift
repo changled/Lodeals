@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    // MARK: -- SET UP
+//    MARK: -- SET UP
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -60,7 +60,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    // MARK: -- IMAGE HANDLING
+//    MARK: -- IMAGE HANDLING
     
     /*
      * Simply use CGRect() initializer to set x, y, width, and height values:
@@ -162,7 +162,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tagsLabel.frame = CGRect(origin: origin, size: labelSize)
     }
     
-    // MARK: -- UNWIND
+//    MARK: -- UNWIND
     
     @IBAction func unwindCancelFromConfirmAddDealVC(sender: UIStoryboardSegue) {
     }
@@ -204,11 +204,14 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
     }
     
-    // MARK: -- OTHER UI ELEMENTS
     
-//    Open yelp photos link externally
+//    MARK: -- OTHER UI ELEMENTS
+
+    // Open yelp photos link externally
     @IBAction func viewMorePhotosOnYelp(_ sender: Any) {
         viewMorePhotosOnYelpButton.setTitle("opening Yelp...", for: .normal)
+        // RGBA values for UICOlor are between 0 and 1
+        viewMorePhotosOnYelpButton.backgroundColor = UIColor(red: 200/225, green: 200/225, blue: 200/225, alpha: 1)
         
         if let yelpURL = URL(string: "https://www.yelp.com/biz/\(String(describing: restaurant?.id))")
         {
@@ -217,8 +220,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 UIApplication.shared.open(yelpURL, options: [:], completionHandler: nil)
             }
             else {
-            // redirect to Safari because the user doesn't have the Yelp app
-//                UIApplication.shared.open(URL(string: "https://www.yelp.com/biz_photos/\(String(describing: self.restaurant?.id))")!)
+                // redirect to Safari because the user doesn't have the Yelp app
+                // UIApplication.shared.open(URL(string: "https://www.yelp.com/biz_photos/\(String(describing: self.restaurant?.id))")!)
                 print("   error in viewMorePhotosOnYelp action button: cannot open link")
             }
         }
@@ -227,55 +230,17 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    // MARK: -- TABLE VIEW
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-//        print("\n\nDEALS COUNT FOR \(restaurant!.name): \(restaurant!.deals.count)")
-        return restaurant!.deals.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print("DEAL IS EXPANDED COUNT: \(dealIsExpanded) versus section number \(section)")
-        
-        // check if dealsIsExpanded array is empty before trying to access inside it to fix fatal error
-        if dealIsExpanded.count <= 0 || !dealIsExpanded[section] {
-            return 0
-        }
-        
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 52 //set as the same as the UIView DealSectionHeaderView
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let dealHeaderView = DealSectionHeaderView()
-        let thisDeal = restaurant?.deals[section]
-        
-        dealHeaderView.dealTitleLabel.text = thisDeal?.shortDescription
-        dealHeaderView.lastUsedLabel.text = thisDeal?.getLastUseStr(prescript: "...")
-        dealHeaderView.verifyButton?.tag = section
-        dealHeaderView.verifyButton?.addTarget(self, action: #selector(DetailsViewController.verifyAction(_:)), for: .touchUpInside)
-        setButton(isVerified: (thisDeal?.dealIsVerified)!, butt: (dealHeaderView.verifyButton)!)
-        dealHeaderView.tag = section
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DetailsViewController.TapGestureRecognizer(gestureRecognizer:)))
-        dealHeaderView.addGestureRecognizer(tapGesture)
-        
-        return dealHeaderView
-    }
-    
-    func resetExpansionToFalse() {
-        for _ in (restaurant?.deals)! {
-            dealIsExpanded.append(false)
-        }
-    }
-
     @objc func TapGestureRecognizer(gestureRecognizer: UIGestureRecognizer) {
         handleExpandClose(sender: gestureRecognizer)
     }
-
+    
+    // must be done in main because it's a UI operation (this is a UI operation?)
+    @objc func NoDealTapGestureRecognizer(gestureRecognizer: UIGestureRecognizer) {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "showAddDealVC", sender: self)
+        }
+    }
+    
     @objc func handleExpandClose(sender: UIGestureRecognizer) {
         let section = sender.view?.tag
         
@@ -293,11 +258,70 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func resetExpansionToFalse() {
+        for _ in (restaurant?.deals)! {
+            dealIsExpanded.append(false)
+        }
+    }
+    
+    
+//    MARK: -- TABLE VIEW
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        print("\n\nDEALS COUNT FOR \(restaurant!.name): \(restaurant!.deals.count)")
+        
+        // if there are no deals, the only section should be NoDealSectionHeaderView
+        if restaurant!.deals.count == 0 {
+            return 1
+        }
+        
+        return restaurant!.deals.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // check if dealsIsExpanded array is empty before trying to access inside it to fix fatal error
+        if dealIsExpanded.count <= 0 || !dealIsExpanded[section] {
+            return 0
+        }
+        
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // set as the same as the UIView DealSectionHeaderView
+        return 52
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if restaurant!.deals.count == 0 {
+            let noDealHeaderView = NoDealSectionHeaderView()
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.NoDealTapGestureRecognizer(gestureRecognizer:)))
+            noDealHeaderView.addGestureRecognizer(tapGesture)
+            
+            return noDealHeaderView
+        }
+        
+        let dealHeaderView = DealSectionHeaderView()
+        let thisDeal = restaurant?.deals[section]
+        
+        dealHeaderView.dealTitleLabel.text = thisDeal?.shortDescription
+        dealHeaderView.lastUsedLabel.text = thisDeal?.getLastUseStr(prescript: "...")
+        dealHeaderView.verifyButton?.tag = section
+        dealHeaderView.verifyButton?.addTarget(self, action: #selector(DetailsViewController.verifyAction(_:)), for: .touchUpInside)
+        setButton(isVerified: (thisDeal?.dealIsVerified)!, butt: (dealHeaderView.verifyButton)!)
+        dealHeaderView.tag = section
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DetailsViewController.TapGestureRecognizer(gestureRecognizer:)))
+        dealHeaderView.addGestureRecognizer(tapGesture)
+        
+        return dealHeaderView
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as? DealTableViewCell
         let thisDeal = restaurant?.deals[indexPath.section]
         
-//        print(thisDeal?.description.height(withConstrainedWidth: CGFloat(179), font: UIFont.systemFont(ofSize: 17.0)) as Any) //calculates minimum height given the width and text
+        //print(thisDeal?.description.height(withConstrainedWidth: CGFloat(179), font: UIFont.systemFont(ofSize: 17.0)) as Any) //calculates minimum height given the width and text
         
         cell?.descriptionLabel?.sizeToFit()
         cell?.descriptionLabel?.text = thisDeal?.description
@@ -305,7 +329,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell!
     }
     
-    // MARK: -- VERIFY BUTTON
+//    MARK: -- VERIFY BUTTON
     
     @IBAction func verifyAction(_ sender: UIButton) {
         let bool = !(restaurant?.deals[sender.tag].dealIsVerified)!
@@ -338,7 +362,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         butt.backgroundColor = bgColor
     }
     
-    // MARK: -- Navigation
+//    MARK: -- Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showAddDealVC") {
             let destVC = segue.destination as? AddDealViewController

@@ -10,7 +10,6 @@ import UIKit
 
 class NoDealSectionHeaderView: UIView {
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var SubmitDealButton: UIButton!
     
     //for using CustomView in code
     override init(frame: CGRect) {
