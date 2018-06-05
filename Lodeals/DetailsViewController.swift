@@ -18,6 +18,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var dealTableView: UITableView!
     @IBOutlet weak var viewMorePhotosOnYelpButton: UIButton!
+    @IBOutlet weak var yelpInfoLabel: UILabel!
     
     var restaurant : Restaurant?
     var restaurantIndex : IndexPath?
@@ -36,10 +37,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         nameLabel.text = restaurant?.name
         priceLabel.text = restaurant?.priceDict[(restaurant?.price)!]
         addressLabel.text = restaurant?.locationStr
-        
         tagsLabel.text = restaurant?.tags.joined(separator: ", ")
         setLabelFrame(origin: CGPoint(x: 28, y: 163), label: tagsLabel, maxWidth: 357)
-        
         imageLabel.isHidden = true
         resetExpansionToFalse()
         
@@ -48,6 +47,14 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             Restaurant.getBusinessDetails(restaurant: restaurant!) {
                 completedRestaurant in
                 self.restaurant?.printRestaurantDetails()
+                
+                DispatchQueue.main.async {
+                    let yelpRating = self.restaurant?.yelpRating ?? 0
+                    let yelpReviewCount = self.restaurant?.yelpReviewCount ?? 0
+                    
+                    self.yelpInfoLabel.text = "\(String(describing: yelpRating)) on Yelp\nfrom \(String(describing: yelpReviewCount)) reviews"
+                }
+                
                 self.loadImages()
             }
         }
@@ -65,8 +72,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func loadImages() {
         if let images = restaurant?.images {
             for (imgIndex, image) in images.enumerated() {
-                if imgIndex >= 4 {
-                    print("   BREAKING b/c index is: \(imgIndex)")
+                if imgIndex >= 3 { //there should only be 3 count total b/c Yelp only give you 3
                     break
                 }
 
@@ -79,6 +85,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                         let newImage = UIImageView(frame: CGRect(x: Int(xValue!), y: Int(yValue), width: 70, height: 70))
                         
                         newImage.image = UIImage(data: imageData!)
+                        newImage.layer.borderWidth = 1
+                        newImage.layer.cornerRadius = 3
                         self.view.insertSubview(newImage, at: 0)
                     }
                 }
@@ -200,9 +208,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
 //    Open yelp photos link externally
     @IBAction func viewMorePhotosOnYelp(_ sender: Any) {
-        viewMorePhotosOnYelpButton.setTitle("opening Yelp images...", for: .normal)
+        viewMorePhotosOnYelpButton.setTitle("opening Yelp...", for: .normal)
         
-        if let yelpURL = URL(string: "https://www.yelp.com/biz_photos/\(String(describing: restaurant?.id))")
+        if let yelpURL = URL(string: "https://www.yelp.com/biz/\(String(describing: restaurant?.id))")
         {
             if UIApplication.shared.canOpenURL(yelpURL)
             {

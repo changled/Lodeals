@@ -308,7 +308,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;address&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foU-BW-7ip">
-                                <rect key="frame" x="28" y="134" width="83" height="21"/>
+                                <rect key="frame" x="28" y="134" width="366" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -409,11 +409,20 @@
                                     <segue destination="i5g-Fx-Gmr" kind="show" identifier="showAddDealVC" id="KqG-UF-bDT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 on Yelp         from 0000 reviews" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LQ-6P-liE">
+                                <rect key="frame" x="286" y="194" width="121" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="DS4-Ku-3he"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7Jl-ZB-4tl">
-                                <rect key="frame" x="300" y="190" width="70" height="70"/>
+                                <rect key="frame" x="300" y="231" width="94" height="22"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                <state key="normal" title="View More Photos on Yelp"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="See More on Yelp!"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.textAlignment">
                                         <integer key="value" value="1"/>
@@ -425,7 +434,7 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -436,16 +445,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="foU-BW-7ip" firstAttribute="top" secondItem="GVn-3T-dir" secondAttribute="bottom" constant="8" id="1t7-CR-TbB"/>
-                            <constraint firstItem="7Jl-ZB-4tl" firstAttribute="top" secondItem="lYN-le-NdA" secondAttribute="bottom" constant="71" id="5rO-1j-eha"/>
                             <constraint firstItem="Qam-NT-Ocq" firstAttribute="leading" secondItem="rXn-fI-CS3" secondAttribute="leading" constant="28" id="7ln-qJ-NzN"/>
                             <constraint firstItem="GoY-Ls-3Rk" firstAttribute="top" secondItem="X2x-3k-0gn" secondAttribute="bottom" constant="28" id="Cf8-Xm-KU7"/>
                             <constraint firstItem="foU-BW-7ip" firstAttribute="leading" secondItem="rXn-fI-CS3" secondAttribute="leading" constant="28" id="FE5-eK-5ww"/>
                             <constraint firstItem="Qam-NT-Ocq" firstAttribute="top" secondItem="foU-BW-7ip" secondAttribute="bottom" constant="8" id="Foa-Qa-bP7"/>
                             <constraint firstItem="elH-bV-aAv" firstAttribute="top" secondItem="GoY-Ls-3Rk" secondAttribute="bottom" constant="2" id="Hex-Ha-7oK"/>
                             <constraint firstItem="rXn-fI-CS3" firstAttribute="trailing" secondItem="lYN-le-NdA" secondAttribute="trailing" constant="20" id="KWc-7u-85Q"/>
-                            <constraint firstItem="rXn-fI-CS3" firstAttribute="trailing" secondItem="7Jl-ZB-4tl" secondAttribute="trailing" constant="44" id="Lbh-wI-4IT"/>
+                            <constraint firstItem="rXn-fI-CS3" firstAttribute="trailing" secondItem="5LQ-6P-liE" secondAttribute="trailing" constant="7" id="LCI-BG-MYz"/>
+                            <constraint firstItem="rXn-fI-CS3" firstAttribute="trailing" secondItem="7Jl-ZB-4tl" secondAttribute="trailing" constant="20" id="Lbh-wI-4IT"/>
                             <constraint firstItem="rXn-fI-CS3" firstAttribute="bottom" secondItem="elH-bV-aAv" secondAttribute="bottom" id="Q1I-XC-WdG"/>
                             <constraint firstItem="X2x-3k-0gn" firstAttribute="top" secondItem="Qam-NT-Ocq" secondAttribute="bottom" constant="8" id="ROS-Sm-gxc"/>
+                            <constraint firstItem="5LQ-6P-liE" firstAttribute="top" secondItem="Qam-NT-Ocq" secondAttribute="bottom" constant="10" id="UXj-Qo-oxn"/>
+                            <constraint firstItem="5LQ-6P-liE" firstAttribute="leading" secondItem="X2x-3k-0gn" secondAttribute="trailing" constant="190" id="Uv4-th-KyE"/>
+                            <constraint firstItem="rXn-fI-CS3" firstAttribute="trailing" secondItem="foU-BW-7ip" secondAttribute="trailing" constant="20" id="VLE-me-atq"/>
                             <constraint firstItem="GVn-3T-dir" firstAttribute="top" secondItem="rXn-fI-CS3" secondAttribute="top" constant="27" id="ZmG-vP-zOW"/>
                             <constraint firstItem="GVn-3T-dir" firstAttribute="leading" secondItem="rXn-fI-CS3" secondAttribute="leading" constant="16" id="aOi-1A-wV7"/>
                             <constraint firstItem="rXn-fI-CS3" firstAttribute="trailing" secondItem="elH-bV-aAv" secondAttribute="trailing" id="adS-kP-fHn"/>
@@ -455,9 +467,10 @@
                             <constraint firstItem="lYN-le-NdA" firstAttribute="leading" secondItem="GVn-3T-dir" secondAttribute="trailing" constant="8" id="dr2-du-0Qf"/>
                             <constraint firstItem="elH-bV-aAv" firstAttribute="top" secondItem="3xW-zC-wZ8" secondAttribute="bottom" constant="2" id="eCM-9m-Tzs"/>
                             <constraint firstItem="elH-bV-aAv" firstAttribute="top" secondItem="BZo-nf-m4o" secondAttribute="bottom" constant="3" id="fug-fe-J23"/>
-                            <constraint firstItem="elH-bV-aAv" firstAttribute="top" secondItem="7Jl-ZB-4tl" secondAttribute="bottom" constant="52" id="inJ-b3-Wri"/>
+                            <constraint firstItem="elH-bV-aAv" firstAttribute="top" secondItem="7Jl-ZB-4tl" secondAttribute="bottom" constant="59" id="inJ-b3-Wri"/>
                             <constraint firstItem="GoY-Ls-3Rk" firstAttribute="leading" secondItem="rXn-fI-CS3" secondAttribute="leading" constant="20" id="nHp-2t-TDN"/>
                             <constraint firstItem="rXn-fI-CS3" firstAttribute="trailing" secondItem="X2x-3k-0gn" secondAttribute="trailing" constant="318" id="nrU-MB-mAX"/>
+                            <constraint firstItem="7Jl-ZB-4tl" firstAttribute="top" secondItem="5LQ-6P-liE" secondAttribute="bottom" constant="3" id="orB-G1-5yC"/>
                             <constraint firstItem="lYN-le-NdA" firstAttribute="top" secondItem="rXn-fI-CS3" secondAttribute="top" constant="34" id="qdT-8V-fYm"/>
                             <constraint firstItem="7Jl-ZB-4tl" firstAttribute="leading" secondItem="X2x-3k-0gn" secondAttribute="trailing" constant="204" id="wHE-B5-4dZ"/>
                             <constraint firstItem="X2x-3k-0gn" firstAttribute="leading" secondItem="rXn-fI-CS3" secondAttribute="leading" constant="28" id="zKY-U7-6ul"/>
@@ -481,6 +494,7 @@
                         <outlet property="priceLabel" destination="lYN-le-NdA" id="qDY-mg-YvY"/>
                         <outlet property="tagsLabel" destination="Qam-NT-Ocq" id="goG-EU-3o2"/>
                         <outlet property="viewMorePhotosOnYelpButton" destination="7Jl-ZB-4tl" id="KiM-eB-tGl"/>
+                        <outlet property="yelpInfoLabel" destination="5LQ-6P-liE" id="Gvk-dP-zY3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4s-B3-r68" userLabel="First Responder" sceneMemberID="firstResponder"/>
