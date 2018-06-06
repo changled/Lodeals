@@ -39,10 +39,6 @@
 		CCDEF26920A38CF200C3DA65 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26820A38CF200C3DA65 /* Extensions.swift */; };
 		CCDEF26B20A516CC00C3DA65 /* DealSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */; };
 		CCDEF26D20A519C500C3DA65 /* DealSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */; };
-		CCDEF27320A55D6B00C3DA65 /* maiScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDEF26F20A55D6900C3DA65 /* maiScreenshot.png */; };
-		CCDEF27420A55D6B00C3DA65 /* chrispyScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDEF27020A55D6900C3DA65 /* chrispyScreenshot.png */; };
-		CCDEF27520A55D6B00C3DA65 /* rachScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDEF27120A55D6A00C3DA65 /* rachScreenshot.png */; };
-		CCDEF27620A55D6B00C3DA65 /* gisScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDEF27220A55D6A00C3DA65 /* gisScreenshot.png */; };
 		E6FEF40F6FAE76C88DA0EEF7 /* Pods_LodealsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EFF61EAF2DFE0F1CDFE3B9C /* Pods_LodealsTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,10 +105,6 @@
 		CCDEF26820A38CF200C3DA65 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DealSectionHeaderView.xib; sourceTree = "<group>"; };
 		CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealSectionHeaderView.swift; sourceTree = "<group>"; };
-		CCDEF26F20A55D6900C3DA65 /* maiScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maiScreenshot.png; sourceTree = "<group>"; };
-		CCDEF27020A55D6900C3DA65 /* chrispyScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrispyScreenshot.png; sourceTree = "<group>"; };
-		CCDEF27120A55D6A00C3DA65 /* rachScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rachScreenshot.png; sourceTree = "<group>"; };
-		CCDEF27220A55D6A00C3DA65 /* gisScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gisScreenshot.png; sourceTree = "<group>"; };
 		F97AA1B41D52038C88FC0DAA /* Pods-LodealsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LodealsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LodealsTests/Pods-LodealsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				CCDEF26E20A5247100C3DA65 /* SideDishes */,
-				CCDEF27720A55D8500C3DA65 /* BaebitionImages */,
 				CCD7040220C09489009FB321 /* YelpAPI */,
 				CC6328AE20A258A300AD5C60 /* Classes */,
 				CCD7040320C09847009FB321 /* Views */,
@@ -277,17 +268,6 @@
 				CCDEF26820A38CF200C3DA65 /* Extensions.swift */,
 			);
 			path = SideDishes;
-			sourceTree = "<group>";
-		};
-		CCDEF27720A55D8500C3DA65 /* BaebitionImages */ = {
-			isa = PBXGroup;
-			children = (
-				CCDEF27020A55D6900C3DA65 /* chrispyScreenshot.png */,
-				CCDEF27220A55D6A00C3DA65 /* gisScreenshot.png */,
-				CCDEF26F20A55D6900C3DA65 /* maiScreenshot.png */,
-				CCDEF27120A55D6A00C3DA65 /* rachScreenshot.png */,
-			);
-			path = BaebitionImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,15 +383,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC7A0D10209E4D3200E1CE1B /* LaunchScreen.storyboard in Resources */,
-				CCDEF27520A55D6B00C3DA65 /* rachScreenshot.png in Resources */,
-				CCDEF27420A55D6B00C3DA65 /* chrispyScreenshot.png in Resources */,
 				CC7A0D0D209E4D3200E1CE1B /* Assets.xcassets in Resources */,
 				CCB6ECF220C7114C00E46E0E /* NoDealSectionHeaderView.xib in Resources */,
 				CC6328B220A25D2A00AD5C60 /* Podfile in Resources */,
-				CCDEF27320A55D6B00C3DA65 /* maiScreenshot.png in Resources */,
 				CCDEF26B20A516CC00C3DA65 /* DealSectionHeaderView.xib in Resources */,
 				CC602E8B20AC1B5400088B2A /* GoogleService-Info.plist in Resources */,
-				CCDEF27620A55D6B00C3DA65 /* gisScreenshot.png in Resources */,
 				CC7A0D0B209E4D3200E1CE1B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,13 +715,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5SM2L3VC37;
 				INFOPLIST_FILE = Lodeals/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = csc436.Lodeals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Lodeals/SideDishes/LodealsBridginHeader.h;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -755,13 +732,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5SM2L3VC37;
 				INFOPLIST_FILE = Lodeals/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = csc436.Lodeals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Lodeals/SideDishes/LodealsBridginHeader.h;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

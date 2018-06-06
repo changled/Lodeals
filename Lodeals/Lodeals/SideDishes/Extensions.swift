@@ -4,7 +4,7 @@
 //
 //  Created by Rachel Chang on 5/9/18.
 //  Copyright © 2018 Rachel Chang. All rights reserved.
-//
+//  Note: NOT USED
 
 import Foundation
 import UIKit
@@ -30,17 +30,18 @@ extension NSAttributedString {
 }
 
 //taken from StackOverflow (skywinder)
-extension UIImageView {
-    public func imageFromUrl(urlString: String) {
-        if let url = NSURL(string: urlString) {
-            let request = NSURLRequest(url: url as URL)
-            //sendAsynchronousRequest(_:queue:completionHandler:)' was deprecated in iOS 9.0: Use [NSURLSession dataTaskWithRequest:completionHandler:]
-            NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: OperationQueue.main) {
-                (response: URLResponse?, data: Data?, error: Error?) -> Void in
-                if let imageData = data {
-                    self.image = UIImage(data: imageData)
-                }
-            }
-        }
-    }
-}
+//extension UIImageView {
+//    public func imageFromUrl(urlString: String) {
+//        if let url = NSURL(string: urlString) {
+//            let request = NSURLRequest(url: url as URL)
+//            //sendAsynchronousRequest(_:queue:completionHandler:)' was deprecated in iOS 9.0: Use [NSURLSession dataTaskWithRequest:completionHandler:]
+//            NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: OperationQueue.main) {
+//                (response: URLResponse?, data: Data?, error: Error?) -> Void in
+//                if let imageData = data {
+//                    self.image = UIImage(data: imageData)
+//                }
+//            }
+//        }
+//    }
+//}
+

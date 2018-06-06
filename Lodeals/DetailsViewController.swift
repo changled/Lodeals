@@ -24,7 +24,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var restaurantIndex : IndexPath?
     var dealIsExpanded : [Bool] = []
     var lastlastUsed : [DateComponents] = []
-    let imageXSpacingDict : [Int : CGFloat] = [0: 28, 1: 118, 2: 208, 3: 298]
+//    let imageXSpacingDict : [Int : CGFloat] = [0: 28, 1: 118, 2: 208, 3: 298] // for iPhone 8 Plus
+    let imageXSpacingDict : [Int : CGFloat] = [0: 16, 1: 93, 2: 170, 3: 247] // for iPhone 7/8
     var images : [UIImageView] = []
     
     override func didReceiveMemoryWarning() {
@@ -133,26 +134,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
             }
         }
-    }
-    
-    // Used temporarily for testing/prototyping
-    func loadBaebitionImages() {
-        imageLabel.isHidden = true
-        
-        let gisView = UIImageView(frame: CGRect(x: 28, y: 210, width: 70, height: 70))
-        let maiView = UIImageView(frame: CGRect(x: 118, y: 210, width: 70, height: 70))
-        let crispyView = UIImageView(frame: CGRect(x: 208, y: 210, width: 70, height: 70))
-        let rachView = UIImageView(frame: CGRect(x: 298, y: 210, width: 70, height: 70))
-        
-        gisView.image = UIImage(named: "gisScreenshot.png")
-        maiView.image = UIImage(named: "maiScreenshot.png")
-        crispyView.image = UIImage(named: "chrispyScreenshot.png")
-        rachView.image = UIImage(named: "rachScreenshot.png")
-        
-        self.view.insertSubview(gisView, at: 0)
-        self.view.insertSubview(maiView, at: 0)
-        self.view.insertSubview(crispyView, at: 0)
-        self.view.insertSubview(rachView, at: 1)
     }
     
     // stretch to fit label text with width constraints
