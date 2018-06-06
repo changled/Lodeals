@@ -35,6 +35,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set view title; use "if let" so there's no optional '?' in the text
+        if let viewTitle = restaurant?.name {
+            self.navigationItem.title = "\(String(describing: viewTitle))"
+        }
+        
         nameLabel.text = restaurant?.name
         priceLabel.text = restaurant?.priceDict[(restaurant?.price)!]
         addressLabel.text = restaurant?.locationStr
