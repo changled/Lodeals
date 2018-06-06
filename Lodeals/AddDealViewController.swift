@@ -22,6 +22,12 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set view title; use "if let" so there's no optional '?' in the text
+        if let viewTitle = restaurant?.name {
+            self.navigationItem.title = "\(String(describing: viewTitle))"
+        }
+        
         titleLabel.text = ("New deal for \(restaurant?.name ?? "null"):")
         titleTextField.addTarget(self, action: #selector(didChangeTitle(_:)), for: .editingChanged)
     }

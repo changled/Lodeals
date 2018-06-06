@@ -6,6 +6,7 @@
 //  Copyright © 2018 Rachel Chang. All rights reserved. prototype branch
 //  My Yelp API Key: qQJmRKBK0HOd7E4mBxhhUXaeKEotiUOqkuN3G3mrPM4fvsUdM_RkJc86_5ah25aW6V_4Ke_53wsbG1b8VtFx2AZo_gV1r-5dDMriM-guhV_UC1iorPTNosXGvir-WnYx
 // SLO Address Coordinates: latitude=35.300499, longitude=-120.677059
+// TO-DO: How can I add a toolbar above the keyboard
 
 import UIKit
 import GoogleMaps

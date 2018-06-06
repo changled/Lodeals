@@ -198,21 +198,26 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         viewMorePhotosOnYelpButton.setTitle("opening Yelp...", for: .normal)
         // RGBA values for UICOlor are between 0 and 1
         viewMorePhotosOnYelpButton.backgroundColor = UIColor(red: 200/225, green: 200/225, blue: 200/225, alpha: 1)
+        print("inside yelp link")
         
-        if let yelpURL = URL(string: "https://www.yelp.com/biz/\(String(describing: restaurant?.id))")
-        {
-            if UIApplication.shared.canOpenURL(yelpURL)
+        if let restID = restaurant?.id {
+            if let yelpURL = URL(string: "https://www.yelp.com/biz/\(String(describing: restID))")
             {
-                UIApplication.shared.open(yelpURL, options: [:], completionHandler: nil)
+                if UIApplication.shared.canOpenURL(yelpURL)
+                {
+                    UIApplication.shared.open(yelpURL, options: [:], completionHandler: nil)
+                }
+                else {
+                    // redirect to Safari because the user doesn't have the Yelp app
+                    print("   error in viewMorePhotosOnYelp action button: cannot open link")
+                }
             }
             else {
-                // redirect to Safari because the user doesn't have the Yelp app
-                // UIApplication.shared.open(URL(string: "https://www.yelp.com/biz_photos/\(String(describing: self.restaurant?.id))")!)
-                print("   error in viewMorePhotosOnYelp action button: cannot open link")
+                print("   error in viewMorePhotosOnYelp action button: cannot unwrap URL")
             }
         }
         else {
-            print("   error in viewMorePhotosOnYelp action button: cannot unwrap URL")
+            print("   error in viewMorePhotosOnYelp action button: restaurant?.id returns nil")
         }
     }
     
