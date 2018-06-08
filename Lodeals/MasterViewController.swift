@@ -10,8 +10,9 @@
 
 import UIKit
 import GoogleMaps
+import CoreLocation
 
-class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
     
     // MARK: -- SET UP
     
@@ -20,12 +21,16 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var businessesFromYelp : [Business]!
     @IBOutlet weak var restaurantTV: UITableView!
     var businessStruct: TxtYelpServiceBusiness?
+    let aptLatitude = 35.300499
+    let aptLongitude = -120.677059
+    var currCoordinates : CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        restaurants = preAddRestaurants()
         let apiYelpURL = getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499)
+        currCoordinates = CLLocationCoordinate2D(latitude: aptLatitude, longitude: aptLongitude)
         
         // Get instantiations of Restaurant class from API call determined by apiYelpURL and asynchronously update TV
         Restaurant.getRestaurantsFromSearch(apiYelpURL: apiYelpURL) {
@@ -51,7 +56,6 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                     DispatchQueue.main.async {
                                         
                                         self.setCellDeals(restName: restaurant.name, deal: newDeal, cellPath: thisCellPath, whichDeal: restaurant.deals.count - 1)
-//                                        self.restaurantTV.reloadRows(at: [IndexPath(row: restIndex, section: 0)], with: .automatic)
                                     }
                                 }
                             }
@@ -185,6 +189,12 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if(segue.identifier == "showMapVC") {
             print("preparing for map segue: currently doing nothing to prepare")
         }
+        
+        if(segue.identifier == "showAppleMapVC") {
+            let destVC = segue.destination as? AppleMapViewController
+            
+            destVC?.restaurants = restaurants
+            destVC?.searchLocation = currCoordinates
+        }
     }
-
 }

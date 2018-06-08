@@ -8,25 +8,28 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     var selectedRestaurant : Restaurant?
+    var restaurants : [Restaurant]?
+    var searchLocation : CLLocationCoordinate2D?
     
     let locationManager = CLLocationManager()
-    let myAptLocation = CLLocationCoordinate2D(latitude: 35.300499, longitude: -120.677059)
+//    let myAptLocation = CLLocationCoordinate2D(latitude: 35.300499, longitude: -120.677059)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureLocationManager()
-//        refSchools = Database.database().reference().child("Schools")
-//        geoFire = GeoFire(firebaseRef: Database.database().reference().child("GeoFire"))
+        self.addRestaurantAnnotation(restaurants!)
         
-        let span = MKCoordinateSpan(latitudeDelta: 0.7, longitudeDelta: 0.7)
-        let newRegion = MKCoordinateRegion(center: myAptLocation, span: span)
+        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+        let newRegion = MKCoordinateRegion(center: searchLocation!, span: span)
         mapView.setRegion(newRegion, animated: true)
+        //showAnnotations([MKAnnotation], animated: bool)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,12 +38,12 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         mapView.removeAnnotations(mapView.annotations)
-        
-        updateRegionQuery()
+        addRestaurantAnnotation(restaurants!)
     }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        mapView.setRegion(MKCoordinateRegionMake((mapView.userLocation.location?.coordinate)!, MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true)
+        print("did update user location?")
+        mapView.setRegion(MKCoordinateRegionMake((mapView.userLocation.location?.coordinate)!, MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)), animated: true)
     }
     
     func configureLocationManager() {
@@ -52,25 +55,9 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         locationManager.startUpdatingLocation()
     }
     
-    func updateRegionQuery() {
-//        if let oldQuery = regionQuery {
-//            oldQuery.removeAllObservers()
-//        }
-//
-//        regionQuery = geoFire?.query(with: mapView.region)
-//
-//        regionQuery?.observe(.keyEntered, with: { (key, location) in
-//            self.refSchools?.queryOrderedByKey().queryEqual(toValue: key).observe(.value, with: { snapshot in
-//
-//                let newSchool = School(key: key, snapshot: snapshot)
-//                self.addSchoolAnnotation(newSchool)
-//            })
-//        })
-    }
-    
-    func addRestaurantAnnotation(_ business : Restaurant) {
+    func addRestaurantAnnotation(_ businesses : [Restaurant]) {
         DispatchQueue.main.async {
-            self.mapView.addAnnotation(business)
+            self.mapView.addAnnotations(businesses)
         }
     }
     
@@ -101,7 +88,7 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "showDetailsVC") {
+        if(segue.identifier == "showDetailsVCFromMap") {
             let destVC = segue.destination as? DetailsViewController
             
             destVC?.restaurant = self.selectedRestaurant
