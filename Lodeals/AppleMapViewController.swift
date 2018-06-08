@@ -13,6 +13,9 @@ import CoreLocation
 class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchDoneButton: UIButton!
+    
+    
     var selectedRestaurant : Restaurant?
     var restaurants : [Restaurant]?
     var searchLocation : CLLocationCoordinate2D?
@@ -24,12 +27,8 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         super.viewDidLoad()
 
         configureLocationManager()
-        self.addRestaurantAnnotation(restaurants!)
-        
-        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
-        let newRegion = MKCoordinateRegion(center: searchLocation!, span: span)
-        mapView.setRegion(newRegion, animated: true)
-        //showAnnotations([MKAnnotation], animated: bool)
+        // span the map view to show all annotations in restaurants
+        mapView.showAnnotations(restaurants!, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,7 +85,6 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetailsVCFromMap") {
             let destVC = segue.destination as? DetailsViewController

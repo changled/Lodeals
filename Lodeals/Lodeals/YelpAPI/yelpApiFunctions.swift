@@ -12,12 +12,14 @@ import Foundation
  * Takes in a struct of type YelpServiceBusinessSearchWithKeyword (which contains "total" and "businesses", an array of structs of type YelpServiceBusiness)
  * This function loops through either all businesses in the array or the maxCount (set to 23 as default), whichever comes first
  * Within the for loop, assign variables to be used in the instantiation of a Restaurant class
+ * If there is no price associated, don't append b/c likely no deal either
  * These objects are appended to an array of Restaurants, then returned at the end
  */
 func getRestaurantsFromStruct(businesses: YelpServiceBusinessSearchWithKeyword, maxCount: Int = 23) -> [Restaurant] {
     var restaurants = [Restaurant]()
     
     for business in businesses.businesses! {
+        // if no price, then likely no deal associated with it, so don't append
         if let price = business.price {
             let priceStr = price
             let name = business.name

@@ -39,32 +39,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4uh-sj-8Va">
-                                <rect key="frame" x="0.0" y="92" width="375" height="531"/>
+                                <rect key="frame" x="0.0" y="96" width="375" height="527"/>
                                 <connections>
                                     <outlet property="delegate" destination="1xn-UY-a1p" id="qYw-o9-3rX"/>
                                 </connections>
                             </mapView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search for a location..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7le-cM-rQJ">
-                                <rect key="frame" x="0.0" y="66" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="66" width="310" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihb-A0-Z4W">
+                                <rect key="frame" x="325" y="71" width="41" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="41" id="iru-b3-Rc3"/>
+                                    <constraint firstAttribute="height" constant="20" id="two-ma-8k2"/>
+                                </constraints>
+                                <state key="normal" title="Done"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4uh-sj-8Va" firstAttribute="leading" secondItem="dQl-1C-bUA" secondAttribute="leading" id="BMq-qk-25g"/>
                             <constraint firstItem="7le-cM-rQJ" firstAttribute="top" secondItem="dQl-1C-bUA" secondAttribute="top" constant="2" id="EfT-E9-aBr"/>
-                            <constraint firstItem="4uh-sj-8Va" firstAttribute="top" secondItem="7le-cM-rQJ" secondAttribute="bottom" constant="-4" id="PpP-xG-732"/>
+                            <constraint firstItem="Ihb-A0-Z4W" firstAttribute="leading" secondItem="7le-cM-rQJ" secondAttribute="trailing" constant="15" id="JpS-s1-Wsf"/>
+                            <constraint firstItem="4uh-sj-8Va" firstAttribute="top" secondItem="7le-cM-rQJ" secondAttribute="bottom" id="PpP-xG-732"/>
                             <constraint firstItem="dQl-1C-bUA" firstAttribute="trailing" secondItem="4uh-sj-8Va" secondAttribute="trailing" id="SsE-L2-hV1"/>
-                            <constraint firstItem="dQl-1C-bUA" firstAttribute="trailing" secondItem="7le-cM-rQJ" secondAttribute="trailing" id="gq7-XT-a7n"/>
                             <constraint firstItem="dQl-1C-bUA" firstAttribute="bottom" secondItem="4uh-sj-8Va" secondAttribute="bottom" id="l7X-Ta-dEd"/>
+                            <constraint firstItem="Ihb-A0-Z4W" firstAttribute="centerY" secondItem="7le-cM-rQJ" secondAttribute="centerY" id="uI7-dR-LNe"/>
                             <constraint firstItem="7le-cM-rQJ" firstAttribute="leading" secondItem="dQl-1C-bUA" secondAttribute="leading" id="xVc-Lu-7t7"/>
+                            <constraint firstItem="dQl-1C-bUA" firstAttribute="trailing" secondItem="Ihb-A0-Z4W" secondAttribute="trailing" constant="9" id="yFm-EF-IXT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dQl-1C-bUA"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="4uh-sj-8Va" id="Rpn-As-beQ"/>
+                        <outlet property="searchDoneButton" destination="Ihb-A0-Z4W" id="emV-bC-XgB"/>
                         <outlet property="searchTextField" destination="7le-cM-rQJ" id="Wj6-aT-FQG"/>
                         <segue destination="F2i-5Y-HwE" kind="show" identifier="showDetailsVCFromMap" id="rZG-b9-EcA"/>
                     </connections>
