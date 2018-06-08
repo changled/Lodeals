@@ -24,6 +24,8 @@ func getRestaurantsFromStruct(businesses: YelpServiceBusinessSearchWithKeyword, 
         let priceStr = business.price
         let id = business.id
         let alias = business.alias
+        let longitude = business.coordinates.longitude
+        let latitude = business.coordinates.latitude
         
         var tags: [String] = []
         
@@ -31,7 +33,7 @@ func getRestaurantsFromStruct(businesses: YelpServiceBusinessSearchWithKeyword, 
             tags.append(category.title)
         }
         
-        let restaurant = Restaurant(name: name, id: id, location: location, images: [business.image_url!], tags: tags, priceStr: priceStr, alias: alias)
+        let restaurant = Restaurant(name: name, id: id, location: location, images: [business.image_url!], tags: tags, priceStr: priceStr, alias: alias, longitude: longitude, latitude: latitude)
         
 //        // update images if present
 //        let imageIcon = business.image_url

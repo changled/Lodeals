@@ -28,6 +28,7 @@ class ConfirmAddDealViewController: UIViewController {
         titleLabel.text = dealTitle
         restaurantLabel.text = restaurantName
         descriptionTextView.text = dealDescription
+        // use text view instead of label so it'll automatically go to upper left
     }
 
     override func didReceiveMemoryWarning() {

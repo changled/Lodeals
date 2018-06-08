@@ -46,8 +46,12 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                     restaurant.deals.append(newDeal)
                                     print("   adding new deal \(newDeal.shortDescription) to restaurant \(restaurant.name) now with \(restaurant.deals.count) deals:")
                                     
+                                    let thisCellPath = IndexPath(row: restIndex, section: 0)
+                                    
                                     DispatchQueue.main.async {
-                                        self.restaurantTV.reloadRows(at: [IndexPath(row: restIndex, section: 0)], with: .automatic)
+                                        
+                                        self.setCellDeals(restName: restaurant.name, deal: newDeal, cellPath: thisCellPath, whichDeal: restaurant.deals.count - 1)
+//                                        self.restaurantTV.reloadRows(at: [IndexPath(row: restIndex, section: 0)], with: .automatic)
                                     }
                                 }
                             }
@@ -57,10 +61,10 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 restaurant.printRestaurant()
                 self.restaurants.append(restaurant)
-                
-                DispatchQueue.main.async {
-                    self.restaurantTV.reloadData()
-                }
+            }
+            
+            DispatchQueue.main.async {
+                self.restaurantTV.reloadData()
             }
         }
     }
@@ -80,9 +84,6 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 restaurants[restaurantIndex] = editedRestaurant!
                 restaurantTV.reloadRows(at: [IndexPath(row: senderVC.restaurantIndex!.row, section: 0)], with: .automatic)
              }
-            
-//            restaurantTV.reloadData()
-            
         }
     }
     
@@ -128,18 +129,19 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if rest.deals.count > 0 { // at least one deal
             cell?.deal1Label?.text = rest.deals[0].shortDescription
             cell?.deal1TimeLabel?.text = rest.deals[0].getLastUseStr(prescript: "...", postscript: " ago")
-            
+
             if(rest.deals.count > 1) { //at least 2 deals
                 cell?.deal2Label?.text = rest.deals[1].shortDescription
                 cell?.deal2TimeLabel?.text = rest.deals[1].getLastUseStr(prescript: "...", postscript: " ago")
             }
             else { //only one deal
-                cell?.deal2Label?.text = "only one deal -- add one!"
+                cell?.deal2Label?.text = "only one deal -- another!"
                 cell?.deal2TimeLabel?.text = ""
-                
+
             }
         }
         else { // no deals
+            print("currently no deals in \(rest.name): \(rest.deals.count)")
             cell?.deal1Label?.text = "currently no deals"
             cell?.deal2Label?.text = "currently no deals"
             cell?.deal1TimeLabel?.text = ""
@@ -147,6 +149,26 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         return cell!
+    }
+    
+    func setCellDeals(restName: String, deal: Deal, cellPath: IndexPath, whichDeal: Int) {
+        let cell = restaurantTV.cellForRow(at: cellPath) as? RestaurantTableViewCell
+        
+        // default to "currently no deals" if no deals fewer than 2 deals
+        if whichDeal == 0 { // setting first deal label in cell
+            print("setting \(restName)'s first deal to \(deal.shortDescription)")
+            cell?.deal1Label?.text = deal.shortDescription
+            cell?.deal1TimeLabel?.text = deal.getLastUseStr(prescript: "...", postscript: " ago")
+            cell?.deal2Label?.text = "only one deal -- add another!"
+            cell?.deal2TimeLabel?.text = ""
+        }
+        else if whichDeal == 1 { // setting second deal label in cell
+            cell?.deal2Label?.text = deal.shortDescription
+            cell?.deal2TimeLabel?.text = deal.getLastUseStr(prescript: "...", postscript: " ago")
+        }
+        else { // error: should only be 2 deals to call this
+            print("error for \(restName): should only call setCellDeals for the first and second deals, but whichDeal is \(whichDeal)")
+        }
     }
 
     // MARK: - NAVIGATION

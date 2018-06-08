@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lodeals/Classes/RestaurantClass.swift"
-            timestampString = "549950403.515607"
+            timestampString = "550183246.929162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "updateRestaurantFromDetailSearch(businessStruct:)"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "getBusinessDetails(restaurant:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

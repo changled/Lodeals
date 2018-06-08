@@ -8,8 +8,9 @@
 
 import Foundation
 import os.log
+import MapKit
 
-class Restaurant {
+class Restaurant : NSObject, MKAnnotation {
     var name : String
     var id : String
     var locationStr : String
@@ -25,8 +26,30 @@ class Restaurant {
     var yelpRating : Float?
     var yelpReviewCount : Int?
     var phoneNumber : String?
+    var longitude : Double
+    var latitude : Double
     
-    init(name: String = "", id: String = "", location: String = "", images: [String] = [], tags: [String] = ["tag1", "tag2"], price: Int = -1, deals: [Deal] = [], priceStr: String = "err", alias: String = "") {
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    var title: String? {
+        return name
+    }
+    
+    var subtitle: String? {
+        if deals.count > 1 {
+            return "\(deals[0].shortDescription)\n\(deals[1].shortDescription)"
+        }
+        else if deals.count > 0 {
+            return "\(deals[0].shortDescription)"
+        }
+        else {
+            return "no deals for this restaurant. click to add one!"
+        }
+    }
+    
+    init(name: String = "", id: String = "", location: String = "", images: [String] = [], tags: [String] = ["tag1", "tag2"], price: Int = -1, deals: [Deal] = [], priceStr: String = "err", alias: String = "", longitude: Double = 0.0, latitude: Double = 0.0) {
         self.name = name
         self.locationStr = location
         self.tags = tags
@@ -36,6 +59,8 @@ class Restaurant {
         self.priceStr = priceStr
         self.id = id
         self.alias = alias
+        self.longitude = longitude
+        self.latitude = latitude
         
         // Edge case: If only one of price or priceStr is specified, set the other to default
         if priceStr == "err" && price != -1 {
@@ -96,7 +121,6 @@ class Restaurant {
                     businessStruct = try decoder.decode(YelpServiceBusiness.self, from: data)
                     
                     restaurant.updateRestaurantFromDetailSearch(businessStruct: businessStruct!)
-//                    print("\n\nBUSINESS STRUCT IMAGES: \(String(describing: businessStruct?.photos))\n\n")
 //                    restaurant.printRestaurantDetails()
                     
                     completionHandler(restaurant)
@@ -142,6 +166,7 @@ class Restaurant {
         print("\t tags: \(String(describing: tags))")
         print("\t deals count: \(String(describing: deals.count))")
         print("\t images: \(String(describing: images))")
+        print("\t coordinates: latitude - \(String(describing: latitude)), longitude - \(String(describing: longitude))")
     }
     
     func printRestaurantDetails() {
