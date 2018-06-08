@@ -35,6 +35,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewMorePhotosOnYelpButton.setTitle("See More on Yelp!", for: .normal)
+        viewMorePhotosOnYelpButton.backgroundColor = UIColor.white
+        
         // set view title; use "if let" so there's no optional '?' in the text
         if let viewTitle = restaurant?.name {
             self.navigationItem.title = "\(String(describing: viewTitle))"
@@ -198,8 +201,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         viewMorePhotosOnYelpButton.setTitle("opening Yelp...", for: .normal)
         // RGBA values for UICOlor are between 0 and 1
         viewMorePhotosOnYelpButton.backgroundColor = UIColor(red: 200/225, green: 200/225, blue: 200/225, alpha: 1)
-        print("inside yelp link")
-        
+
         if let restID = restaurant?.id {
             if let yelpURL = URL(string: "https://www.yelp.com/biz/\(String(describing: restID))")
             {

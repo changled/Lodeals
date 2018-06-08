@@ -663,28 +663,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;description&gt;" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0g-gq-Alq">
-                                <rect key="frame" x="16" y="251" width="343" height="372"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhS-qo-moi">
+                                <rect key="frame" x="16" y="247" width="343" height="360"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vbk-ot-UeV" firstAttribute="trailing" secondItem="IhS-qo-moi" secondAttribute="trailing" constant="16" id="0cK-eP-nzn"/>
                             <constraint firstItem="Ns6-4r-Goz" firstAttribute="top" secondItem="vbk-ot-UeV" secondAttribute="top" constant="23" id="0go-Pn-DGW"/>
                             <constraint firstItem="vbk-ot-UeV" firstAttribute="trailing" secondItem="0e8-Sd-Jut" secondAttribute="trailing" constant="16" id="6JH-ED-OQg"/>
+                            <constraint firstItem="vbk-ot-UeV" firstAttribute="bottom" secondItem="IhS-qo-moi" secondAttribute="bottom" constant="16" id="9Rp-am-CLe"/>
                             <constraint firstItem="k2a-Po-Rik" firstAttribute="top" secondItem="0e8-Sd-Jut" secondAttribute="bottom" constant="21" id="Fux-q5-xr8"/>
                             <constraint firstItem="vbk-ot-UeV" firstAttribute="trailing" secondItem="k2a-Po-Rik" secondAttribute="trailing" constant="16" id="GT4-K6-iSp"/>
-                            <constraint firstItem="h0g-gq-Alq" firstAttribute="top" secondItem="k2a-Po-Rik" secondAttribute="bottom" constant="19" id="NGC-ue-0Hl"/>
                             <constraint firstItem="Ns6-4r-Goz" firstAttribute="leading" secondItem="vbk-ot-UeV" secondAttribute="leading" constant="16" id="T4i-9F-4T8"/>
                             <constraint firstItem="vbk-ot-UeV" firstAttribute="trailing" secondItem="Ns6-4r-Goz" secondAttribute="trailing" constant="16" id="cMN-9E-PLl"/>
                             <constraint firstItem="k2a-Po-Rik" firstAttribute="leading" secondItem="vbk-ot-UeV" secondAttribute="leading" constant="16" id="gZh-sU-8gQ"/>
                             <constraint firstItem="0e8-Sd-Jut" firstAttribute="leading" secondItem="vbk-ot-UeV" secondAttribute="leading" constant="16" id="iO6-Mi-dn8"/>
-                            <constraint firstItem="h0g-gq-Alq" firstAttribute="leading" secondItem="vbk-ot-UeV" secondAttribute="leading" constant="16" id="ksd-Fa-gUp"/>
-                            <constraint firstItem="vbk-ot-UeV" firstAttribute="bottom" secondItem="h0g-gq-Alq" secondAttribute="bottom" id="nUF-A5-nW7"/>
+                            <constraint firstItem="IhS-qo-moi" firstAttribute="top" secondItem="k2a-Po-Rik" secondAttribute="bottom" constant="15" id="qnW-hQ-fzI"/>
                             <constraint firstItem="0e8-Sd-Jut" firstAttribute="top" secondItem="Ns6-4r-Goz" secondAttribute="bottom" constant="43" id="qoc-hF-dfh"/>
-                            <constraint firstItem="vbk-ot-UeV" firstAttribute="trailing" secondItem="h0g-gq-Alq" secondAttribute="trailing" constant="16" id="ruq-Pf-tkE"/>
+                            <constraint firstItem="IhS-qo-moi" firstAttribute="leading" secondItem="vbk-ot-UeV" secondAttribute="leading" constant="16" id="vmc-g0-djb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vbk-ot-UeV"/>
                     </view>
@@ -702,7 +703,7 @@
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="descriptionLabel" destination="h0g-gq-Alq" id="pWd-kh-SN2"/>
+                        <outlet property="descriptionTextView" destination="IhS-qo-moi" id="cM1-Qd-Wsa"/>
                         <outlet property="restaurantLabel" destination="Ns6-4r-Goz" id="nQA-V9-ASP"/>
                         <outlet property="titleLabel" destination="k2a-Po-Rik" id="10h-Ya-61B"/>
                     </connections>

@@ -4,15 +4,14 @@
 //
 //  Created by Rachel Chang on 5/9/18.
 //  Copyright © 2018 Rachel Chang. All rights reserved.
-// USE TEXT FIELD INSTEAD of Label
 
 import UIKit
 
 class ConfirmAddDealViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     var dealTitle : String?
     var dealDescription : String?
@@ -28,10 +27,7 @@ class ConfirmAddDealViewController: UIViewController {
 
         titleLabel.text = dealTitle
         restaurantLabel.text = restaurantName
-        
-        descriptionLabel.textRect(forBounds: CGRect(x: descriptionLabel.center.x, y: descriptionLabel.center.y, width: descriptionLabel.frame.width, height: 0), limitedToNumberOfLines: 0)
-        descriptionLabel.text = dealDescription
-        descriptionLabel.sizeToFit()
+        descriptionTextView.text = dealDescription
     }
 
     override func didReceiveMemoryWarning() {
