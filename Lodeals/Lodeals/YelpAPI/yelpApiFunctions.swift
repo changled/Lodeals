@@ -16,36 +16,31 @@ import Foundation
  */
 func getRestaurantsFromStruct(businesses: YelpServiceBusinessSearchWithKeyword, maxCount: Int = 23) -> [Restaurant] {
     var restaurants = [Restaurant]()
-    var count = 0
     
     for business in businesses.businesses! {
-        let name = business.name
-        let location = "\(business.location.address1), \(business.location.city), \(business.location.state), \(business.location.zip_code)"
-        let priceStr = business.price
-        let id = business.id
-        let alias = business.alias
-        let longitude = business.coordinates.longitude
-        let latitude = business.coordinates.latitude
-        
-        var tags: [String] = []
-        
-        for category in business.categories {
-            tags.append(category.title)
+        if let price = business.price {
+            let priceStr = price
+            let name = business.name
+            let location = "\(business.location.address1), \(business.location.city), \(business.location.state), \(business.location.zip_code)"
+            
+            let id = business.id
+            let alias = business.alias
+            let longitude = business.coordinates.longitude
+            let latitude = business.coordinates.latitude
+            
+            var tags: [String] = []
+            
+            for category in business.categories {
+                tags.append(category.title)
+            }
+            
+            let restaurant = Restaurant(name: name, id: id, location: location, images: [business.image_url!], tags: tags, priceStr: priceStr, alias: alias, longitude: longitude, latitude: latitude)
+            
+            restaurants.append(restaurant)
         }
         
-        let restaurant = Restaurant(name: name, id: id, location: location, images: [business.image_url!], tags: tags, priceStr: priceStr, alias: alias, longitude: longitude, latitude: latitude)
-        
-//        // update images if present
-//        let imageIcon = business.image_url
-//        if imageIcon != nil {
-//            restaurant.images = [imageIcon!]
-//        }
-        
-        restaurants.append(restaurant)
-        count += 1
-        
-        if count >= maxCount {
-            print("\nINSIDE GET RESTAURANTS FROM STRUCT: \(restaurants.count)")
+        if restaurants.count >= maxCount {
+            print("\nMax Count Reached -- INSIDE GET RESTAURANTS FROM STRUCT: \(restaurants.count)")
             return restaurants
         }
     }

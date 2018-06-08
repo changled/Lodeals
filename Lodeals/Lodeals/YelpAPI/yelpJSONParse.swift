@@ -16,7 +16,7 @@ struct TxtYelpService : Codable {
 }
 
 struct TxtYelpServiceBusiness : Codable {
-    var price: String
+    var price: String?
     var id: String
     var review_count: Int
     var name: String
@@ -30,7 +30,7 @@ struct YelpServiceBusinessSearchWithKeyword : Codable {
 }
 
 struct YelpServiceBusiness : Codable {
-    var price: String
+    var price: String?
     var id: String
     var alias: String
     var categories: [YelpServiceCategory]
@@ -49,7 +49,9 @@ struct YelpServiceBusiness : Codable {
         print("\t id: \(String(describing: id))")
         print("\t alias: \(String(describing: alias))")
         print("\t rating: \(String(describing: rating))")
-        print("\t price: \(String(describing: price))")
+        if let price = price {
+            print("\t price: \(String(describing: price))")
+        }
         print("\t categories: \(String(describing: categories))")
         print("\t review count: \(String(describing: review_count))")
         print("\t url: \(String(describing: url))")

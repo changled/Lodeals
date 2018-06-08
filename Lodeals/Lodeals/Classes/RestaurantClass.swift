@@ -88,7 +88,7 @@ class Restaurant : NSObject, MKAnnotation {
                 do {
                     let decoder = JSONDecoder()
                     let yelpServiceBusinessSearchWithKeyword = try decoder.decode(YelpServiceBusinessSearchWithKeyword.self, from: data)
-                    restaurants = getRestaurantsFromStruct(businesses: yelpServiceBusinessSearchWithKeyword)
+                    restaurants = getRestaurantsFromStruct(businesses: yelpServiceBusinessSearchWithKeyword, maxCount: 100)
                     completionHandler(restaurants)
                 } catch {
                     print("\nException on Decode (getRestaurantsFromSearch): \(error)\n")
