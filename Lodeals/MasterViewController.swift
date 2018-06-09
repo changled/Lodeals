@@ -170,9 +170,6 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell?.deal2Label?.text = deal.shortDescription
             cell?.deal2TimeLabel?.text = deal.getLastUseStr(prescript: "...", postscript: " ago")
         }
-        else { // error: should only be 2 deals to call this
-            print("error for \(restName): should only call setCellDeals for the first and second deals, but whichDeal is \(whichDeal)")
-        }
     }
 
     // MARK: - NAVIGATION
