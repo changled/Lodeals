@@ -32,15 +32,6 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let newRegion = MKCoordinateRegion(center: searchLocation!, span: span)
         mapView.setRegion(newRegion, animated: true)
-        
-//        let myAnnotation: MKPointAnnotation = MKPointAnnotation()
-//        print("current location: latitude - \(mapView.userLocation.coordinate.latitude), longitude - \(mapView.userLocation.coordinate.longitude)")
-//        myAnnotation.coordinate = CLLocationCoordinate2DMake(mapView.userLocation.coordinate.latitude, mapView.userLocation.coordinate.longitude);
-//        myAnnotation.title = "Current location"
-//        mapView.addAnnotation(myAnnotation)
-        
-        // span the map view to show all annotations in restaurants
-//        mapView.showAnnotations(restaurants!, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,10 +80,18 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
             let annotationView = MKPinAnnotationView()
             
             annotationView.rightCalloutAccessoryView = disclosureButton
-            annotationView.pinTintColor = .red
             annotationView.annotation = annotation
             annotationView.canShowCallout = true
             annotationView.animatesDrop = true
+            
+            let rest = annotation as! Restaurant
+            
+            if rest.deals.count > 0 {
+                annotationView.pinTintColor = .red
+            }
+            else {
+                annotationView.pinTintColor = .gray
+            }
             
             return annotationView
         }
@@ -111,8 +110,9 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        self.selectedRestaurant = view.annotation as? Restaurant
-        performSegue(withIdentifier: "showDetailsVC", sender: self)
+            print("callout accessory control tapped")
+            self.selectedRestaurant = view.annotation as? Restaurant
+            performSegue(withIdentifier: "showDetailsVCFromMap", sender: self)
     }
     
     // tells the delegate that the location of the user was updated
@@ -132,6 +132,7 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetailsVCFromMap") {
+            print("prepare for segue -- show details vc from map")
             let destVC = segue.destination as? DetailsViewController
             
             destVC?.restaurant = self.selectedRestaurant

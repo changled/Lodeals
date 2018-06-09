@@ -83,10 +83,18 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if sender.source is DetailsViewController {
             if let senderVC = sender.source as? DetailsViewController {
                 let editedRestaurant = senderVC.restaurant
-                let restaurantIndex: Int = senderVC.restaurantIndex!.section + senderVC.restaurantIndex!.row
                 
-                restaurants[restaurantIndex] = editedRestaurant!
-                restaurantTV.reloadRows(at: [IndexPath(row: senderVC.restaurantIndex!.row, section: 0)], with: .automatic)
+                if let index = senderVC.restaurantIndex {
+                    let restaurantIndex: Int = index.section + index.row
+                
+                    restaurants[restaurantIndex] = editedRestaurant!
+                    restaurantTV.reloadRows(at: [IndexPath(row: senderVC.restaurantIndex!.row, section: 0)], with: .automatic)
+                }
+                else {
+                    print("NOTE: TEST IF CORRECT -- returning from a map view -> details vc!")
+                    restaurantTV.reloadData()
+                    // NOTE: TEST THAT IT'S ACTUALLY SAVING AND RELOADING CORRECT DATA!
+                }
              }
         }
     }
