@@ -69,6 +69,12 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    // doesn't reload upon returning from Yelp :(
+    override func viewDidAppear(_ animated: Bool) {
+        viewMorePhotosOnYelpButton.setTitle("See More on Yelp!", for: .normal)
+        viewMorePhotosOnYelpButton.backgroundColor = UIColor.white
+    }
+    
 //    MARK: -- IMAGE HANDLING
     
     /*

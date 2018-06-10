@@ -14,6 +14,9 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    @IBOutlet weak var titleCountLabel: UILabel!
+    @IBOutlet weak var titleLengthErrorLabel: UILabel!
+    
     var didEditTitle = false
     var didEditDescription = false
     var restaurant : Restaurant?
@@ -33,6 +36,7 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         
         titleLabel.text = ("New deal for \(restaurant?.name ?? "null"):")
         titleTextField.addTarget(self, action: #selector(didChangeTitle(_:)), for: .editingChanged)
+        titleLengthErrorLabel.text = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +53,22 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
     
     @objc func didChangeTitle(_ textField: UITextField) {
-        dealTitle = textField.text!
+        
+        if let textLen = textField.text?.count {
+            titleCountLabel.text = "\(30 - textLen)"
+            
+            if textLen <= 30 {
+                dealTitle = textField.text!
+                titleTextField.layer.borderColor = (UIColor.black).cgColor
+                titleCountLabel.textColor = UIColor.lightGray
+                titleLengthErrorLabel.text = ""
+            }
+            else {
+                titleTextField.layer.borderColor = (UIColor.red).cgColor
+                titleCountLabel.textColor = UIColor.red
+                titleLengthErrorLabel.text = "error: maxiumum 30 characters"
+            }
+        }
     }
     
     // sets text field's didEndEditing to true and close keyboard
@@ -69,6 +88,10 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     func textViewDidChange(_ textView: UITextView) {
         dealDescription = textView.text
+        
+        if dealDescription.count >= 30 {
+            
+        }
     }
     
     @IBAction func clearAction(_ sender: Any) {

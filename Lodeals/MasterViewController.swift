@@ -55,8 +55,8 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                     let thisCellPath = IndexPath(row: restIndex, section: 0)
                                     
                                     DispatchQueue.main.async {
-                                        
                                         self.setCellDeals(restName: restaurant.name, deal: newDeal, cellPath: thisCellPath, whichDeal: restaurant.deals.count - 1)
+                                        self.restaurantTV.reloadData()
                                     }
                                 }
                             }
