@@ -22,6 +22,7 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     var restaurant : Restaurant?
     var dealTitle : String = ""
     var dealDescription : String = ""
+    var validInput = [false, false]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,6 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
     
     @objc func didChangeTitle(_ textField: UITextField) {
-        
         if let textLen = textField.text?.count {
             titleCountLabel.text = "\(30 - textLen)"
             
@@ -62,11 +62,18 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                 titleTextField.layer.borderColor = (UIColor.black).cgColor
                 titleCountLabel.textColor = UIColor.lightGray
                 titleLengthErrorLabel.text = ""
+                if textLen > 8 {
+                    validInput[0] = true
+                }
+                else {
+                    validInput[0] = false
+                }
             }
             else {
                 titleTextField.layer.borderColor = (UIColor.red).cgColor
                 titleCountLabel.textColor = UIColor.red
                 titleLengthErrorLabel.text = "error: maxiumum 30 characters"
+                validInput[0] = false
             }
         }
     }
@@ -90,7 +97,10 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         dealDescription = textView.text
         
         if dealDescription.count >= 30 {
-            
+            validInput[1] = true
+        }
+        else {
+            validInput[1] = false
         }
     }
     
@@ -99,9 +109,25 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         descriptionTextView.text = ""
         didEditTitle = false
         didEditDescription = false
+        validInput[1] = false
     }
     
     // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "showConfirmAddDealVC" {
+            if validInput != [true, true] {
+                //error alert
+                return false
+            }
+            else {
+                return true
+            }
+        }
+        else {
+            return true
+        }
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showConfirmAddDealVC") {
