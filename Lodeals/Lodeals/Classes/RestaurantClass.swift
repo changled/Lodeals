@@ -39,7 +39,7 @@ class Restaurant : NSObject, MKAnnotation {
     
     var subtitle: String? {
         if deals.count > 1 {
-            return "\(deals[0].shortDescription)\n\(deals[1].shortDescription)"
+            return "\(deals[0].shortDescription), \(deals[1].shortDescription)"
         }
         else if deals.count > 0 {
             return "\(deals[0].shortDescription)"

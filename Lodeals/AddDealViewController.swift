@@ -23,6 +23,9 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // hide keyboard if touch anywhere outside of text view/text field
+        self.hideKeyboardWhenTappedAround()
+        
         // set view title; use "if let" so there's no optional '?' in the text
         if let viewTitle = restaurant?.name {
             self.navigationItem.title = "\(String(describing: viewTitle))"
@@ -47,6 +50,12 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     @objc func didChangeTitle(_ textField: UITextField) {
         dealTitle = textField.text!
+    }
+    
+    // sets text field's didEndEditing to true and close keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     // MARK: -- TEXT VIEW (DEAL DESCRIPTION)

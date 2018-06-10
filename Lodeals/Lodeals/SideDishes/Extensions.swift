@@ -29,6 +29,19 @@ extension NSAttributedString {
     }
 }
 
+// taken from StackOverflow (esqarrouth)
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 //taken from StackOverflow (skywinder)
 //extension UIImageView {
 //    public func imageFromUrl(urlString: String) {

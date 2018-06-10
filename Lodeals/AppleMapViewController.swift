@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class AppleMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchDoneButton: UIButton!
@@ -25,8 +25,10 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureLocationManager()
+        // hide keyboard if touch anywhere outside of text field
+        self.hideKeyboardWhenTappedAround()
         
+        configureLocationManager()
         self.addRestaurantAnnotation(restaurants!)
 
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -37,6 +39,16 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+//    MARK: -- OTHER UI
+    
+//    // sets text field's didEndEditing to true and close keyboard
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        self.view.endEditing(true)
+//        return false
+//    }
+    
+//    MARK: -- MAPS
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 //        mapView.removeAnnotations(mapView.annotations)
@@ -128,7 +140,7 @@ class AppleMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         mapView.addAnnotation(myAnnotation)
     }
 
-    // MARK: - Navigation
+//    MARK: -- Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetailsVCFromMap") {

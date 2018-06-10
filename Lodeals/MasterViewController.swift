@@ -14,7 +14,7 @@ import CoreLocation
 
 class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
     
-    // MARK: -- SET UP
+//    MARK: -- SET UP
     
     var restaurants = [Restaurant]()
     var locationManager = CLLocationManager()
@@ -28,6 +28,9 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // hide keyboard if touch anywhere outside of text field
+        self.hideKeyboardWhenTappedAround()
+        
 //        restaurants = preAddRestaurants()
         let apiYelpURL = getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499)
         currCoordinates = CLLocationCoordinate2D(latitude: aptLatitude, longitude: aptLongitude)
@@ -35,9 +38,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Get instantiations of Restaurant class from API call determined by apiYelpURL and asynchronously update TV
         Restaurant.getRestaurantsFromSearch(apiYelpURL: apiYelpURL) {
             completedRestaurants in
-            
             for (restIndex, restaurant) in completedRestaurants.enumerated() {
-                
                 //for each deal, add to array
                 dbUpdateRestaurantWithDeals(restaurant: restaurant) {
                     deals in
@@ -77,7 +78,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: -- UNWIND
+//    MARK: -- UNWIND
     
     @IBAction func unwindFromDetailsVC(sender: UIStoryboardSegue) {
         if sender.source is DetailsViewController {
@@ -99,7 +100,15 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    // MARK: -- TABLE VIEW
+//    MARK: -- OTHER UI
+    
+    // sets text field's didEndEditing to true and close keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+//    MARK: -- TABLE VIEW
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -180,7 +189,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    // MARK: - NAVIGATION
+//    MARK: - NAVIGATION
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetailsVC") {
