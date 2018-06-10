@@ -88,6 +88,8 @@ class AppleMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDe
     }
     
     func addMoreRestaurants() {
+        let radius = mapView.region.distanceMax()
+        
         
     }
     

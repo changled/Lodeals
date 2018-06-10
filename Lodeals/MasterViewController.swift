@@ -150,10 +150,20 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell?.iconImageView.isHidden = false
             
             DispatchQueue.global().async {
-                let imageData = try? Data(contentsOf: URL(string: rest.images[0])!)
-                
-                DispatchQueue.main.async {
-                    cell?.iconImageView.image = UIImage(data: imageData!)
+                if let imgURL = URL(string: rest.images[0]) {
+                    let imageData = try? Data(contentsOf: imgURL)
+                    
+                    DispatchQueue.main.async {
+                        cell?.iconImageView.image = UIImage(data: imageData!)
+                    }
+                }
+                else {
+                    print("img url failed to unwrap for \(rest.images[0])")
+                    DispatchQueue.main.async {
+                        cell?.iconImageView.isHidden = true
+                        cell?.imageLabel.isHidden = false
+                        cell?.imageLabel?.text = "no img"
+                    }
                 }
             }
         }

@@ -12,7 +12,7 @@ import Foundation
 * Return string format: https ://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972
  */
 func getBusinessLocationSearchCall(longitude: Double, latitude: Double) -> String {
-    return "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&limit=50"
+    return "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&limit=50&sort_by=distance"
 }
 
 func getBusinessDetailsCall(restaurant: Restaurant) -> String {
