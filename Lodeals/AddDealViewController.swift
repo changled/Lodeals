@@ -23,6 +23,7 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     var dealTitle : String = ""
     var dealDescription : String = ""
     var validInput = [false, false]
+    let alertVewMessageDict : [Int : String] = [0: "Deal title must be between 8 and 30 length\nDeal description must have at least 30 characters. Add more detail!", 1: "Deal title must be between 8 and 30 length", 2: "Deal description must have at least 30 characters. Add more detail!"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             self.navigationItem.title = "\(String(describing: viewTitle))"
         }
         
-        titleLabel.text = ("New deal for \(restaurant?.name ?? "null"):")
+        titleLabel.text = ("Adding new deal for \(restaurant?.name ?? "null"):")
         titleTextField.addTarget(self, action: #selector(didChangeTitle(_:)), for: .editingChanged)
         titleLengthErrorLabel.text = ""
     }
@@ -64,8 +65,10 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                 titleLengthErrorLabel.text = ""
                 if textLen > 8 {
                     validInput[0] = true
+                    titleTextField.layer.borderColor = UIColor.green.cgColor
                 }
                 else {
+                    titleTextField.layer.borderColor = UIColor.black.cgColor
                     validInput[0] = false
                 }
             }
@@ -98,8 +101,10 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         
         if dealDescription.count >= 30 {
             validInput[1] = true
+            textView.layer.borderColor = UIColor.green.cgColor
         }
         else {
+            textView.layer.borderColor = UIColor.black.cgColor
             validInput[1] = false
         }
     }
@@ -117,7 +122,32 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "showConfirmAddDealVC" {
             if validInput != [true, true] {
-                //error alert
+                var alertMessage = ""
+                
+                if validInput[0] == false && validInput[1] == false {
+                    alertMessage = alertVewMessageDict[0] ?? ""
+                }
+                else if validInput[0] == false {
+                    alertMessage = alertVewMessageDict[1] ?? ""
+                }
+                else {
+                    alertMessage = alertVewMessageDict[2] ?? ""
+                }
+                
+                let alert = UIAlertController(title: "Error: Invalid input", message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    switch action.style{
+                    case .default:
+                        print("default")
+                        
+                    case .cancel:
+                        print("cancel")
+                        
+                    case .destructive:
+                        print("destructive")
+                    }}))
+                self.present(alert, animated: true, completion: nil)
+                
                 return false
             }
             else {
