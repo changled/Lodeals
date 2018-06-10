@@ -134,7 +134,7 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                     alertMessage = alertVewMessageDict[2] ?? ""
                 }
                 
-                let alert = UIAlertController(title: "Error: Invalid input", message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Error: Invalid length", message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                     switch action.style{
                     case .default:

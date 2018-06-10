@@ -18,6 +18,7 @@ class AppleMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDe
     var selectedRestaurant : Restaurant?
     var restaurants : [Restaurant]?
     var searchLocation : CLLocationCoordinate2D?
+    var newRestaurantsFromMap : [Restaurant] = []
     
     let currLocationPin = MKPointAnnotation()
     let locationManager = CLLocationManager()
@@ -84,6 +85,10 @@ class AppleMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDe
         DispatchQueue.main.async {
             self.mapView.addAnnotations(businesses)
         }
+    }
+    
+    func addMoreRestaurants() {
+        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

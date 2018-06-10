@@ -18,6 +18,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var restaurants = [Restaurant]()
     var locationManager = CLLocationManager()
+    var currentLocation: CLLocation!
     var businessesFromYelp : [Business]!
     @IBOutlet weak var restaurantTV: UITableView!
     var businessStruct: TxtYelpServiceBusiness?
@@ -32,8 +33,13 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.hideKeyboardWhenTappedAround()
         
 //        restaurants = preAddRestaurants()
-        let apiYelpURL = getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499)
-        currCoordinates = CLLocationCoordinate2D(latitude: aptLatitude, longitude: aptLongitude)
+//        let apiYelpURL = getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499)
+//        currCoordinates = CLLocationCoordinate2D(latitude: aptLatitude, longitude: aptLongitude)
+        
+        // get user location and use to make yelp business location search call
+        self.getUserLocation()
+        let apiYelpURL = getBusinessLocationSearchCall(longitude: currentLocation.coordinate.longitude, latitude: currentLocation.coordinate.latitude)
+        currCoordinates = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
         
         // Get instantiations of Restaurant class from API call determined by apiYelpURL and asynchronously update TV
         Restaurant.getRestaurantsFromSearch(apiYelpURL: apiYelpURL) {
@@ -56,6 +62,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                     
                                     DispatchQueue.main.async {
                                         self.setCellDeals(restName: restaurant.name, deal: newDeal, cellPath: thisCellPath, whichDeal: restaurant.deals.count - 1)
+                                        self.restaurants.sort(by: {$0.deals.count > $1.deals.count})
                                         self.restaurantTV.reloadData()
                                     }
                                 }
@@ -106,6 +113,16 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    func getUserLocation() {
+        locationManager.requestWhenInUseAuthorization()
+        
+        if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == .authorizedAlways) {
+            
+            currentLocation = locationManager.location
+        }
     }
     
 //    MARK: -- TABLE VIEW

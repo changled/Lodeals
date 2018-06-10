@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 //taken from StackOverflow (kaan-dedeoglu)
 extension String {
@@ -39,6 +40,16 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+// taken from StackOverflow (arsonik)
+extension MKCoordinateRegion {
+    func distanceMax() -> CLLocationDistance {
+        let furthest = CLLocation(latitude: center.latitude + (span.latitudeDelta/2),
+                                  longitude: center.longitude + (span.longitudeDelta/2))
+        let centerLoc = CLLocation(latitude: center.latitude, longitude: center.longitude)
+        return centerLoc.distance(from: furthest)
     }
 }
 
