@@ -25,6 +25,8 @@
 		CC7A0D38209E535C00E1CE1B /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */; };
 		CC7A0D3A209E583D00E1CE1B /* RestaurantClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */; };
 		CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */; };
+		CC9FF10A20CE7CAE00DF8601 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FF10920CE7CAE00DF8601 /* SearchTableViewController.swift */; };
+		CC9FF10E20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FF10D20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift */; };
 		CCB6ECF220C7114C00E46E0E /* NoDealSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCB6ECF120C7114C00E46E0E /* NoDealSectionHeaderView.xib */; };
 		CCB6ECF420C7119500E46E0E /* NoDealSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB6ECF320C7119500E46E0E /* NoDealSectionHeaderView.swift */; };
 		CCD0CF4B20CB0267005774F2 /* AppleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD0CF4A20CB0267005774F2 /* AppleMapViewController.swift */; };
@@ -92,6 +94,8 @@
 		CC7A0D37209E535C00E1CE1B /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		CC7A0D39209E583D00E1CE1B /* RestaurantClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantClass.swift; sourceTree = "<group>"; };
 		CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		CC9FF10920CE7CAE00DF8601 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		CC9FF10D20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		CCB6ECF120C7114C00E46E0E /* NoDealSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDealSectionHeaderView.xib; sourceTree = "<group>"; };
 		CCB6ECF320C7119500E46E0E /* NoDealSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDealSectionHeaderView.swift; sourceTree = "<group>"; };
 		CCD0CF4A20CB0267005774F2 /* AppleMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMapViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +103,7 @@
 		CCD703FE20BF7FCD009FB321 /* yelpCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = yelpCalls.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/YelpAPI/yelpCalls.swift; sourceTree = "<absolute>"; };
 		CCD7040020BF976F009FB321 /* yelpApiFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yelpApiFunctions.swift; sourceTree = "<group>"; };
 		CCDEF25A20A2A38B00C3DA65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/MapViewController.swift; sourceTree = "<absolute>"; };
+		CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = /Users/Rachel/Documents/CSC436/Project/Lodeals/Lodeals/Lodeals/SideDishes/MapViewController.swift; sourceTree = "<absolute>"; };
 		CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealClass.swift; sourceTree = "<group>"; };
 		CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealTableViewCell.swift; sourceTree = "<group>"; };
 		CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				CCDEF26220A2ACA600C3DA65 /* DealTableViewCell.swift */,
 				CCDEF26020A2ABBF00C3DA65 /* DealClass.swift */,
 				CC602E9020AE668800088B2A /* Business.swift */,
+				CC9FF10D20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -201,10 +206,11 @@
 		CC7A0D04209E4D3200E1CE1B /* Lodeals */ = {
 			isa = PBXGroup;
 			children = (
+				CC9FF10620CDAC7200DF8601 /* Views */,
 				CCDEF26E20A5247100C3DA65 /* SideDishes */,
 				CCD7040220C09489009FB321 /* YelpAPI */,
 				CC6328AE20A258A300AD5C60 /* Classes */,
-				CCD7040320C09847009FB321 /* Views */,
+				CCD7040320C09847009FB321 /* ViewControllers */,
 				CC7A0D0C209E4D3200E1CE1B /* Assets.xcassets */,
 				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
 				CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */,
@@ -233,6 +239,17 @@
 			path = LodealsUITests;
 			sourceTree = "<group>";
 		};
+		CC9FF10620CDAC7200DF8601 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */,
+				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
+				CCB6ECF120C7114C00E46E0E /* NoDealSectionHeaderView.xib */,
+				CCB6ECF320C7119500E46E0E /* NoDealSectionHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CCD7040220C09489009FB321 /* YelpAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,21 +261,17 @@
 			path = YelpAPI;
 			sourceTree = "<group>";
 		};
-		CCD7040320C09847009FB321 /* Views */ = {
+		CCD7040320C09847009FB321 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CCDEF26C20A519C500C3DA65 /* DealSectionHeaderView.swift */,
-				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
-				CCB6ECF120C7114C00E46E0E /* NoDealSectionHeaderView.xib */,
-				CCB6ECF320C7119500E46E0E /* NoDealSectionHeaderView.swift */,
-				CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */,
 				CC7A0D35209E52D800E1CE1B /* MasterViewController.swift */,
 				CCDEF26420A2C8AC00C3DA65 /* AddDealViewController.swift */,
 				CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */,
 				CCDEF26620A2D5F300C3DA65 /* ConfirmAddDealViewController.swift */,
 				CCD0CF4A20CB0267005774F2 /* AppleMapViewController.swift */,
+				CC9FF10920CE7CAE00DF8601 /* SearchTableViewController.swift */,
 			);
-			name = Views;
+			name = ViewControllers;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -269,6 +282,7 @@
 				CC602E9420AE7C1400088B2A /* LodealsBridginHeader.h */,
 				CC602E8E20AC276B00088B2A /* database.swift */,
 				CCDEF26820A38CF200C3DA65 /* Extensions.swift */,
+				CCDEF25C20A2A4D200C3DA65 /* MapViewController.swift */,
 			);
 			path = SideDishes;
 			sourceTree = "<group>";
@@ -541,6 +555,7 @@
 				CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */,
 				CCDEF26520A2C8AC00C3DA65 /* AddDealViewController.swift in Sources */,
 				CCB6ECF420C7119500E46E0E /* NoDealSectionHeaderView.swift in Sources */,
+				CC9FF10E20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift in Sources */,
 				CCD703FF20BF7FCE009FB321 /* yelpCalls.swift in Sources */,
 				CCDEF26320A2ACA600C3DA65 /* DealTableViewCell.swift in Sources */,
 				CCD703FB20BF6019009FB321 /* yelpJSONParse.swift in Sources */,
@@ -550,6 +565,7 @@
 				CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */,
 				CC602E8D20AC1DC800088B2A /* hardCode.swift in Sources */,
 				CCDEF26D20A519C500C3DA65 /* DealSectionHeaderView.swift in Sources */,
+				CC9FF10A20CE7CAE00DF8601 /* SearchTableViewController.swift in Sources */,
 				CCDEF26920A38CF200C3DA65 /* Extensions.swift in Sources */,
 				CCDEF25D20A2A4D200C3DA65 /* MapViewController.swift in Sources */,
 			);

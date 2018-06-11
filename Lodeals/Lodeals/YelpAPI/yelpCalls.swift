@@ -11,12 +11,28 @@ import Foundation
 * Given the coordinates (longitude and latitude), this function returns the HTTPS url used to make the API call with only location
 * Return string format: https ://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972
  */
-func getBusinessLocationSearchCall(longitude: Double, latitude: Double) -> String {
-    return "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&limit=50&sort_by=distance"
+func getBusinessLocationSearchCall(longitude: Double, latitude: Double, offset: Int = 0) -> String {
+    var callStr = "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&limit=50&sort_by=distance"
+    
+    if offset > 0 {
+        callStr = "\(callStr)&offset=\(offset * 50)"
+    }
+    
+    return callStr
 }
 
 func getBusinessDetailsCall(restaurant: Restaurant) -> String {
     return "https://api.yelp.com/v3/businesses/\(restaurant.id)"
+}
+
+func getBusinessCustomSearchCall(searchInput: String, latitude: Double, longitude: Double, offset: Int = 0) -> String {
+    var callStr = "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&limit=50&sort_by=distance&term=\(searchInput)"
+    
+    if offset > 0 {
+        callStr = "\(callStr)&offset=\(offset * 50)"
+    }
+    
+    return callStr
 }
 
 // REWRITTEN IN RESTAURANTS CLASS

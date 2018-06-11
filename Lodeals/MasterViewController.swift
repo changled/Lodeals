@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  MasterViewController.swift
 //  Lodeals
 //
 //  Created by Rachel Chang on 5/5/18.
@@ -18,13 +18,15 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var restaurants = [Restaurant]()
     var locationManager = CLLocationManager()
-    var currentLocation: CLLocation!
     var businessesFromYelp : [Business]!
     @IBOutlet weak var restaurantTV: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchGoButton: UIButton!
     var businessStruct: TxtYelpServiceBusiness?
     let aptLatitude = 35.300499
     let aptLongitude = -120.677059
     var currCoordinates : CLLocationCoordinate2D?
+    var businessShowCountInTV = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,47 +34,65 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // hide keyboard if touch anywhere outside of text field
         self.hideKeyboardWhenTappedAround()
         
-//        restaurants = preAddRestaurants()
-//        let apiYelpURL = getBusinessLocationSearchCall(longitude: -120.677059, latitude: 35.300499)
-//        currCoordinates = CLLocationCoordinate2D(latitude: aptLatitude, longitude: aptLongitude)
-        
-        // get user location and use to make yelp business location search call
         self.getUserLocation()
-        let apiYelpURL = getBusinessLocationSearchCall(longitude: currentLocation.coordinate.longitude, latitude: currentLocation.coordinate.latitude)
-        currCoordinates = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+        var apiYelpURL = getBusinessLocationSearchCall(longitude: currCoordinates!.longitude, latitude: currCoordinates!.latitude)
+        getRestaurantsAndUpdateTV(YelpAPIString: apiYelpURL)
+        apiYelpURL = getBusinessLocationSearchCall(longitude: currCoordinates!.longitude, latitude: currCoordinates!.latitude, offset: 1)
+        getRestaurantsAndUpdateTV(YelpAPIString: apiYelpURL)
+        apiYelpURL = getBusinessLocationSearchCall(longitude: currCoordinates!.longitude, latitude: currCoordinates!.latitude, offset: 2)
+        getRestaurantsAndUpdateTV(YelpAPIString: apiYelpURL)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func handleOneDealForOneRestaurant(restaurant: Restaurant, restIndex: Int, deal: Deal) {
+        restaurant.deals.append(deal)
+        print("   adding new deal \(deal.shortDescription) to restaurant \(restaurant.name) now with \(restaurant.deals.count) deals:")
         
-        // Get instantiations of Restaurant class from API call determined by apiYelpURL and asynchronously update TV
-        Restaurant.getRestaurantsFromSearch(apiYelpURL: apiYelpURL) {
+        let thisCellPath = IndexPath(row: restIndex, section: 0)
+        
+        DispatchQueue.main.async {
+            self.setCellDeals(restName: restaurant.name, deal: deal, cellPath: thisCellPath, whichDeal: restaurant.deals.count - 1)
+            self.restaurants.sort(by: {$0.deals.count > $1.deals.count})
+            self.restaurantTV.reloadData()
+        }
+    }
+    
+    func handleDealsForOneRestaurant(restaurant: Restaurant, restIndex: Int, deals: [String]) {
+        for deal in deals {
+            dbGetDealWithID(id: deal, restID: restaurant.id) {
+                newDeal in
+                
+                if let newDeal = newDeal {
+                    self.handleOneDealForOneRestaurant(restaurant: restaurant, restIndex: restIndex, deal: newDeal)
+                }
+            }
+        }
+    }
+    
+    // Get instantiations of Restaurant class from API call determined by apiYelpURL and asynchronously update TV
+    func getRestaurantsAndUpdateTV(YelpAPIString: String) {
+        Restaurant.getRestaurantsFromSearch(apiYelpURL: YelpAPIString) {
             completedRestaurants in
             for (restIndex, restaurant) in completedRestaurants.enumerated() {
                 //for each deal, add to array
                 dbUpdateRestaurantWithDeals(restaurant: restaurant) {
                     deals in
-                    
                     if let deals = deals {
-                        for deal in deals {
-                            dbGetDealWithID(id: deal, restID: restaurant.id) {
-                                newDeal in
-                                
-                                if let newDeal = newDeal {
-                                    restaurant.deals.append(newDeal)
-                                    print("   adding new deal \(newDeal.shortDescription) to restaurant \(restaurant.name) now with \(restaurant.deals.count) deals:")
-                                    
-                                    let thisCellPath = IndexPath(row: restIndex, section: 0)
-                                    
-                                    DispatchQueue.main.async {
-                                        self.setCellDeals(restName: restaurant.name, deal: newDeal, cellPath: thisCellPath, whichDeal: restaurant.deals.count - 1)
-                                        self.restaurants.sort(by: {$0.deals.count > $1.deals.count})
-                                        self.restaurantTV.reloadData()
-                                    }
-                                }
-                            }
-                        }
+                        self.handleDealsForOneRestaurant(restaurant: restaurant, restIndex: restIndex, deals: deals)
                     }
                 }
                 
                 restaurant.printRestaurant()
-                self.restaurants.append(restaurant)
+                
+                if self.restaurants.contains(restaurant) {
+                    print("restaurant \(restaurant.name) already in array")
+                }
+                else {
+                    self.restaurants.append(restaurant)
+                }
             }
             
             DispatchQueue.main.async {
@@ -81,29 +101,35 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
 //    MARK: -- UNWIND
     
     @IBAction func unwindFromDetailsVC(sender: UIStoryboardSegue) {
         if sender.source is DetailsViewController {
             if let senderVC = sender.source as? DetailsViewController {
-                let editedRestaurant = senderVC.restaurant
-                
-                if let index = senderVC.restaurantIndex {
-                    let restaurantIndex: Int = index.section + index.row
-                
-                    restaurants[restaurantIndex] = editedRestaurant!
-                    restaurantTV.reloadRows(at: [IndexPath(row: senderVC.restaurantIndex!.row, section: 0)], with: .automatic)
-                }
-                else {
-                    print("NOTE: TEST IF CORRECT -- returning from a map view -> details vc!")
-                    restaurantTV.reloadData()
-                    // NOTE: TEST THAT IT'S ACTUALLY SAVING AND RELOADING CORRECT DATA!
+                if senderVC.didEditRestaurant {
+                    let editedRestaurant = senderVC.restaurant
+                    
+                    if let index = senderVC.restaurantIndex {
+                        let restaurantIndex: Int = index.section + index.row
+                        
+                        restaurants[restaurantIndex] = editedRestaurant!
+                        restaurantTV.reloadRows(at: [IndexPath(row: senderVC.restaurantIndex!.row, section: 0)], with: .automatic)
+                    }
+                    else {
+                        print("NOTE: TEST IF CORRECT -- returning from a map view -> details vc!")
+                        restaurants.sort(by: {$0.deals.count > $1.deals.count})
+                        restaurantTV.reloadData()
+                        // NOTE: TEST THAT IT'S ACTUALLY SAVING AND RELOADING CORRECT DATA!
+                    }
                 }
              }
+        }
+        else if sender.source is AppleMapViewController {
+            if let senderVC = sender.source as? AppleMapViewController {
+                print("unwinding from Apple Map View Controller")
+                restaurants = senderVC.restaurants!
+                restaurantTV.reloadData()
+            }
         }
     }
     
@@ -115,13 +141,29 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return false
     }
     
+    // get user location and use to make yelp business location search call
     func getUserLocation() {
         locationManager.requestWhenInUseAuthorization()
         
         if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == .authorizedAlways) {
             
-            currentLocation = locationManager.location
+            if let currLatitude = locationManager.location?.coordinate.latitude {
+                if let currLongitude = locationManager.location?.coordinate.longitude {
+                    currCoordinates = CLLocationCoordinate2D(latitude: currLatitude, longitude: currLongitude)
+                }
+                else {
+                    print("ERROR: current longitude failed to unwrap (locationManager.location?.coordinate.longitude) -> setting to my apt coordinates")
+                    currCoordinates = CLLocationCoordinate2D(latitude: aptLatitude, longitude: aptLongitude)
+                }
+            }
+            else {
+                print("ERROR: current longitude failed to unwrap (locationManager.location?.coordinate.latitude) -> setting to my apt coordinates")
+                currCoordinates = CLLocationCoordinate2D(latitude: aptLatitude, longitude: aptLongitude)
+            }
+        }
+        else {
+            print("ERROR: Authorization status does now allow this app to track your location. Please allow in your phone settings")
         }
     }
     
@@ -150,11 +192,9 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell?.iconImageView.isHidden = false
             
             DispatchQueue.global().async {
-                if let imgURL = URL(string: rest.images[0]) {
-                    let imageData = try? Data(contentsOf: imgURL)
-                    
+                if let imageData = try? Data(contentsOf: URL(string: rest.images[0])!) {
                     DispatchQueue.main.async {
-                        cell?.iconImageView.image = UIImage(data: imageData!)
+                        cell?.iconImageView.image = UIImage(data: imageData)
                     }
                 }
                 else {
@@ -189,7 +229,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         else { // no deals
-            print("currently no deals in \(rest.name): \(rest.deals.count)")
+//            print("currently no deals in \(rest.name): \(rest.deals.count)")
             cell?.deal1Label?.text = "currently no deals"
             cell?.deal2Label?.text = "currently no deals"
             cell?.deal1TimeLabel?.text = ""
@@ -236,6 +276,13 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             destVC?.restaurants = restaurants
             destVC?.searchLocation = currCoordinates
+        }
+        
+        if(segue.identifier == "showSearchVC") {
+            let destVC = segue.destination as? SearchTableViewController
+            print("seguing to SearchVC with search input: \(String(describing: searchTextField.text))")
+            destVC?.searchInputStr = searchTextField.text
+            destVC?.currCoordinates = currCoordinates
         }
     }
 }

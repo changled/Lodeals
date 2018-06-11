@@ -149,6 +149,36 @@ class AppleMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDe
 
 //    MARK: -- Navigation
 
+    @IBAction func unwindFromDetailsVC(sender: UIStoryboardSegue) {
+        if sender.source is DetailsViewController {
+            if let senderVC = sender.source as? DetailsViewController {
+                let editedRestaurant = senderVC.restaurant
+
+                print("unwind from details vc to apple map vc:")
+                print("BEFORE SET AND SORT")
+                for restaurant in restaurants! {
+                    print("\t\(restaurant.name) with \(restaurant.deals.count) deals")
+                }
+                
+                if let restIndex = restaurants?.index(of: self.selectedRestaurant!) {
+                    print("\nrestIndex is \(String(describing: restIndex))")
+                    print("before reset: \(restaurants![restIndex].name)")
+                    restaurants![restIndex] = editedRestaurant!
+                    print("before reset: \(restaurants![restIndex].name)")
+                    self.mapView.removeAnnotation(self.selectedRestaurant!)
+                    self.mapView.addAnnotation(self.selectedRestaurant!)
+                }
+                
+                restaurants?.sort(by: {$0.deals.count > $1.deals.count})
+                
+                print("\nAFTER SET AND SORT")
+                for restaurant in restaurants! {
+                    print("\t\(restaurant.name) with \(restaurant.deals.count) deals")
+                }
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showDetailsVCFromMap") {
             print("prepare for segue -- show details vc from map")

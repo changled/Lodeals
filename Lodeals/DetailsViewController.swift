@@ -20,13 +20,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var viewMorePhotosOnYelpButton: UIButton!
     @IBOutlet weak var yelpInfoLabel: UILabel!
     
+    var senderAlias : String?
     var restaurant : Restaurant?
     var restaurantIndex : IndexPath?
+    var indexSelectedRestaruantMap : Int?
     var dealIsExpanded : [Bool] = []
     var lastlastUsed : [DateComponents] = []
-//    let imageXSpacingDict : [Int : CGFloat] = [0: 28, 1: 118, 2: 208, 3: 298] // for iPhone 8 Plus
     let imageXSpacingDict : [Int : CGFloat] = [0: 16, 1: 93, 2: 170, 3: 247] // for iPhone 7/8
     var images : [UIImageView] = []
+    var didEditRestaurant = false
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -166,6 +168,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func unwindSaveFromConfirmAddDealVC(sender: UIStoryboardSegue) {
         print("\n(unwindSaveFromConfirmAddDealVC) RETURN FROM ADDING NEW DEAL...")
         if sender.source is ConfirmAddDealViewController {
+            didEditRestaurant = true
             if let senderVC = sender.source as? ConfirmAddDealViewController {
                 let dealTitle = senderVC.dealTitle
                 let dealDescription = senderVC.dealDescription
@@ -196,7 +199,12 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func goBackToOneButtonTapped(_sender: Any) {
-        performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
+        if restaurantIndex != nil {
+            performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
+        }
+        else {
+            performSegue(withIdentifier: "unwindToMapVC", sender: self)
+        }
     }
     
     

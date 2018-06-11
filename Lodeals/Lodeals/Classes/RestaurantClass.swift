@@ -78,25 +78,29 @@ class Restaurant : NSObject, MKAnnotation {
      */
     class func getRestaurantsFromSearch (apiYelpURL: String, completionHandler: @escaping (_: [Restaurant]) -> ()) {
         var restaurants: [Restaurant] = []
-        var request = URLRequest(url: URL(string: apiYelpURL)!)
-        request.addValue("Bearer qQJmRKBK0HOd7E4mBxhhUXaeKEotiUOqkuN3G3mrPM4fvsUdM_RkJc86_5ah25aW6V_4Ke_53wsbG1b8VtFx2AZo_gV1r-5dDMriM-guhV_UC1iorPTNosXGvir-WnYx", forHTTPHeaderField: "Authorization") //my personal Yelp api key
         
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        
-        let task: URLSessionDataTask = session.dataTask(with: request) { (receivedData, response, error) -> Void in
-            if let data = receivedData {
-                do {
-                    let decoder = JSONDecoder()
-                    let yelpServiceBusinessSearchWithKeyword = try decoder.decode(YelpServiceBusinessSearchWithKeyword.self, from: data)
-                    restaurants = getRestaurantsFromStruct(businesses: yelpServiceBusinessSearchWithKeyword, maxCount: 100)
-                    completionHandler(restaurants)
-                } catch {
-                    print("\nException on Decode (getRestaurantsFromSearch): \(error)\n")
+        if let yelpurl = URL(string: apiYelpURL) {
+            var request = URLRequest(url: yelpurl)
+            
+            request.addValue("Bearer qQJmRKBK0HOd7E4mBxhhUXaeKEotiUOqkuN3G3mrPM4fvsUdM_RkJc86_5ah25aW6V_4Ke_53wsbG1b8VtFx2AZo_gV1r-5dDMriM-guhV_UC1iorPTNosXGvir-WnYx", forHTTPHeaderField: "Authorization") //my personal Yelp api key
+            
+            let session = URLSession(configuration: URLSessionConfiguration.default)
+            
+            let task: URLSessionDataTask = session.dataTask(with: request) { (receivedData, response, error) -> Void in
+                if let data = receivedData {
+                    do {
+                        let decoder = JSONDecoder()
+                        let yelpServiceBusinessSearchWithKeyword = try decoder.decode(YelpServiceBusinessSearchWithKeyword.self, from: data)
+                        restaurants = getRestaurantsFromStruct(businesses: yelpServiceBusinessSearchWithKeyword, maxCount: 100)
+                        completionHandler(restaurants)
+                    } catch {
+                        print("\nException on Decode (getRestaurantsFromSearch): \(error)\n")
+                    }
                 }
             }
+            
+            task.resume()
         }
-        
-        task.resume()
     }
 
     /*
