@@ -8,14 +8,13 @@
 
 import UIKit
 
-class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
-    
+class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
-    
     @IBOutlet weak var titleCountLabel: UILabel!
     @IBOutlet weak var titleLengthErrorLabel: UILabel!
+    @IBOutlet weak var timesCollectionView: UICollectionView!
     
     var didEditTitle = false
     var didEditDescription = false
@@ -24,6 +23,9 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     var dealDescription : String = ""
     var validInput = [false, false]
     let alertVewMessageDict : [Int : String] = [0: "Deal title must be between 8 and 30 length\nDeal description must have at least 30 characters. Add more detail!", 1: "Deal title must be between 8 and 30 length", 2: "Deal description must have at least 30 characters. Add more detail!"]
+    let defaultOpenTimes = [[10, 21], [10, 21], [10, 21], [10, 21], [10, 23], [10, 23], [10, 23]]
+//    let daysOfTheWeekDict : [String : Int] = ["Mon": 0, "Tue": 1, "Wed": 2, "Thur": 3, "Fri": 4, "Sat": 5, "Sun": 6]
+    let daysOfTheWeekDict : [Int: String] = [0: "Mon", 1: "Tue", 2: "Wed", 3: "Thur", 4: "Fri", 5: "Sat", 6: "Sun"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,7 +119,42 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         validInput[1] = false
     }
     
-    // MARK: - Navigation
+    
+//    MARK: -- COLLECTION VIEW
+    
+    // 7 sections = one section for each day of the week
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 7
+    }
+    
+    /*
+     *
+     * ex. if self.defaultOpenTimes[section] == [10, 22], return 13 for 10, 11, 12, 1, 2, ... , 10
+     *
+     */
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.defaultOpenTimes[section][1] - self.defaultOpenTimes[section][0] + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "timesCVCell", for: indexPath) as? TimeCollectionViewCell
+        
+        var hourInt = self.defaultOpenTimes[indexPath.section][0] + indexPath.row
+        
+        if hourInt > 12 {
+            hourInt = hourInt - 12
+            cell?.timeButton.backgroundColor = UIColor.blue
+        }
+        else {
+            cell?.timeButton.backgroundColor = UIColor.yellow
+        }
+        
+        cell?.timeButton.setTitle("\(hourInt)", for: .normal)
+        
+        return cell!
+    }
+    
+//    MARK: - Navigation
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "showConfirmAddDealVC" {
