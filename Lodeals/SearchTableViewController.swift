@@ -211,7 +211,7 @@ class SearchTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetailsVC" {
+        if segue.identifier == "showDetailsVCFromSearch" {
             let destVC = segue.destination as? DetailsViewController
             destVC?.senderAlias = "search"
             if let selectedIndexPath = tableView.indexPathForSelectedRow {

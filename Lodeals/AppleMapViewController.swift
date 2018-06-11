@@ -33,7 +33,6 @@ class AppleMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDe
         self.addRestaurantAnnotation(restaurants!)
 
         let newRegion = MKCoordinateRegion(center: searchLocation!, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        mapView.showsUserLocation = true
         mapView.setRegion(newRegion, animated: true)
     }
 

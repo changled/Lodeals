@@ -38,7 +38,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4uh-sj-8Va">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uh-sj-8Va">
                                 <rect key="frame" x="0.0" y="104" width="375" height="519"/>
                                 <connections>
                                     <outlet property="delegate" destination="1xn-UY-a1p" id="qYw-o9-3rX"/>
@@ -640,7 +640,7 @@
                                     <outlet property="priceLabel" destination="xxE-uF-PHd" id="waZ-lT-XsU"/>
                                     <outlet property="restImageView" destination="Ujw-Wp-GAQ" id="Vx0-dN-M87"/>
                                     <outlet property="tagsLabel" destination="cq8-GD-eDn" id="iep-jW-1Z7"/>
-                                    <segue destination="F2i-5Y-HwE" kind="show" identifier="showDetailsVC" id="FaP-fr-30l"/>
+                                    <segue destination="F2i-5Y-HwE" kind="show" identifier="showDetailsVCFromSearch" id="FaP-fr-30l"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
