@@ -528,7 +528,7 @@
                         <outlet property="viewMorePhotosOnYelpButton" destination="7Jl-ZB-4tl" id="KiM-eB-tGl"/>
                         <outlet property="yelpInfoLabel" destination="5LQ-6P-liE" id="Gvk-dP-zY3"/>
                         <segue destination="LHv-kB-K7l" kind="unwind" identifier="unwindToMapVC" unwindAction="unwindFromDetailsVCWithSender:" id="ned-WW-8aY"/>
-                        <segue destination="LHv-kB-K7l" kind="unwind" unwindAction="unwindFromDetailsVCToSearchVCWithSender:" id="f1J-yo-PqI"/>
+                        <segue destination="LHv-kB-K7l" kind="unwind" identifier="unwindToSearchVC" unwindAction="unwindFromDetailsVCToSearchVCWithSender:" id="f1J-yo-PqI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4s-B3-r68" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -850,12 +850,12 @@
                     <toolbarItems>
                         <barButtonItem title="Cancel" id="KeX-i6-PsF">
                             <connections>
-                                <segue destination="Cba-Hn-bcC" kind="unwind" unwindAction="unwindCancelFromConfirmAddDealVCWithSender:" id="jxt-99-sUI"/>
+                                <segue destination="Cba-Hn-bcC" kind="unwind" identifier="unwindCancellToDetailsVC" unwindAction="unwindCancelFromConfirmAddDealVCWithSender:" id="jxt-99-sUI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem title="Confirm" id="Pls-TJ-ZLZ">
                             <connections>
-                                <segue destination="Cba-Hn-bcC" kind="unwind" unwindAction="unwindSaveFromConfirmAddDealVCWithSender:" id="G1h-FS-t0c"/>
+                                <segue destination="Cba-Hn-bcC" kind="unwind" identifier="unwindSaveToDetailsVC" unwindAction="unwindSaveFromConfirmAddDealVCWithSender:" id="G1h-FS-t0c"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>

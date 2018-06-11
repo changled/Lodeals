@@ -60,22 +60,16 @@ class AppleMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDe
         locationManager.startUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        mapView.removeAnnotation(currLocationPin)
-        print("location manager didUpdateLocations")
-        let location = locations.last! as CLLocation
-        
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-        //set region on the map
-        mapView.setRegion(region, animated: true)
-        
-//        currLocationPin.coordinate = location.coordinate
-//        currLocationPin.title = "Current Location"
-//        mapView.addAnnotation(currLocationPin)
-        
-    }
+    //don't need b/c already using didUpdate userLocation for mapView
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print("location manager didUpdateLocations")
+//        let location = locations.last! as CLLocation
+//
+//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+//
+//        mapView.setRegion(region, animated: true)
+//    }
     
     // add all annotations in businesses array
     func addRestaurantAnnotation(_ businesses : [Restaurant]) {
@@ -134,16 +128,9 @@ class AppleMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDe
     
     // tells the delegate that the location of the user was updated
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        print("mapView didUpdate userLocation")
-//        let newRegion = MKCoordinateRegion(center: self.mapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//        mapView.setRegion(newRegion, animated: true)
-        mapView.setRegion(MKCoordinateRegionMake((mapView.userLocation.location?.coordinate)!, MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
-        
-//        let myAnnotation: MKPointAnnotation = MKPointAnnotation()
-        
-//        myAnnotation.coordinate = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude);
-//        myAnnotation.title = "Current location"
-//        mapView.addAnnotation(myAnnotation)
+        let newRegion = MKCoordinateRegion(center: self.mapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        mapView.setRegion(newRegion, animated: true)
+//        mapView.setRegion(MKCoordinateRegionMake((mapView.userLocation.location?.coordinate)!, MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
     }
 
 //    MARK: -- Navigation
