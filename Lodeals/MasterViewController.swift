@@ -265,6 +265,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
  
             destVC?.restaurant = restaurants[(selectedIndexPath?.row)!]
             destVC?.restaurantIndex = selectedIndexPath
+            destVC?.senderAlias = "master"
         }
         
         if(segue.identifier == "showMapVC") {

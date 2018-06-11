@@ -27,6 +27,7 @@
 		CC7A0D3C209E7D4F00E1CE1B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */; };
 		CC9FF10A20CE7CAE00DF8601 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FF10920CE7CAE00DF8601 /* SearchTableViewController.swift */; };
 		CC9FF10E20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FF10D20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift */; };
+		CC9FF11020CEFF4400DF8601 /* DayViewWithTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9FF10F20CEFF4400DF8601 /* DayViewWithTable.xib */; };
 		CCB6ECF220C7114C00E46E0E /* NoDealSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCB6ECF120C7114C00E46E0E /* NoDealSectionHeaderView.xib */; };
 		CCB6ECF420C7119500E46E0E /* NoDealSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB6ECF320C7119500E46E0E /* NoDealSectionHeaderView.swift */; };
 		CCD0CF4B20CB0267005774F2 /* AppleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD0CF4A20CB0267005774F2 /* AppleMapViewController.swift */; };
@@ -96,6 +97,7 @@
 		CC7A0D3B209E7D4F00E1CE1B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		CC9FF10920CE7CAE00DF8601 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		CC9FF10D20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		CC9FF10F20CEFF4400DF8601 /* DayViewWithTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayViewWithTable.xib; sourceTree = "<group>"; };
 		CCB6ECF120C7114C00E46E0E /* NoDealSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDealSectionHeaderView.xib; sourceTree = "<group>"; };
 		CCB6ECF320C7119500E46E0E /* NoDealSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDealSectionHeaderView.swift; sourceTree = "<group>"; };
 		CCD0CF4A20CB0267005774F2 /* AppleMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMapViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				CCDEF26A20A516CB00C3DA65 /* DealSectionHeaderView.xib */,
 				CCB6ECF120C7114C00E46E0E /* NoDealSectionHeaderView.xib */,
 				CCB6ECF320C7119500E46E0E /* NoDealSectionHeaderView.swift */,
+				CC9FF10F20CEFF4400DF8601 /* DayViewWithTable.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			files = (
 				CC7A0D10209E4D3200E1CE1B /* LaunchScreen.storyboard in Resources */,
 				CC7A0D0D209E4D3200E1CE1B /* Assets.xcassets in Resources */,
+				CC9FF11020CEFF4400DF8601 /* DayViewWithTable.xib in Resources */,
 				CCB6ECF220C7114C00E46E0E /* NoDealSectionHeaderView.xib in Resources */,
 				CC6328B220A25D2A00AD5C60 /* Podfile in Resources */,
 				CCDEF26B20A516CC00C3DA65 /* DealSectionHeaderView.xib in Resources */,

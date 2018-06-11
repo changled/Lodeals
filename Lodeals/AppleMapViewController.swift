@@ -171,7 +171,7 @@ class AppleMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDe
             let destVC = segue.destination as? DetailsViewController
             
             destVC?.restaurant = self.selectedRestaurant
-            //NOTE: SET RESTAURANT INDEX TOO!!!
+            destVC?.senderAlias = "map"
         }
     }
 

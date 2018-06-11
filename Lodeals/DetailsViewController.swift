@@ -199,12 +199,32 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func goBackToOneButtonTapped(_sender: Any) {
-        if restaurantIndex != nil {
-            performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
+        if let alias = self.senderAlias {
+            if alias == "master" {
+                performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
+            }
+            else if alias == "map" {
+                performSegue(withIdentifier: "unwindToMapVC", sender: self)
+            }
+            else if alias == "search" {
+                performSegue(withIdentifier: "unwindToSearchVC", sender: self)
+            }
+            else {
+                print("ERROR IN GOBACKTOONEBUTTONTAPPED WITH ALIAS \(alias)")
+                performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
+            }
         }
         else {
-            performSegue(withIdentifier: "unwindToMapVC", sender: self)
+            print("ERROR IN GOBACKTOONEBUTTONTAPPED UNABLE TO UNWRAP ALIAS")
+            performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
         }
+        
+//        if restaurantIndex != nil {
+//            performSegue(withIdentifier: "unwindSegueToMasterVC", sender: self)
+//        }
+//        else {
+//            performSegue(withIdentifier: "unwindToMapVC", sender: self)
+//        }
     }
     
     
