@@ -41,6 +41,13 @@ class AddDealViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         titleLabel.text = ("Adding new deal for \(restaurant?.name ?? "null"):")
         titleTextField.addTarget(self, action: #selector(didChangeTitle(_:)), for: .editingChanged)
         titleLengthErrorLabel.text = ""
+        
+        if let flowlayout = timesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowlayout.scrollDirection = .vertical
+        }
+        else {
+            print("ERROR: timesCollectionView.collectionViewLayout cannot unwrap as UICollectionViewFlowLayout")
+        }
     }
 
     override func didReceiveMemoryWarning() {

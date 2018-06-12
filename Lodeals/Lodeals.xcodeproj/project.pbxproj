@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0F448F6AD10670C2BD8149FF /* Pods_Lodeals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96114435A24C32498F3E497D /* Pods_Lodeals.framework */; };
 		CAD60D7D75DB50307FAC0C2E /* Pods_LodealsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1990D4932350DAC97E60B63 /* Pods_LodealsUITests.framework */; };
-		CC602E8B20AC1B5400088B2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC602E8A20AC1B5300088B2A /* GoogleService-Info.plist */; };
 		CC602E8D20AC1DC800088B2A /* hardCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC602E8C20AC1DC800088B2A /* hardCode.swift */; };
 		CC602E8F20AC276B00088B2A /* database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC602E8E20AC276B00088B2A /* database.swift */; };
 		CC602E9120AE668900088B2A /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC602E9020AE668800088B2A /* Business.swift */; };
@@ -28,6 +27,8 @@
 		CC9FF10A20CE7CAE00DF8601 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FF10920CE7CAE00DF8601 /* SearchTableViewController.swift */; };
 		CC9FF10E20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FF10D20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift */; };
 		CC9FF11220CF1A8000DF8601 /* TimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FF11120CF1A8000DF8601 /* TimeCollectionViewCell.swift */; };
+		CC9FF11420CF396300DF8601 /* TimesCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FF11320CF396300DF8601 /* TimesCollectionViewLayout.swift */; };
+		CCA8961220CF7E89009A262F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCA8961120CF7E89009A262F /* GoogleService-Info.plist */; };
 		CCB6ECF220C7114C00E46E0E /* NoDealSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCB6ECF120C7114C00E46E0E /* NoDealSectionHeaderView.xib */; };
 		CCB6ECF420C7119500E46E0E /* NoDealSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB6ECF320C7119500E46E0E /* NoDealSectionHeaderView.swift */; };
 		CCD0CF4B20CB0267005774F2 /* AppleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD0CF4A20CB0267005774F2 /* AppleMapViewController.swift */; };
@@ -72,7 +73,6 @@
 		96114435A24C32498F3E497D /* Pods_Lodeals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lodeals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1990D4932350DAC97E60B63 /* Pods_LodealsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LodealsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFBBF71DF680FA1A8A4910C /* Pods-LodealsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LodealsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LodealsUITests/Pods-LodealsUITests.release.xcconfig"; sourceTree = "<group>"; };
-		CC602E8A20AC1B5300088B2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC602E8C20AC1DC800088B2A /* hardCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hardCode.swift; sourceTree = "<group>"; };
 		CC602E8E20AC276B00088B2A /* database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = database.swift; sourceTree = "<group>"; };
 		CC602E9020AE668800088B2A /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
@@ -98,6 +98,8 @@
 		CC9FF10920CE7CAE00DF8601 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		CC9FF10D20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		CC9FF11120CF1A8000DF8601 /* TimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC9FF11320CF396300DF8601 /* TimesCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesCollectionViewLayout.swift; sourceTree = "<group>"; };
+		CCA8961120CF7E89009A262F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCB6ECF120C7114C00E46E0E /* NoDealSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDealSectionHeaderView.xib; sourceTree = "<group>"; };
 		CCB6ECF320C7119500E46E0E /* NoDealSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDealSectionHeaderView.swift; sourceTree = "<group>"; };
 		CCD0CF4A20CB0267005774F2 /* AppleMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMapViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				CC602E9020AE668800088B2A /* Business.swift */,
 				CC9FF10D20CE822D00DF8601 /* SearchRestaurantTableViewCell.swift */,
 				CC9FF11120CF1A8000DF8601 /* TimeCollectionViewCell.swift */,
+				CC9FF11320CF396300DF8601 /* TimesCollectionViewLayout.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -218,8 +221,8 @@
 				CC7A0D09209E4D3200E1CE1B /* Main.storyboard */,
 				CC7A0D05209E4D3200E1CE1B /* AppDelegate.swift */,
 				CC7A0D0E209E4D3200E1CE1B /* LaunchScreen.storyboard */,
+				CCA8961120CF7E89009A262F /* GoogleService-Info.plist */,
 				CC7A0D11209E4D3200E1CE1B /* Info.plist */,
-				CC602E8A20AC1B5300088B2A /* GoogleService-Info.plist */,
 			);
 			path = Lodeals;
 			sourceTree = "<group>";
@@ -407,8 +410,8 @@
 				CCB6ECF220C7114C00E46E0E /* NoDealSectionHeaderView.xib in Resources */,
 				CC6328B220A25D2A00AD5C60 /* Podfile in Resources */,
 				CCDEF26B20A516CC00C3DA65 /* DealSectionHeaderView.xib in Resources */,
-				CC602E8B20AC1B5400088B2A /* GoogleService-Info.plist in Resources */,
 				CC7A0D0B209E4D3200E1CE1B /* Main.storyboard in Resources */,
+				CCA8961220CF7E89009A262F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +558,7 @@
 				CC602E9120AE668900088B2A /* Business.swift in Sources */,
 				CCD0CF4B20CB0267005774F2 /* AppleMapViewController.swift in Sources */,
 				CC602E9620BCE70000088B2A /* tempYelpClient.swift in Sources */,
+				CC9FF11420CF396300DF8601 /* TimesCollectionViewLayout.swift in Sources */,
 				CCDEF26120A2ABC000C3DA65 /* DealClass.swift in Sources */,
 				CCDEF26520A2C8AC00C3DA65 /* AddDealViewController.swift in Sources */,
 				CCB6ECF420C7119500E46E0E /* NoDealSectionHeaderView.swift in Sources */,
